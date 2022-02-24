@@ -14,10 +14,6 @@ const GlobalStyles = createGlobalStyle`
     }
     body{
         font-size:14px;
-        min-width:1500px;
-    }
-    div{
-        display:block;
     }
 `;
 

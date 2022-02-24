@@ -8,8 +8,17 @@ import React from 'react';
 import MainWrapper from 'components/MainWrapper';
 
 const MyCalendar  = styled(Calendar)`
-    width:300px;
-    height:300px;
+    max-width:300px;
+    max-height:300px;
+    overflow:hidden;
+    `;
+
+const Section = styled.div`
+    min-width:300px;
+`;
+
+const MyLink = styled.a`
+
 `;
 
 function MainPresenter({
@@ -20,22 +29,27 @@ function MainPresenter({
         <Header />
         <NavBar/>
         <MainWrapper>
-        <div>
+        <Section>
             내 팀
-        </div>
-        <div>
+            <MyLink href={`/myteam/${window.localStorage.ID}`}>more</MyLink>
+        </Section>
+        <Section>
             일정
             <MyCalendar onChange = {onDatechange}   />
-        </div>
-        <div>
+            <MyLink href={`/schedule/${window.localStorage.ID}`} >more</MyLink>
+        </Section>
+        <Section>
             영상
-        </div>
-        <div>
+            <MyLink href={`/video/${window.localStorage.ID}`}>more</MyLink>
+        </Section>
+        <Section>
             뉴스
-        </div>
-        <div>
+            <MyLink href={`/news/${window.localStorage.ID}`}>more</MyLink>
+        </Section>
+        <Section>
             커뮤니티
-        </div>
+            <MyLink href={`/community/${window.localStorage.ID}`}>more</MyLink>
+        </Section>
         </MainWrapper>
         <Footer />
         </>

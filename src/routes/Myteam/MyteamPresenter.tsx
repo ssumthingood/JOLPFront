@@ -4,6 +4,10 @@ import MainWrapper from "components/MainWrapper";
 import NavBar from "components/NavBar";
 import styled from "styled-components";
 
+const Section = styled.div`
+    
+`;
+
 function MyteamPresenter({
 
 }){
@@ -12,12 +16,12 @@ function MyteamPresenter({
         <Header />
         <NavBar/>
         <MainWrapper>
-        <div>Myteam</div>
-        <div>공식홈</div>
-        <div>공식몰</div>
-        <div>공식 유튜브</div>
-        <div>역사</div>
-        <div>스쿼드</div>
+        <Section>Myteam</Section>
+        <Section>공식홈</Section>
+        <Section>공식몰</Section>
+        <Section>공식 유튜브</Section>
+        <Section>역사</Section>
+        <Section>스쿼드</Section>
         </MainWrapper>
         <Footer />
         </>

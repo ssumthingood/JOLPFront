@@ -1,3 +1,4 @@
+import StartWrapper from 'components/StartWrapper';
 import styled from 'styled-components';
 
 const Select = styled.select`
@@ -46,7 +47,7 @@ function SignupPresenter({
     teamChange:(e: any) => void
 }) {
     return (
-        <>
+        <StartWrapper>
         Signup
         <br />
         name
@@ -85,7 +86,7 @@ function SignupPresenter({
         </Select>
         <br />
         <button onClick={goStart}>signup</button>
-        </>
+        </StartWrapper>
     );
 }
 

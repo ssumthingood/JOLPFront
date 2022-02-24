@@ -1,23 +1,28 @@
 import styled from'styled-components';
 
 const HeaderMain = styled.div`
-    width:100%;
-    height:90px;
-    padding:15px 30px;
-    background-color:#81c147;
-    color:whitesmoke;
-    opacity:0.95;
+  min-width:1500px;
+  height:90px;
+  padding:15px 30px;
+  background-color:#81c147;
+  color:whitesmoke;
+  opacity:0.95;
 `;
 
 const HeaderWrapper = styled.div`
-    width:1000px;
-    margin:0;
+  margin:0;
+`;
+
+const HeadLine1 = styled.h1`
+  display:block;
+  font-size:25px;
+  width:100px;
 `;
 const Header:React.FC = () => {
     return(
       <HeaderMain>
         <HeaderWrapper>
-          <h1><a href={`/main/${window.localStorage.ID}`}>HoomBa</a></h1>
+          <HeadLine1><a href={`/main/${window.localStorage.ID}`}>HoomBa</a></HeadLine1>
         </HeaderWrapper>
       </HeaderMain>
     )

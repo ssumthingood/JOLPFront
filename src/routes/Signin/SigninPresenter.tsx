@@ -1,3 +1,5 @@
+import StartWrapper from "components/StartWrapper";
+
 function SigninPresenter({
     id,
     pw,
@@ -14,14 +16,14 @@ function SigninPresenter({
     idChange:any,
     pwChange:any}) {
     return (
-        <>
+        <StartWrapper>
         Signin
         id
         <input type="text" onChange={idChange}/>
         pw
         <input type="password" onChange={pwChange}/>
         <button onClick={goStart}>signin</button>
-        </>
+        </StartWrapper>
     );
 }
 
