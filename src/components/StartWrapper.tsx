@@ -3,7 +3,7 @@ import styled from "styled-components";
 const StartWrapper = styled.div`
     width:100vmax;
     min-height:100vh;
-    padding-top:30vh;
+    padding-top:25vh;
     text-align:center;
     font-size: 25px;
     background-color:#81c147;

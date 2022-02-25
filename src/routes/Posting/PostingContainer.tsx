@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 function PostingConatiner () {
      const navigate = useNavigate();
     function submit(){
-        navigate('/community');
+        navigate(`/community/${window.localStorage.ID}`);
     }
 
     let [title, setTitle] = useState("");

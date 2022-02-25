@@ -18,10 +18,14 @@ function SigninPresenter({
     return (
         <StartWrapper>
         Signin
-        id
+        <div>
+        <h2>id</h2>
         <input type="text" onChange={idChange}/>
-        pw
+        </div>
+        <div>
+        <h2>pw</h2>
         <input type="password" onChange={pwChange}/>
+        </div>
         <button onClick={goStart}>signin</button>
         </StartWrapper>
     );

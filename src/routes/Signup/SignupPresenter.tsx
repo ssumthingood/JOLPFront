@@ -2,13 +2,13 @@ import StartWrapper from 'components/StartWrapper';
 import styled from 'styled-components';
 
 const Select = styled.select`
-    width: 50px;
+    width: 100px;
     border: 1px solid #999;
     font-family: inherit;
 `;
 
 const Option = styled.option`
-    width: 50px;
+    width: 100px;
     border: 1px solid #999;
     font-family: inherit;
 `;
@@ -48,20 +48,26 @@ function SignupPresenter({
 }) {
     return (
         <StartWrapper>
-        Signup
-        <br />
-        name
+        <h2>Signup</h2>
+        <div>
+        <h3>name</h3>
         <input type="text" onChange={nameChange}/>
-        <br />
-        id
+        </div>
+        <div>
+        <h3>id</h3>
         <input type="text" onChange={idChange}/>
-        <br />
-        pw
+        </div>
+        <div>
+        <h3>pw</h3>
         <input type="password" onChange={pwChange}/>
-        <br />
-        pw check
-        <input type="password" onChange={pw2Change}/><br />
-        my team<Select name="team" onChange={teamChange}>
+        </div>
+        <div>
+        <h3>pw check</h3>
+        <input type="password" onChange={pw2Change}/>
+        </div>
+        <div>
+        <h3>my team</h3>
+        <Select name="team" onChange={teamChange}>
             <Option value="0">선택</Option>
             <Option value="1">1</Option>
             <Option value="2">2</Option>
@@ -84,7 +90,7 @@ function SignupPresenter({
             <Option value="19">19</Option>
             <Option value="20">20</Option>
         </Select>
-        <br />
+        </div>
         <button onClick={goStart}>signup</button>
         </StartWrapper>
     );

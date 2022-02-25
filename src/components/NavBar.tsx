@@ -25,6 +25,8 @@ const Menu = styled.li`
 `;
 
 const MyLink = styled.a`
+display:block;
+    height:25px;
     color:white;
     &:hover{
         color:black;

@@ -14,7 +14,8 @@ const MyCalendar  = styled(Calendar)`
     `;
 
 const Section = styled.div`
-    min-width:300px;
+    width:500px;
+    min-height:300px;
 `;
 
 const MyLink = styled.a`
