@@ -90,7 +90,7 @@ function CommunityPresenter({
                 <table>
                     <thead>
                         <tr>
-                        <th>No</th>
+                        <th>No.</th>
                         <th>User</th>
                         <th>Title</th>
                         </tr>
@@ -104,9 +104,9 @@ function CommunityPresenter({
                         id: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
                         }) => (
                         <tr>
-                            <td>{data.id}</td>
-                            <td>{data.userId}</td>
-                            <td>{data.title}</td>
+                        <td>{data.id}</td>
+                        <td>{data.userId}</td>
+                        <td>{data.title}</td>
                         </tr>                            
                     ))}
                     </tbody>
