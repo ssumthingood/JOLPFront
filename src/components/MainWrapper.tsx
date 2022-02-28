@@ -7,6 +7,7 @@ const MainWrapper = styled.div`
     border-left : 1px solid whitesmoke;
     border-right : 1px solid whitesmoke;
     display:flex;
+    flex-flow:row wrap;
 `;
 
 export default MainWrapper;

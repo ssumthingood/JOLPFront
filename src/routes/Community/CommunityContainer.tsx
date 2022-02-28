@@ -1,10 +1,20 @@
 import CommunityPresenter from './CommunityPresenter';
+import axios from 'axios';
 import { useNavigate } from 'react-router';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
  
 function CommunityConatiner () {
     const navigate = useNavigate();
     const [show ,setShow] = useState<Number>(1);
+
+    const [users, setUsers] = useState(null);
+
+    useEffect(()=>{
+        axios.get('https://jsonplaceholder.typicode.com/posts')
+        .then((response)=>{
+            setUsers(response.data);
+        })
+    },[]);
 
     function set1(){
         setShow(1);
@@ -32,7 +42,9 @@ function CommunityConatiner () {
         set1 = {set1}
         set2 = {set2}
         set3 = {set3}
-        goPosting={goPosting} />
+        goPosting={goPosting}
+        users = {users}
+        setUsers = {setUsers} />
     )
 }
 
