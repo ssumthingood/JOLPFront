@@ -4,9 +4,18 @@ import Header from "components/Header";
 import NavBar from "components/NavBar";
 import MainWrapper from "components/MainWrapper";
 
+const HeadLine1 = styled.h1`
+    font-size:25px;
+    margin:0;
+    padding:15px;
+    width:100%;
+`;
+
 const ButtonLi = styled.ul`
+    width:100%;
     display:flex;
     list-style:none;
+    padding:10px;
 `;
 
 const ButtonItem = styled.li`
@@ -44,7 +53,7 @@ function VideoPresenter({
         <Header />
         <NavBar/>
         <MainWrapper>
-        Video
+        <HeadLine1>Video</HeadLine1>
         <ButtonLi>
                 <ButtonItem>
                 <LiButton onClick={set1}>최신순</LiButton>
@@ -59,7 +68,7 @@ function VideoPresenter({
                 </ButtonItem>        
             </ButtonLi>
             <div>
-                영상 리스트
+                <h3>영상 리스트</h3>
             </div>
         </MainWrapper>
         <Footer />

@@ -79,7 +79,6 @@ function NavBar () {
                 <Menu><MyLink href={`/mypage/${window.localStorage.ID}`}>mypage</MyLink></Menu>
                 <Welcome>{window.localStorage.ID}님, 환영합니다!</Welcome>
                 <LogoutBtn onClick={logOut}>logout</LogoutBtn>
-                {/* {window.localStorage.ID ? <Menu><button onClick={logOut}>logout</button></Menu>:<></>} */}
             </Menus>
         </MainBar>
         </>

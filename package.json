@@ -58,7 +58,6 @@
     "@types/react-calendar": "^3.4.5",
     "@types/react-helmet": "^6.1.5"
   },
-  "proxy": "https://fantasy.premierleague.com",
   "msw": {
     "workerDirectory": "public"
   }

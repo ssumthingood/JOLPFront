@@ -5,9 +5,17 @@ import NavBar from "components/NavBar";
 import { Dispatch } from "react";
 import styled from "styled-components";
 
+const HeadLine1 = styled.h1`
+    font-size:25px;
+    margin:0;
+    padding:15px;
+    width:100%;
+`;
+
 const Bar  = styled.div`
     border-top:3px solid #81c147;
     border-bottom:3px solid #81c147;
+    width:100%;
     height:75px;
     line-height: 75px;
     font-size:18px;
@@ -50,7 +58,7 @@ function SchedulePresenter({
         <Header />
         <NavBar/>
         <MainWrapper>
-        <h1>Schedule</h1>
+        <HeadLine1>Schedule</HeadLine1>
         <Bar>
             <LeftBtn onClick={goPrevious}>Previous</LeftBtn>
             <Day>{date.toString()}</Day>

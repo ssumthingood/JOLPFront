@@ -4,9 +4,18 @@ import Header from "components/Header";
 import NavBar from "components/NavBar";
 import MainWrapper from "components/MainWrapper";
 
+const HeadLine1 = styled.h1`
+    font-size:25px;
+    margin:0;
+    padding:15px;
+    width:100%;
+`;
+
 const ButtonLi = styled.ul`
+    width:100%;
     display:flex;
     list-style:none;
+    padding:10px;
 `;
 
 const ButtonItem = styled.li`
@@ -45,7 +54,7 @@ function NewsPresenter({
         <Header />
         <NavBar/>
         <MainWrapper>
-        뉴스 센터
+        <HeadLine1>NEWS</HeadLine1>
         <ButtonLi>
             <ButtonItem>
             <LiButton onClick={set1}>최신순</LiButton>
@@ -60,7 +69,7 @@ function NewsPresenter({
             </ButtonItem>
         </ButtonLi>
         <div>
-            글 리스트
+            <h3>글 리스트</h3>
         </div>
         </MainWrapper>
         <Footer />

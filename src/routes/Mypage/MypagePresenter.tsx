@@ -4,6 +4,18 @@ import MainWrapper from "components/MainWrapper";
 import NavBar from "components/NavBar";
 import styled from "styled-components";
 
+const HeadLine1 = styled.h1`
+    font-size:25px;
+    margin:0;
+    padding:15px;
+    width:100%;
+`;
+
+const Section = styled.div`
+    width:100%;
+    padding:10px;
+`;
+
 function MypagePresenter({
 
 }){
@@ -12,18 +24,16 @@ function MypagePresenter({
         <Header />
         <NavBar/>
         <MainWrapper>
-        <div>
-        내 정보
-        </div>
-        <div>
+        <HeadLine1>MyPage</HeadLine1>
+        <Section>
         내 팀
-        </div>
-        <div>
+        </Section>
+        <Section>
         작성한 글
-        </div>
-        <div>
+        </Section>
+        <Section>
         정보 수정
-        </div>
+        </Section>
         </MainWrapper>
         <Footer />
         </>

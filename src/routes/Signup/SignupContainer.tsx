@@ -1,7 +1,6 @@
 import SignupPresenter from './SignupPresenter';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
- 
 
 function SignupConatiner () {
     const navigate = useNavigate();
