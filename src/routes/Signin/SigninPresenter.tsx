@@ -14,7 +14,8 @@ function SigninPresenter({
     setPw:React.Dispatch<React.SetStateAction<string>>,
     goStart:React.MouseEventHandler<HTMLButtonElement>,
     idChange:any,
-    pwChange:any}) {
+    pwChange:any
+}) {
     return (
         <StartWrapper>
         Signin

@@ -30,7 +30,8 @@ const Seperate = styled.p`
 
 const LiButton = styled.button`
     border:none;
-    background-color:whitesmoke;
+    background-color:black;
+    color:#6aebcf;
     &:hover{    
         cursor:pointer;
         background-color:gray;
@@ -40,6 +41,15 @@ const LiButton = styled.button`
 const Contents = styled.div`
     width:100%;
     padding:15px;
+`;
+
+const GoDetail = styled.a`
+    &:hover{
+        background-color:whitesmoke;
+    }
+    display:block;
+    width:100%;
+    height:100%;
 `;
 
 const PostingBtn = styled.button`
@@ -81,12 +91,11 @@ function CommunityPresenter({
             </ButtonItem>
             <Seperate>|</Seperate>
             <ButtonItem>
-            <LiButton onClick={set3}>좋아요 많은 순</LiButton>
+            <LiButton onClick={set3}>추천순</LiButton>
             </ButtonItem>
         </ButtonLi>
         <Contents>
             <h3>글 리스트</h3>
-            <div>
                 <table>
                     <thead>
                         <tr>
@@ -106,13 +115,11 @@ function CommunityPresenter({
                         <tr>
                         <td>{data.id}</td>
                         <td>{data.userId}</td>
-                        <td>{data.title}</td>
+                        <td><GoDetail href={`/communitydetail/${window.localStorage.ID}/${data.id}`}>{data.title}</GoDetail></td>
                         </tr>                            
                     ))}
                     </tbody>
                 </table>
-            
-            </div>
             <PostingBtn onClick={goPosting}>posting</PostingBtn>
         </Contents>
         </MainWrapper>

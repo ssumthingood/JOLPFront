@@ -6,13 +6,12 @@ import { useEffect, useState } from 'react';
 function CommunityConatiner () {
     const navigate = useNavigate();
     const [show ,setShow] = useState<Number>(1);
-
     const [users, setUsers] = useState(null);
 
     useEffect(()=>{
         axios.get('https://jsonplaceholder.typicode.com/posts')
         .then((response)=>{
-            setUsers(response.data);
+            setUsers(response.data.reverse());
         })
     },[]);
 

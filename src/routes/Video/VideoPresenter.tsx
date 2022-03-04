@@ -28,8 +28,9 @@ const Seperate = styled.p`
 `;
 
 const LiButton = styled.button`
+    background-color:black;
+    color:#6aebcf;
     border:none;
-    background-color:whitesmoke;
     &:hover{    
         cursor:pointer;
         background-color:gray;
@@ -64,7 +65,7 @@ function VideoPresenter({
                 </ButtonItem>
                 <Seperate>|</Seperate>
                 <ButtonItem>
-                <LiButton onClick={set3}>좋아요 많은 순</LiButton>
+                <LiButton onClick={set3}>추천순</LiButton>
                 </ButtonItem>        
             </ButtonLi>
             <div>
