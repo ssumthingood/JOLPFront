@@ -4,6 +4,7 @@ import Header from "components/Header";
 import NavBar from "components/NavBar";
 import MainWrapper from "components/MainWrapper";
 import { ReactChild, ReactFragment, ReactPortal } from "react";
+import Loading from "components/Loading";
 
 const HeadLine1 = styled.h1`
     font-size:25px;
@@ -52,6 +53,12 @@ const GoDetail = styled.a`
     height:100%;
 `;
 
+const Paging = styled.div`
+    width:100%;
+    padding:5px;
+    text-align:center;
+`;
+
 const PostingBtn = styled.button`
     margin-left:90%;
 `;
@@ -65,6 +72,10 @@ function CommunityPresenter({
     goPosting,
     users,
     setUsers,
+    pageMax,
+    listNum,
+    goPrev,
+    goNext,
 }:{
     show:Number,
     setShow:React.Dispatch<React.SetStateAction<Number>>,
@@ -73,7 +84,12 @@ function CommunityPresenter({
     set3:() => void,
     goPosting:() => void,
     users: any,
-    setUsers: React.Dispatch<React.SetStateAction<null>>,
+    //setUsers: React.Dispatch<React.SetStateAction<null>>,
+    setUsers: React.Dispatch<React.SetStateAction<any[]>>,
+    pageMax:Number,
+    listNum:Number,
+    goPrev:() => void,
+    goNext:() => void,
 }){
     return (
         <>
@@ -105,7 +121,9 @@ function CommunityPresenter({
                         </tr>
                     </thead>
                     <tbody>
-                    {users && users.map((
+                    {
+                    users.length>0 ?
+                     users.map((
                         data:
                         {
                         userId: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
@@ -117,9 +135,17 @@ function CommunityPresenter({
                         <td>{data.userId}</td>
                         <td><GoDetail href={`/communitydetail/${window.localStorage.ID}/${data.id}`}>{data.title}</GoDetail></td>
                         </tr>                            
-                    ))}
+                    ))
+                    :
+                    <Loading/>
+                    }
                     </tbody>
                 </table>
+                <Paging>
+                <button onClick={goPrev}>previous</button>
+                {listNum}
+                <button onClick={goNext}>next</button>
+                </Paging>
             <PostingBtn onClick={goPosting}>posting</PostingBtn>
         </Contents>
         </MainWrapper>

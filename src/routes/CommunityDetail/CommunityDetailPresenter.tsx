@@ -3,6 +3,7 @@ import Footer from '../../components/Footer';
 import NavBar from 'components/NavBar';
 import styled from 'styled-components';
 import MainWrapper from 'components/MainWrapper';
+import Loading from 'components/Loading';
 
 const HeadLine1 = styled.h1`
     font-size:25px;
@@ -45,7 +46,7 @@ function CommunityDetailPresenter({
         <UserContent>{post.body}</UserContent>
         </>
         :
-        <></>
+        <Loading/>
         }
         </MainWrapper>
         <Footer />
