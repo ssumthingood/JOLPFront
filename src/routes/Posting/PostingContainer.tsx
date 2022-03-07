@@ -2,9 +2,8 @@ import PostingPresenter from './PostingPresenter';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
 
-
 function PostingConatiner () {
-     const navigate = useNavigate();
+    const navigate = useNavigate();
     function submit(){
         navigate(`/community/${window.localStorage.ID}`);
     }

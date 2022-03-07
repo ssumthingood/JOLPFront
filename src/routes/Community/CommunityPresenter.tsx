@@ -59,6 +59,18 @@ const Paging = styled.div`
     text-align:center;
 `;
 
+const PrevBtn = styled.button`
+    margin:10px;
+`;
+
+const NowPage = styled.span`
+    margin:10px;
+`;
+
+const NextBtn = styled.button`
+    margin:10px;
+`;
+
 const PostingBtn = styled.button`
     margin-left:90%;
 `;
@@ -70,8 +82,10 @@ function CommunityPresenter({
     set2,
     set3,
     goPosting,
-    users,
-    setUsers,
+    allPost,
+    setAll,
+    showPosts,
+    setPosts,
     pageMax,
     listNum,
     goPrev,
@@ -83,9 +97,12 @@ function CommunityPresenter({
     set2:() => void,
     set3:() => void,
     goPosting:() => void,
-    users: any,
+    allPost: any,
     //setUsers: React.Dispatch<React.SetStateAction<null>>,
-    setUsers: React.Dispatch<React.SetStateAction<any[]>>,
+    setAll: React.Dispatch<React.SetStateAction<any[]>>,
+    showPosts: any,
+    //setUsers: React.Dispatch<React.SetStateAction<null>>,
+    setPosts: React.Dispatch<React.SetStateAction<any[]>>,
     pageMax:Number,
     listNum:Number,
     goPrev:() => void,
@@ -122,8 +139,8 @@ function CommunityPresenter({
                     </thead>
                     <tbody>
                     {
-                    users.length>0 ?
-                     users.map((
+                    showPosts.length>0 ?
+                     showPosts.map((
                         data:
                         {
                         userId: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
@@ -142,9 +159,9 @@ function CommunityPresenter({
                     </tbody>
                 </table>
                 <Paging>
-                <button onClick={goPrev}>previous</button>
-                {listNum}
-                <button onClick={goNext}>next</button>
+                {listNum===0 ? <></>:<PrevBtn onClick={goPrev}>previous</PrevBtn>}
+                <NowPage>{listNum}</NowPage>
+                {listNum===pageMax ? <></>: <NextBtn onClick={goNext}>next</NextBtn>}
                 </Paging>
             <PostingBtn onClick={goPosting}>posting</PostingBtn>
         </Contents>

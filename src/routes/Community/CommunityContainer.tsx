@@ -9,7 +9,8 @@ import { previous, next, set } from '../../modules/listNumber';
 function CommunityConatiner () {
     const navigate = useNavigate();
     const [show ,setShow] = useState<Number>(1);
-    const [users, setUsers] = useState<any[]>([]);
+    const [allPost, setAll] = useState<any[]>([]);//받아온 전체 글들
+    const [showPosts, setPosts] = useState<any[]>([]);//그 페이지에 보여질 글들
     // const [users, setUsers] = useState(null);
     const [pageMax, setMax] = useState<Number>(0);
 
@@ -17,18 +18,56 @@ function CommunityConatiner () {
     const dispatch = useDispatch(); // 디스패치 함수를 가져옵니다
 
     useEffect(()=>{
-        if(users.length>0){
-            setMax(Math.floor(users.length/30))
+        if(allPost.length>0){
+            setMax(Math.floor(allPost.length/30));
             if(pageMax>0){
-             console.log("최대 페이지 넘버 : "+pageMax);   
-            }
+                console.log("최대 페이지 넘버 : "+pageMax);  
+               }
+            // if(pageMax === listNum){
+            //     setPosts(users.slice(listNum*30, users.length-1));
+            //     console.log(showPosts)
+            // }else{
+            //     setPosts(users.slice(listNum*30, (listNum+1)*30-1));
+            //     console.log(showPosts)
+            // }//showPost set
         }else{
-            axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('https://jsonplaceholder.typicode.com/posts')
         .then((response)=>{
-            setUsers(response.data.reverse());
+            setAll(response.data.reverse());
+            if(allPost.length>0){
+                setMax(Math.floor(allPost.length/30))
+                if(pageMax>0){
+                 console.log("최대 페이지 넘버 : "+pageMax);  
+                }
+            }
+            //     if(pageMax === listNum){
+            //         setPosts(users.slice(listNum*30, users.length-1));
+            //         console.log(showPosts)
+            //     }else{
+            //         setPosts(users.slice(listNum*30, (listNum+1)*30-1));
+            //         console.log(showPosts)
+            //     }//showPost set
+            // }
+
             })
         } 
-    },[users]);
+    },[allPost, pageMax]);
+
+    useEffect(()=>{
+        if(allPost.length>0){
+            if(pageMax ===0){
+                setPosts(allPost);
+            }else{
+                if(listNum===pageMax){
+                    setPosts(allPost.slice(listNum*30, allPost.length-1));
+                    console.log(listNum+"번 페이지 목록 : "+showPosts);
+                }else{
+                    setPosts(allPost.slice(listNum*30, (listNum+1)*30-1));
+                    console.log(listNum+"번 페이지 목록 : "+showPosts);
+                }
+            }
+        }
+    },[listNum, pageMax]);
 
     function set1(){
         setShow(1);
@@ -47,15 +86,17 @@ function CommunityConatiner () {
 
     function goPrev(){
         if(listNum>0){
-           dispatch(previous()); 
-           console.log(listNum);
+           dispatch(previous());
+           console.log("최대 페이지 넘버 : "+pageMax);
+           console.log("현재 페이지 : "+listNum);
         }  
     }
 
     function goNext(){
-        if(users && (listNum<pageMax))
+        if(allPost && (listNum<pageMax))
         dispatch(next());
-        console.log(listNum);
+        console.log("최대 페이지 넘버 : "+pageMax);
+        console.log("현재 페이지 : "+listNum);
     }
 
     function goPosting() { 
@@ -70,8 +111,10 @@ function CommunityConatiner () {
         set2 = {set2}
         set3 = {set3}
         goPosting={goPosting}
-        users = {users}
-        setUsers = {setUsers}
+        allPost = {allPost}
+        setAll = {setAll}
+        showPosts = {showPosts}
+        setPosts = {setPosts}
         pageMax={pageMax}
         listNum={listNum}
         goPrev = {goPrev}

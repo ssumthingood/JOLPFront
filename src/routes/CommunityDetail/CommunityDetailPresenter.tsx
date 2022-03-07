@@ -31,8 +31,12 @@ const UserContent = styled.div`
 `;
 
 function CommunityDetailPresenter({
-    post
-}:{post:any}){
+    post,
+    goCommunity,
+}:{
+    post:any,
+    goCommunity:() => void,
+}){
     return (
         <>
         <Header />
@@ -48,6 +52,7 @@ function CommunityDetailPresenter({
         :
         <Loading/>
         }
+        <button onClick={goCommunity}>목록으로</button>
         </MainWrapper>
         <Footer />
         </>

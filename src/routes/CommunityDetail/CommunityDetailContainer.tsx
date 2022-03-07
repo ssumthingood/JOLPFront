@@ -5,6 +5,10 @@ import CommunityDetailPresenter from './CommunityDetailPresenter';
 
 function CommunityDetailConatiner () {
     const navigate = useNavigate();
+    function goCommunity(){
+    navigate(`/community/${window.localStorage.ID}`);
+    };
+
     const [post, setPost] = useState(null);
     const params = useParams();
 
@@ -20,7 +24,8 @@ function CommunityDetailConatiner () {
     
     return (
         <CommunityDetailPresenter
-        post={post} />
+        post={post}
+        goCommunity = {goCommunity} />
     )
 }
 
