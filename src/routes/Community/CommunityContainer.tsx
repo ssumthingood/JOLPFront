@@ -12,7 +12,7 @@ function CommunityConatiner () {
     const [allPost, setAll] = useState<any[]>([]);//받아온 전체 글들
     const [showPosts, setPosts] = useState<any[]>([]);//그 페이지에 보여질 글들
     // const [users, setUsers] = useState(null);
-    const [pageMax, setMax] = useState<Number>(0);
+    const [pageMax, setMax] = useState<number>(0);
 
     const listNum = useSelector((state: RootState) => state.listNumber.listNum);
     const dispatch = useDispatch(); // 디스패치 함수를 가져옵니다

@@ -30,6 +30,12 @@ const UserContent = styled.div`
     font-size:18px;
 `;
 
+const Below = styled.div`
+    padding:25px;
+    width:100%;
+    text-align:right;
+`;
+
 function CommunityDetailPresenter({
     post,
     goCommunity,
@@ -52,7 +58,9 @@ function CommunityDetailPresenter({
         :
         <Loading/>
         }
-        <button onClick={goCommunity}>목록으로</button>
+        <Below>
+           <button onClick={goCommunity}>목록으로</button> 
+        </Below>
         </MainWrapper>
         <Footer />
         </>

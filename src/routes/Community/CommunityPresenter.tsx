@@ -103,8 +103,8 @@ function CommunityPresenter({
     showPosts: any,
     //setUsers: React.Dispatch<React.SetStateAction<null>>,
     setPosts: React.Dispatch<React.SetStateAction<any[]>>,
-    pageMax:Number,
-    listNum:Number,
+    pageMax:number,
+    listNum:number,
     goPrev:() => void,
     goNext:() => void,
 }){
@@ -151,7 +151,7 @@ function CommunityPresenter({
                         <td>{data.id}</td>
                         <td>{data.userId}</td>
                         <td><GoDetail href={`/communitydetail/${window.localStorage.ID}/${data.id}`}>{data.title}</GoDetail></td>
-                        </tr>                            
+                        </tr>
                     ))
                     :
                     <Loading/>
@@ -160,8 +160,9 @@ function CommunityPresenter({
                 </table>
                 <Paging>
                 {listNum===0 ? <></>:<PrevBtn onClick={goPrev}>previous</PrevBtn>}
-                <NowPage>{listNum}</NowPage>
+                <NowPage>{listNum+1}</NowPage>
                 {listNum===pageMax ? <></>: <NextBtn onClick={goNext}>next</NextBtn>}
+                <div>{listNum+1}페이지 / {pageMax+1}페이지</div>
                 </Paging>
             <PostingBtn onClick={goPosting}>posting</PostingBtn>
         </Contents>
