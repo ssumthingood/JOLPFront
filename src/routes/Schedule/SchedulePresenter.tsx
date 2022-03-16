@@ -24,7 +24,7 @@ const Bar  = styled.div`
 
 const LeftBtn = styled.button`
     border:none;
-    width:200px;
+    width:100px;
     &:hover{
         cursor:pointer;
     }
@@ -32,7 +32,7 @@ const LeftBtn = styled.button`
 
 const RightBtn = styled.button`
     border:none;
-    width:200px;
+    width:100px;
     &:hover{
         cursor:pointer;
     }
@@ -48,8 +48,8 @@ function SchedulePresenter({
     goPrevious,
     goNext,
 }:{
-    date:Date,
-    setDate:React.Dispatch<React.SetStateAction<Date>>,
+    date:string,
+    setDate:React.Dispatch<React.SetStateAction<string>>,
     goPrevious:() => void,
     goNext:() => void,
 }){
@@ -61,7 +61,7 @@ function SchedulePresenter({
         <HeadLine1>Schedule</HeadLine1>
         <Bar>
             <LeftBtn onClick={goPrevious}>Previous</LeftBtn>
-            <Day>{date.toString()}</Day>
+            <Day>{date}</Day>
             <RightBtn onClick={goNext}>Next</RightBtn>
         </Bar>
         </MainWrapper>

@@ -21,7 +21,6 @@ const Menu = styled.li`
     min-width:10%;
     text-align:center;
     height:25px;
-    
 `;
 
 const MyLink = styled.a`
@@ -44,6 +43,7 @@ const Welcome = styled.span`
     //min-width:10%
     text-align:center;
     height:25px;
+    overflow:hidden;
 `;
 
 const LogoutBtn = styled.button`
@@ -74,10 +74,10 @@ function NavBar () {
             <Menus>
                 <Menu><MyLink href={`/myteam/${window.localStorage.ID}`}>my team</MyLink></Menu>
                 <Menu><MyLink href={`/news/${window.localStorage.ID}`}>news</MyLink></Menu>
-                <Menu><MyLink href={`/video/${window.localStorage.ID}`}>video</MyLink></Menu>
+                <Menu><MyLink href={`/schedule/${window.localStorage.ID}`}>schedule</MyLink></Menu>
                 <Menu><MyLink href={`/community/${window.localStorage.ID}`}>community</MyLink></Menu>
                 <Menu><MyLink href={`/mypage/${window.localStorage.ID}`}>mypage</MyLink></Menu>
-                <Welcome>{window.localStorage.ID}님, 환영합니다!</Welcome>
+                <Welcome>Welcome, {window.localStorage.ID}!</Welcome>
                 <LogoutBtn onClick={logOut}>logout</LogoutBtn>
             </Menus>
         </MainBar>
