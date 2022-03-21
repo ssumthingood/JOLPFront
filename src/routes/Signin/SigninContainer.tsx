@@ -9,8 +9,9 @@ function SigninConatiner () {
     let [pw, setPw] = useState<string>("");
 
     function goStart():void{
+        const regx = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
         //console.log("id : "+ id+ " / pw : "+pw);
-        if((id.length>0) && (pw.length>0)){
+        if(((id.length>0) && (pw.length>0))&& !regx.test(id)&& !regx.test(pw)){
             window.localStorage.setItem("ID", id);
             console.log(window.localStorage.ID);
             navigate('/');
