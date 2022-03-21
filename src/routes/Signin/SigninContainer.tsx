@@ -10,8 +10,9 @@ function SigninConatiner () {
 
     function goStart():void{
         const regx = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+        const space = /\s/g; 
         //console.log("id : "+ id+ " / pw : "+pw);
-        if(((id.length>0) && (pw.length>0))&& !regx.test(id)&& !regx.test(pw)){
+        if(((id.length>0) && (pw.length>0))&& !regx.test(id)&& !regx.test(pw) && !id.match(space) && !pw.match(space)){
             window.localStorage.setItem("ID", id);
             console.log(window.localStorage.ID);
             navigate('/');

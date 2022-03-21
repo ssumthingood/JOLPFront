@@ -12,8 +12,9 @@ function SignupConatiner () {
 
     function goStart():void{
         const regx = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+        const space = /\s/g; 
         console.log("name : "+ name + " / id : "+ id+ " / pw : "+pw+ " / pw2 : "+pw2+ " / team : "+myTeam);
-        if((pw === pw2) && (id.length>0) && (myTeam !=="0")&& !regx.test(id) && !regx.test(pw)){
+        if((pw === pw2) && (id.length>0) && (myTeam !=="0")&& !regx.test(id) && !regx.test(pw) && !id.match(space) && !pw.match(space) ) {
             navigate('/');
         }else{
             window.alert("check plz");
