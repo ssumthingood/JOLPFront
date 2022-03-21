@@ -48,7 +48,6 @@ function CommunityConatiner () {
             //         console.log(showPosts)
             //     }//showPost set
             // }
-
             })
         } 
     },[allPost, pageMax]);

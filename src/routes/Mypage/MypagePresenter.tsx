@@ -65,7 +65,7 @@ function MypagePresenter({
         <h4>닉네임</h4>
         {myState.username}<br />
         <input type="text" onChange={nickChange}/>
-        <button onClick={submit}>change</button>
+        
         </Section>
         <Section>
         <h4>내 팀</h4>
@@ -102,6 +102,7 @@ function MypagePresenter({
         :
         <Loading/>
         }
+        <button onClick={submit}>change</button>
         </MainWrapper>
         <Footer />
         </>

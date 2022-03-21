@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 import NavBar from 'components/NavBar';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import React from 'react';
+import React, { ReactChild, ReactFragment, ReactPortal } from 'react';
 import MainWrapper from 'components/MainWrapper';
 
 const MyCalendar  = styled(Calendar)`
@@ -23,8 +23,12 @@ const MyLink = styled.a`
 `;
 
 function MainPresenter({
-    onDatechange
-}:{onDatechange:(e:Date)=>void}){
+    onDatechange,
+    comu
+}:{
+    onDatechange:(e:Date)=>void,
+    comu:any,
+}){
     return (
         <>
         <Header />
@@ -53,7 +57,19 @@ function MainPresenter({
         </Section>
         <Section>
             커뮤니티
-            <div></div>
+            <div>
+                {comu.map((
+                    data:
+                    {
+                    title: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
+                    id: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;  
+                    }
+                )=>(
+                    <>
+                    <a href={`/communitydetail/${window.localStorage.ID}/${data.id}`}>{data.title}</a><br/>
+                    </>
+                ))}
+            </div>
             <MyLink href={`/community/${window.localStorage.ID}`}>more</MyLink>
         </Section>
         </MainWrapper>
