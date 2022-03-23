@@ -66,7 +66,7 @@ function CommunityConatiner () {
                 }
             }
         }
-    },[listNum, pageMax]);
+    },[listNum,pageMax]);
 
     function set1(){
         setShow(1);

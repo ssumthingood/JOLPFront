@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+// @ts-ignore
+import { getCookie, removeCookie } from 'Cookie.ts';
 
 const MainBar = styled.div`
     min-width:1500px;;
@@ -64,6 +66,7 @@ const LogoutBtn = styled.button`
 
 function NavBar () {
     function logOut() {
+        //removeCookie("user");
         window.localStorage.clear();
         window.location.replace('/');
     }

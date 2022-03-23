@@ -20,14 +20,15 @@ function MainConatiner () {
     yyyy = e. getFullYear();
     nowDay = yyyy + '-' + mm + '-' +dd ;
     setDate(nowDay);
+    console.log(date);
   }
 
   useEffect(()=>{
     axios.get('https://jsonplaceholder.typicode.com/posts')
         .then((response)=>{
-          setComu(response.data.reverse().slice(0,4));
-          console.log(comu);
-        })
+          setComu(response.data.reverse().slice(0,5));
+        });
+        console.log(comu);
   },[]);
 
   return (

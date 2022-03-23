@@ -3,8 +3,8 @@ import SchedulePresenter from './SchedulePresenter';
 import { useNavigate } from 'react-router';
 import moment from 'moment';
 
-    let prevNum = 0;
-    let nextNum = 0;
+let prevNum = 0;
+let nextNum = 0;
 
 function ScheduleConatiner () {
     const navigate = useNavigate();

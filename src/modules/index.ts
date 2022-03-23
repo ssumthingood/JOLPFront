@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
 import listNumber from './listNumber';
+import user from './user';
 
 const rootReducer = combineReducers({
-  listNumber
+  listNumber,
+  user
 });
 
 // 루트 리듀서를 내보내주세요.
