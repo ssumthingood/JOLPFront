@@ -17,7 +17,7 @@ function CommunityDetailConatiner () {
     const params = useParams();
 
     useEffect(()=>{
-        axios.get(`https://jsonplaceholder.typicode.com/posts/${params.postid}`)
+        axios.get(`https://jsonplaceholder.typicode.com/posts/${params.postid}`,{withCredentials:true})
         .then((response)=>{
             setPost(response.data);
             if(post){

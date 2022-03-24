@@ -14,8 +14,9 @@ const MyCalendar  = styled(Calendar)`
     `;
 
 const Section = styled.div`
-    max-width:500px;
+    min-width:50%;
     min-height:300px;
+    padding:2.5%;
 `;
 
 const MyLink = styled.a`

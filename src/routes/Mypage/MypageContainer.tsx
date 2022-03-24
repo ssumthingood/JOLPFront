@@ -28,7 +28,7 @@ function MypageConatiner () {
 
     function submit(){
         const space = /\s/g; 
-        if(nick.length>0 && !nick.match(space) || myTeam !== "0"){
+        if((nick.length>0 && !nick.match(space)) || myTeam !== "0"){
             window.alert('Change applied!!');
             window.location.reload();
             //navigate(`/mypage/${window.localStorage.ID}`);
@@ -41,7 +41,7 @@ function MypageConatiner () {
     }
 
     useEffect(()=>{
-        axios.get(`https://jsonplaceholder.typicode.com/users/${myRand}`)
+        axios.get(`https://jsonplaceholder.typicode.com/users/${myRand}`,{withCredentials:true})
         .then((response)=>{
             setMy(response.data);
             if(myState){

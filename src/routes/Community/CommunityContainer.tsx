@@ -31,7 +31,7 @@ function CommunityConatiner () {
             //     console.log(showPosts)
             // }//showPost set
         }else{
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('https://jsonplaceholder.typicode.com/posts',{withCredentials:true})
         .then((response)=>{
             setAll(response.data.reverse());
             if(allPost.length>0){
