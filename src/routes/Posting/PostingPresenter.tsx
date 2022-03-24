@@ -15,12 +15,34 @@ const HeadLine1 = styled.h1`
     font-size:25px;
     margin:0;
     padding:15px;
+    padding-bottom:0;
+    width:100%;
+`;
+
+const HeadLine3 = styled.h3`
+    font-size:18px;
+    margin:0;
+    padding:15px;
     width:100%;
 `;
 
 const Postingdiv = styled.div`
     width:100%;
     padding:15px;
+`;
+
+const Textinput = styled.input`
+    width:100%;
+    height:25px;
+    line-height:25px;
+    border: 1px solid lightgray;
+`;
+
+const Anony = styled.input`
+    width:15px;
+    height:15px;
+    margin:5px;
+    border: 3px solid lightgray;
 `;
 
 function PostingPresenter({
@@ -53,10 +75,10 @@ function PostingPresenter({
         <MainWrapper>
         <HeadLine1>Posting</HeadLine1>
         <Postingdiv>
-            title
-            <input type="text" onChange={titleChange}/>
+            <HeadLine3>제목</HeadLine3>
+            <Textinput type="text" onChange={titleChange}/>
             <br />
-            content
+            <HeadLine3>내용</HeadLine3>
             <CKEditor
                 editor={ ClassicEditor }
                 // config={ {
@@ -81,8 +103,7 @@ function PostingPresenter({
                     // console.log( 'Focus.', editor );
                 } }
             />
-            <br />
-            익명<input type="checkbox" onChange={anonyChange} /><br />
+            <HeadLine3>익명<Anony type="checkbox" onChange={anonyChange} /></HeadLine3>
             <button onClick={submit}>submit</button>
         </Postingdiv>
         </MainWrapper>
