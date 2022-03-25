@@ -63,11 +63,11 @@ function MainPresenter({
                     data:
                     {
                     title: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
-                    id: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;  
+                    id: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined; 
                     }
                 )=>(
                     <>
-                    <a href={`/communitydetail/${window.localStorage.ID}/${data.id}`}>{data.title}</a><br/>
+                    <a href={`/communitydetail/${window.localStorage.ID}/${data.id}`}>{data.title}</a><br />
                     </>
                 ))}
             </div>

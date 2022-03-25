@@ -44,6 +44,50 @@ const Contents = styled.div`
     padding:15px;
 `;
 
+const Table = styled.table`
+    width:90%;
+    text-align:left;
+`;
+
+const Th1 = styled.th`
+    width:10%;
+    padding:10px;
+`;
+
+const Th2 = styled.th`
+    width:10%;
+    padding:10px;
+`;
+
+const Th3 = styled.th`
+    width:80%;
+    padding:10px;
+`;
+
+const BodyTr = styled.tr`
+`;
+
+const Td1 = styled.td`
+    width:10%;
+    padding:3px 10px;
+    border-bottom: 2px solid whitesmoke;
+    border-right:2px solid whitesmoke;
+`;
+
+const Td2 = styled.td`
+    width:10%;
+    padding:3px 10px;
+    border-bottom: 2px solid whitesmoke;
+    border-right:2px solid whitesmoke;
+`;
+
+const Td3 = styled.td`
+    width:80%;
+    padding:3px 10px;
+    border-bottom: 2px solid whitesmoke;
+    border-right:2px solid whitesmoke;
+`;
+
 const GoDetail = styled.a`
     &:hover{
         background-color:whitesmoke;
@@ -129,12 +173,12 @@ function CommunityPresenter({
         </ButtonLi>
         <Contents>
             <h3>글 리스트</h3>
-                <table>
+                <Table>
                     <thead>
                         <tr>
-                        <th>No.</th>
-                        <th>User</th>
-                        <th>Title</th>
+                        <Th1>No.</Th1>
+                        <Th2>User</Th2>
+                        <Th3>Title</Th3>
                         </tr>
                     </thead>
                     <tbody>
@@ -147,17 +191,17 @@ function CommunityPresenter({
                         title: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
                         id: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
                         }) => (
-                        <tr>
-                        <td>{data.id}</td>
-                        <td>{data.userId}</td>
-                        <td><GoDetail href={`/communitydetail/${window.localStorage.ID}/${data.id}`}>{data.title}</GoDetail></td>
-                        </tr>
+                        <BodyTr>
+                        <Td1>{data.id}</Td1>
+                        <Td2>{data.userId}</Td2>
+                        <Td3><GoDetail href={`/communitydetail/${window.localStorage.ID}/${data.id}`}>{data.title}</GoDetail></Td3>
+                        </BodyTr>
                     ))
                     :
                     <Loading/>
                     }
                     </tbody>
-                </table>
+                </Table>
                 <Paging>
                 {listNum===0 ? <></>:<PrevBtn onClick={goPrev}>previous</PrevBtn>}
                 <NowPage>{listNum+1}</NowPage>
