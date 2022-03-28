@@ -6,6 +6,9 @@ import {CKEditor} from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'; 
 import styled from "styled-components";
 import './PostingPresenter.css';
+import Uploader from "./PlugIn";
+//import './UploadAdapter';
+import SimpleUploadAdapter from "@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter";
 // import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 // import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 // import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
@@ -68,6 +71,7 @@ function PostingPresenter({
     anonyChange:(e: any) => void,
     submit:() => void
 }){
+
     return (
         <>
         <Header />
@@ -79,12 +83,16 @@ function PostingPresenter({
             <Textinput type="text" onChange={titleChange}/>
             <br />
             <HeadLine3>내용</HeadLine3>
+
             <CKEditor
+                // editor={ ClassicEditor.create((document.getElementsByClassName('ck ck-reset ck-editor ck-rounded-corners')), {
+                //         ckfinder: {
+                //             uploadUrl: '13.125.107.215:3003/apis/aws/imageUpload"'
+                //         }
+                //     } )}
+
                 editor={ ClassicEditor }
-                // config={ {
-                //     plugins: [ Paragraph, Bold, Italic, Essentials ],
-                //     toolbar: [ 'bold', 'italic' ]
-                // } }
+
                 data=""
                 onReady={ (editor: any) => {
                     // You can store the "editor" and use when it is needed.
@@ -102,7 +110,42 @@ function PostingPresenter({
                 onFocus={ ( event: any, editor: any ) => {
                     // console.log( 'Focus.', editor );
                 } }
+                // config={{
+                //     plugins:[
+                //         Uploader,
+                //         SimpleUploadAdapter,
+                //     ],
+
+
+                //     image: {
+                //         resizeUnit: "px",
+                //         toolbar: [
+                //           "imageStyle:alignLeft",
+                //           "imageStyle:full",
+                //           "imageStyle:alignRight",
+                //           "|",
+                //           "imageTextAlternative",
+                //         ],
+                //         styles: ["full", "alignLeft", "alignRight"],
+                //         type: ["JPEG", "JPG", "GIF", "PNG"],
+                //       },
+
+                //       simpleUpload: {
+                //         uploadUrl: "13.125.107.215:3003/apis/aws/imageUpload",
+                //         withCredentials: true,
+                //       },
+                // }}
             />
+
+            {/* {ClassicEditor.create(document.querySelector('#editor'),{
+                    plugins : [SimpleUploadAdapter],
+                        simpleUpload: {
+                        uploadUrl: "13.125.107.215:3003/apis/aws/imageUpload",
+                        withCredentials: true,
+                      },
+                })
+            } */}
+
             <HeadLine3>익명<Anony type="checkbox" onChange={anonyChange} /></HeadLine3>
             <button onClick={submit}>submit</button>
         </Postingdiv>
