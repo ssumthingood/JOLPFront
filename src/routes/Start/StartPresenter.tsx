@@ -13,10 +13,12 @@ const Btn1 = styled.button`
 `;
 
 function StartPresenter({
+    auth,
     goMain,
     goSignup,
     goSignin,
 }:{
+    auth:() => boolean,
     goMain:() => void,
     goSignup:() => void,
     goSignin:() => void
@@ -24,9 +26,9 @@ function StartPresenter({
     return (
         <StartWrapper>
         <h1>HoomBa</h1>
-        {window.localStorage.ID ? 
+        {auth() ? 
         <>
-        <h2>Welcome, {window.localStorage.ID}!</h2>
+        <h2>Welcome, {}!</h2>
         <Btn1 type="button" onClick={goMain}>go Main</Btn1> 
         </>
         :

@@ -30,18 +30,19 @@ function SigninConatiner () {
                         secure:true,
                         sameSite:"none",
                     });
-                }else{
-                window.alert("다시해라");
-                }
-            })
-            .catch((error) => {
-            }); //로그인 요청 보내고 JWT키 받아서 쿠키에 저장까지
             window.alert('Login completed');
-            window.localStorage.setItem("ID", id);
+            //window.localStorage.setItem("ID", id);
             console.log(window.localStorage.ID);
             navigate('/');
+            } else {
+            window.alert("다시해라");
+            };
+        })
+        .catch((error) => {
+        }); //로그인 요청 보내고 JWT키 받아서 쿠키에 저장까지
+
         }else{
-            window.alert("check plz");
+        window.alert("check plz");
         }
     }
 
