@@ -22,7 +22,7 @@ const Header:React.FC = () => {
     return(
       <HeaderMain>
         <HeaderWrapper>
-          <HeadLine1><a href={`/main/${window.localStorage.ID}`}>HoomBa</a></HeadLine1>
+          <HeadLine1><a href={`/main`}>HoomBa</a></HeadLine1>
         </HeaderWrapper>
       </HeaderMain>
     )

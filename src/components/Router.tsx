@@ -28,11 +28,11 @@ const Router:React.FC = () => {
             <Route path='/signin' element={<Signin />}></Route>
             <Route path={`/main`} element={<Main />}></Route>
             <Route path={`/myteam/${window.localStorage.ID}`} element={<Myteam />}></Route>
-            <Route path={`/community/${window.localStorage.ID}`} element={<Community />}></Route>
+            <Route path={`/community/:team`} element={<Community />}></Route>
             <Route path={`/communitydetail/${window.localStorage.ID}/:postid`} element={<CommunityDetail />}></Route>
             <Route path={`/mypage/${window.localStorage.ID}`} element={<Mypage />}></Route>
-            <Route path={`/news/${window.localStorage.ID}`} element={<News />}></Route>
-            <Route path={`/newsdetail/${window.localStorage.ID}/:articleid`} element={<NewsDetail />}></Route>
+            <Route path={`/news/:team`} element={<News />}></Route>
+            <Route path={`/newsdetail/:team/:articleid`} element={<NewsDetail />}></Route>
             <Route path={`/posting/${window.localStorage.ID}`} element={<Posting />}></Route>
             <Route path={`/schedule/${window.localStorage.ID}`} element={<Schedule />}></Route>
             <Route path={`/video/${window.localStorage.ID}`} element={<Video />}></Route>

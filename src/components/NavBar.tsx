@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 // @ts-ignore
 import { getCookie, removeCookie } from 'Cookie.ts';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const MainBar = styled.div`
     min-width:1500px;;
@@ -64,15 +66,40 @@ const LogoutBtn = styled.button`
     }
 `;
 
-function auth(){
-    if(getCookie('USER')){
-      return true;
-    }else{
-      return false;
-    };
-  }
-
 function NavBar () {
+    const [user,setUser] = useState<any>([]);
+    const [userDetail,setUserDetail] = useState<any>(null);
+
+    function auth(){
+        if(getCookie('USER')){
+          return true;
+        }else{
+          return false;
+        };
+    }
+
+    useEffect(()=>{
+        axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
+        token:getCookie('USER')
+        },{withCredentials:true})
+        .then((response)=>{
+        setUser(response.data);
+        });
+    },[])
+
+    useEffect(()=>{
+        if(userDetail === null){
+            axios.post('http://13.125.107.215:3003/apis/user/getUserDetail', {
+            userid:user.user_id
+            },{withCredentials:true})
+            .then((res)=>{
+            setUserDetail(res.data);
+            });
+        }
+         
+    },[])
+    
+
     function logOut() {
             removeCookie('USER')
             window.location.replace('/');
@@ -83,11 +110,11 @@ function NavBar () {
         <MainBar>
             <Menus>
                 <Menu><MyLink href={`/myteam/${window.localStorage.ID}`}>my team</MyLink></Menu>
-                <Menu><MyLink href={`/news/${window.localStorage.ID}`}>news</MyLink></Menu>
+                <Menu><MyLink href={userDetail ? `/news/${userDetail.myteam}`:'/'}>news</MyLink></Menu>
                 <Menu><MyLink href={`/schedule/${window.localStorage.ID}`}>schedule</MyLink></Menu>
-                <Menu><MyLink href={`/community/${window.localStorage.ID}`}>community</MyLink></Menu>
+                <Menu><MyLink href={userDetail ? `/community/${userDetail.myteam}`:'/'}>community</MyLink></Menu>
                 <Menu><MyLink href={`/mypage/${window.localStorage.ID}`}>mypage</MyLink></Menu>
-                <Welcome>Welcome, {window.localStorage.ID}!</Welcome>
+                <Welcome>Welcome, {user.nickname}!</Welcome>
                 <LogoutBtn onClick={logOut}>logout</LogoutBtn>
             </Menus>
         </MainBar>

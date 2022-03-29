@@ -31,8 +31,6 @@ function SigninConatiner () {
                         sameSite:"none",
                     });
             window.alert('Login completed');
-            //window.localStorage.setItem("ID", id);
-            console.log(window.localStorage.ID);
             navigate('/');
             } else {
             window.alert("다시해라");
