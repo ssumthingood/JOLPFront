@@ -17,19 +17,24 @@ function StartPresenter({
     goMain,
     goSignup,
     goSignin,
+    user,
 }:{
     auth:() => boolean,
     goMain:() => void,
     goSignup:() => void,
-    goSignin:() => void
+    goSignin:() => void,
+    user:any;
 }) {
     return (
         <StartWrapper>
         <h1>HoomBa</h1>
         {auth() ? 
         <>
-        <h2>Welcome, {}!</h2>
-        <Btn1 type="button" onClick={goMain}>go Main</Btn1> 
+        {user ? 
+        <>
+        <h2>Welcome, {user.nickname}!</h2>
+        <Btn1 type="button" onClick={goMain}>go Main</Btn1>
+        </> :<></>}
         </>
         :
         <>
@@ -37,7 +42,8 @@ function StartPresenter({
         <Btn1 type="button" onClick={goSignup}>sign Up</Btn1><br />
         <Btn1 type="button" onClick={goSignin}>sign In</Btn1>
         </div>
-        </>}
+        </>
+        }
         </StartWrapper>
     );
 }

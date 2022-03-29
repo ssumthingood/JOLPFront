@@ -26,7 +26,7 @@ const Router:React.FC = () => {
             <Route path='/' element={<Start />}></Route>
             <Route path='/signup' element={<Signup />}></Route>
             <Route path='/signin' element={<Signin />}></Route>
-            <Route path={`/main/${window.localStorage.ID}`} element={<Main />}></Route>
+            <Route path={`/main`} element={<Main />}></Route>
             <Route path={`/myteam/${window.localStorage.ID}`} element={<Myteam />}></Route>
             <Route path={`/community/${window.localStorage.ID}`} element={<Community />}></Route>
             <Route path={`/communitydetail/${window.localStorage.ID}/:postid`} element={<CommunityDetail />}></Route>

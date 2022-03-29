@@ -64,11 +64,18 @@ const LogoutBtn = styled.button`
     }
 `;
 
+function auth(){
+    if(getCookie('USER')){
+      return true;
+    }else{
+      return false;
+    };
+  }
+
 function NavBar () {
     function logOut() {
-        //removeCookie("user");
-        window.localStorage.clear();
-        window.location.replace('/');
+            removeCookie('USER')
+            window.location.replace('/');
     }
 
     return (

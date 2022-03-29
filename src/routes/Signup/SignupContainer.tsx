@@ -1,6 +1,7 @@
 import SignupPresenter from './SignupPresenter';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
+import axios from 'axios';
 
 function SignupConatiner () {
     const navigate = useNavigate();
@@ -15,6 +16,15 @@ function SignupConatiner () {
         const space = /\s/g; 
         console.log("name : "+ name + " / id : "+ id+ " / pw : "+pw+ " / pw2 : "+pw2+ " / team : "+myTeam);
         if((pw === pw2) && (id.length>0) && (myTeam !=="0")&& !regx.test(id) && !regx.test(pw) && !id.match(space) && !pw.match(space) ) {
+            axios.post('http://13.125.107.215:3003/apis/auth/signUp',{
+            loginid:id,
+            password:pw,
+            myteam:myTeam,
+            nickname:name,
+            },{withCredentials:true})
+            .then((response)=>{
+                window.alert(`회원 id : ${response.data}`);
+            });
             navigate('/');
         }else{
             window.alert("check plz");

@@ -7,18 +7,24 @@ import axios from 'axios';
 
 function StartConatiner () {
   const navigate = useNavigate();
-  const [user,setUser] = useState();
+  const [user,setUser] = useState(null);
 
   useEffect(()=>{
-    // if(auth()){
-    //   axios.post();
-    // }
-  })
+    if(auth()){
+      axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
+        token:getCookie('USER')
+    },{withCredentials:true
+    })
+    .then((response)=>{
+      setUser(response.data);
+      });
+    }
+  },[]);
 
   function goMain(){
     if(getCookie('USER')){
-      window.location.assign(`/main/${window.localStorage.ID}`);
-    }
+      window.location.assign(`/main`);
+    }//쿠키 내에 로그인정보 있을시 시작화면으로
     // if(window.localStorage.ID){
     //   window.location.assign(`/main/${window.localStorage.ID}`);
     // }
@@ -46,7 +52,8 @@ function StartConatiner () {
         goMain={goMain}
         goSignup={goSignup}
         goSignin={goSignin}
-        auth = {auth}/>
+        auth = {auth}
+        user = {user}/>
     )
 }
 
