@@ -25,10 +25,14 @@ const MyLink = styled.a`
 
 function MainPresenter({
     onDatechange,
-    comu
+    comu,
+    user,
+    userDetail,
 }:{
     onDatechange:(e:Date)=>void,
     comu:any,
+    user:any,
+    userDetail:any
 }){
     return (
         <>
@@ -38,23 +42,23 @@ function MainPresenter({
         <Section>
             내 팀
             <div></div>
-            <MyLink href={`/myteam/${window.localStorage.ID}`}>more</MyLink>
+            <MyLink href={`/myteam`}>more</MyLink>
         </Section>
         <Section>
             일정
             <MyCalendar onChange = {onDatechange}   />
             <div></div>
-            <MyLink href={`/schedule/${window.localStorage.ID}`} >more</MyLink>
+            <MyLink href={`/schedule`} >more</MyLink>
         </Section>
         <Section>
             영상
             <div></div>
-            <MyLink href={`/video/${window.localStorage.ID}`}>more</MyLink>
+            <MyLink href={`/video`}>more</MyLink>
         </Section>
         <Section>
             뉴스
             <div></div>
-            <MyLink href={`/news/${window.localStorage.ID}`}>more</MyLink>
+            <MyLink href={userDetail ? `/news/${userDetail.myteam}/1`:`/main`}>more</MyLink>
         </Section>
         <Section>
             커뮤니티
@@ -67,11 +71,11 @@ function MainPresenter({
                     }
                 )=>(
                     <>
-                    <a href={`/communitydetail/${window.localStorage.ID}/${data.id}`}>{data.title}</a><br />
+                    <a href={`/communitydetail/${data.id}`}>{data.title}</a><br />
                     </>
                 ))}
             </div>
-            <MyLink href={`/community/${window.localStorage.ID}`}>more</MyLink>
+            <MyLink href={userDetail ? `/community/${userDetail.myteam}/1`:`/main`}>more</MyLink>
         </Section>
         </MainWrapper>
         <Footer />

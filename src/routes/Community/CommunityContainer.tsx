@@ -5,9 +5,12 @@ import { useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { RootState } from '../../modules';
 import { previous, next, set } from '../../modules/listNumber';
+// @ts-ignore
+import { getCookie, removeCookie } from 'Cookie.ts';
  
 function CommunityConatiner () {
     const navigate = useNavigate();
+    const [user,setUser] = useState<any>([]);
     const [show ,setShow] = useState<Number>(1);
     const [allPost, setAll] = useState<any[]>([]);//받아온 전체 글들
     const [showPosts, setPosts] = useState<any[]>([]);//그 페이지에 보여질 글들
@@ -16,6 +19,28 @@ function CommunityConatiner () {
 
     const listNum = useSelector((state: RootState) => state.listNumber.listNum);
     const dispatch = useDispatch(); // 디스패치 함수를 가져옵니다
+
+    function auth(){
+        if(getCookie('USER')){
+          return true;
+        }else{
+          window.alert('로그인해주세요');
+          window.location.replace('/');
+          return false;
+        };
+      }
+
+      useEffect(()=>{
+        console.log(getCookie('USER'));
+        if(auth()){
+            axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
+            token:getCookie('USER')
+            },{withCredentials:true})
+            .then((response)=>{
+            setUser(response.data);
+            });
+        }
+    },[]); 
 
     useEffect(()=>{
         if(allPost.length>0){
@@ -104,6 +129,7 @@ function CommunityConatiner () {
 
     return (
         <CommunityPresenter
+        user = {user}
         show={show}
         setShow={setShow}
         set1 = {set1}

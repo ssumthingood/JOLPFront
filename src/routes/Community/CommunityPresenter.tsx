@@ -120,6 +120,7 @@ const PostingBtn = styled.button`
 `;
 
 function CommunityPresenter({
+    user,
     show,
     setShow,
     set1,
@@ -135,6 +136,7 @@ function CommunityPresenter({
     goPrev,
     goNext,
 }:{
+    user:any,
     show:Number,
     setShow:React.Dispatch<React.SetStateAction<Number>>,
     set1:() => void,
@@ -194,7 +196,7 @@ function CommunityPresenter({
                         <BodyTr>
                         <Td1>{data.id}</Td1>
                         <Td2>{data.userId}</Td2>
-                        <Td3><GoDetail href={`/communitydetail/${window.localStorage.ID}/${data.id}`}>{data.title}</GoDetail></Td3>
+                        <Td3><GoDetail href={`/communitydetail/${data.id}`}>{data.title}</GoDetail></Td3>
                         </BodyTr>
                     ))
                     :

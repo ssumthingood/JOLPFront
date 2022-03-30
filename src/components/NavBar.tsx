@@ -79,41 +79,43 @@ function NavBar () {
     }
 
     useEffect(()=>{
-        axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
-        token:getCookie('USER')
-        },{withCredentials:true})
-        .then((response)=>{
-        setUser(response.data);
-        });
-    },[])
+        console.log(getCookie('USER'));
+        if(auth()){
+            axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
+            token:getCookie('USER')
+            },{withCredentials:true})
+            .then((response)=>{
+            setUser(response.data);
+            });
+        }
+    },[]);
 
     useEffect(()=>{
-        if(userDetail === null){
-            axios.post('http://13.125.107.215:3003/apis/user/getUserDetail', {
+            if(user){
+                axios.post('http://13.125.107.215:3003/apis/user/getUserDetail', {
             userid:user.user_id
             },{withCredentials:true})
             .then((res)=>{
-            setUserDetail(res.data);
+            console.log("UserDetail searched");
+            setUserDetail(res.data[0]);
             });
-        }
-         
-    },[])
-    
+        } 
+    },[user])
 
     function logOut() {
-            removeCookie('USER')
-            window.location.replace('/');
+        removeCookie('USER')
+        window.location.replace('/');
     }
 
     return (
         <>
         <MainBar>
             <Menus>
-                <Menu><MyLink href={`/myteam/${window.localStorage.ID}`}>my team</MyLink></Menu>
-                <Menu><MyLink href={userDetail ? `/news/${userDetail.myteam}`:'/'}>news</MyLink></Menu>
-                <Menu><MyLink href={`/schedule/${window.localStorage.ID}`}>schedule</MyLink></Menu>
-                <Menu><MyLink href={userDetail ? `/community/${userDetail.myteam}`:'/'}>community</MyLink></Menu>
-                <Menu><MyLink href={`/mypage/${window.localStorage.ID}`}>mypage</MyLink></Menu>
+                <Menu><MyLink href={`/myteam`}>my team</MyLink></Menu>
+                <Menu><MyLink href={userDetail ? `/news/${userDetail.myteam}/1`:`/main`}>news</MyLink></Menu>
+                <Menu><MyLink href={`/schedule`}>schedule</MyLink></Menu>
+                <Menu><MyLink href={userDetail ? `/community/${userDetail.myteam}/1`:`/main`}>community</MyLink></Menu>
+                <Menu><MyLink href={`/mypage`}>mypage</MyLink></Menu>
                 <Welcome>Welcome, {user.nickname}!</Welcome>
                 <LogoutBtn onClick={logOut}>logout</LogoutBtn>
             </Menus>

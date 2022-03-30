@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import MainPresenter from './MainPresenter';
 import { useNavigate } from 'react-router';
+// @ts-ignore
+import { getCookie, removeCookie } from 'Cookie.ts';
 import axios from 'axios';
 
 const today = new Date();
@@ -51,6 +53,8 @@ function MainConatiner () {
   const navigate = useNavigate();
   let [date, setDate] = useState(nowDay);//달력에 표시되는 날짜
   const [comu, setComu] = useState<any[]>([]);//추천수 상위 5개 글
+  const [user,setUser] = useState<any>([]);
+  const [userDetail,setUserDetail] = useState<any>(null);
 
   function onDatechange(e:Date):void{
     dd = String(e.getDate()).padStart(2, '0');
@@ -61,18 +65,53 @@ function MainConatiner () {
     console.log(date);
   }
 
+  function auth(){
+    if(getCookie('USER')){
+      return true;
+    }else{
+      window.alert('로그인해주세요');
+      window.location.replace('/');
+      return false;
+    };
+  }
+
   useEffect(()=>{
     axios.get('https://jsonplaceholder.typicode.com/posts',{withCredentials:true})
         .then((response)=>{
           setComu(response.data.reverse().slice(0,5));
         });
-        console.log(comu);
   },[]);
+
+  useEffect(()=>{
+    console.log(getCookie('USER'));
+    if(auth()){
+        axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
+        token:getCookie('USER')
+        },{withCredentials:true})
+        .then((response)=>{
+        setUser(response.data);
+        });
+    }
+},[]);
+
+useEffect(()=>{
+        if(user){
+            axios.post('http://13.125.107.215:3003/apis/user/getUserDetail', {
+        userid:user.user_id
+        },{withCredentials:true})
+        .then((res)=>{
+        console.log("UserDetail searched");
+        setUserDetail(res.data[0]);
+        });
+    } 
+},[user])
 
   return (
       <MainPresenter 
       onDatechange={onDatechange}
-      comu = {comu} />
+      comu = {comu}
+      user = {user}
+      userDetail = {userDetail} />
   )
 }
 

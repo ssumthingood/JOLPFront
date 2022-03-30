@@ -2,13 +2,14 @@ import StartWrapper from 'components/StartWrapper';
 import styled from 'styled-components';
 
 const Select = styled.select`
-    width: 100px;
+    font-size:14px;
+    width: 120px;
     border: 1px solid #999;
     font-family: inherit;
 `;
 
 const Option = styled.option`
-    width: 100px;
+    width: 150px;
     border: 1px solid #999;
     font-family: inherit;
 `;
@@ -69,26 +70,26 @@ function SignupPresenter({
         <h3>my team</h3>
         <Select name="team" onChange={teamChange}>
             <Option value="0">선택</Option>
-            <Option value="1">1</Option>
-            <Option value="2">2</Option>
-            <Option value="3">3</Option>
-            <Option value="4">4</Option>
-            <Option value="5">5</Option>
-            <Option value="6">6</Option>
-            <Option value="7">7</Option>
-            <Option value="8">8</Option>
-            <Option value="9">9</Option>
-            <Option value="10">10</Option>
-            <Option value="11">11</Option>
-            <Option value="12">12</Option>
-            <Option value="13">13</Option>
-            <Option value="14">14</Option>
-            <Option value="15">15</Option>
-            <Option value="16">16</Option>
-            <Option value="17">17</Option>
-            <Option value="18">18</Option>
-            <Option value="19">19</Option>
-            <Option value="20">20</Option>
+            <Option value="1">아스날</Option>
+            <Option value="2">아스톤 빌라</Option>
+            <Option value="3">번리</Option>
+            <Option value="4">브라이튼</Option>
+            <Option value="5">브렌트포드</Option>
+            <Option value="6">첼시</Option>
+            <Option value="7">크리스탈 팰리스</Option>
+            <Option value="8">에버튼</Option>
+            <Option value="9">리버풀</Option>
+            <Option value="10">레스터</Option>
+            <Option value="11">리즈</Option>
+            <Option value="12">맨유</Option>
+            <Option value="13">맨시티</Option>
+            <Option value="14">노리치</Option>
+            <Option value="15">뉴캐슬</Option>
+            <Option value="16">사우스햄튼</Option>
+            <Option value="17">토트넘 핫스퍼</Option>
+            <Option value="18">웨스트햄</Option>
+            <Option value="19">울버햄튼</Option>
+            <Option value="20">왓포드</Option>
         </Select>
         </div>
         <button onClick={goStart}>signup</button>

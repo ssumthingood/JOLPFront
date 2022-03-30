@@ -27,16 +27,16 @@ const Router:React.FC = () => {
             <Route path='/signup' element={<Signup />}></Route>
             <Route path='/signin' element={<Signin />}></Route>
             <Route path={`/main`} element={<Main />}></Route>
-            <Route path={`/myteam/${window.localStorage.ID}`} element={<Myteam />}></Route>
-            <Route path={`/community/:team`} element={<Community />}></Route>
-            <Route path={`/communitydetail/${window.localStorage.ID}/:postid`} element={<CommunityDetail />}></Route>
-            <Route path={`/mypage/${window.localStorage.ID}`} element={<Mypage />}></Route>
-            <Route path={`/news/:team`} element={<News />}></Route>
+            <Route path={`/myteam`} element={<Myteam />}></Route>
+            <Route path={`/community/:team/:pagenum`} element={<Community />}></Route>
+            <Route path={`/communitydetail/:postid`} element={<CommunityDetail />}></Route>
+            <Route path={`/mypage`} element={<Mypage />}></Route>
+            <Route path={`/news/:team/:pagenum`} element={<News />}></Route>
             <Route path={`/newsdetail/:team/:articleid`} element={<NewsDetail />}></Route>
-            <Route path={`/posting/${window.localStorage.ID}`} element={<Posting />}></Route>
-            <Route path={`/schedule/${window.localStorage.ID}`} element={<Schedule />}></Route>
-            <Route path={`/video/${window.localStorage.ID}`} element={<Video />}></Route>
-            <Route path={`/videodetail/${window.localStorage.ID}/:videoid`} element={<VideoDetail />}></Route>
+            <Route path={`/posting`} element={<Posting />}></Route>
+            <Route path={`/schedule`} element={<Schedule />}></Route>
+            <Route path={`/video/:pagenum`} element={<Video />}></Route>
+            <Route path={`/videodetail/:videoid`} element={<VideoDetail />}></Route>
             <Route
             path="*"
             element={<Navigate to="/" />}
