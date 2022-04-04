@@ -1,6 +1,8 @@
 import PostingPresenter from './PostingPresenter';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
+// @ts-ignore
+import { getCookie } from 'Cookie.ts';
 
 function PostingConatiner () {
     const navigate = useNavigate();
@@ -8,6 +10,15 @@ function PostingConatiner () {
         navigate(`/community/${window.localStorage.ID}`);
     }
 
+    function auth(){
+        if(getCookie('USER')){
+          return true;
+        }else{
+          window.alert('로그인해주세요');
+          window.location.replace('/');
+          return false;
+        };
+      }
     let [title, setTitle] = useState("");
     let [content, setContent] = useState("");
     let [anony, setAnony] = useState(false);
@@ -39,6 +50,7 @@ function PostingConatiner () {
 
     return (
         <PostingPresenter
+        auth={auth}
         title={title}
         setTitle={setTitle}
         titleChange={titleChange}

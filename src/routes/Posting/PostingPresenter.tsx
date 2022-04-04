@@ -49,6 +49,7 @@ const Anony = styled.input`
 `;
 
 function PostingPresenter({
+    auth,
     title,
     setTitle,
     titleChange,
@@ -60,6 +61,7 @@ function PostingPresenter({
     anonyChange,
     submit,
 }:{
+    auth:()=>boolean,
     title:string,
     setTitle:React.Dispatch<React.SetStateAction<string>>,
     titleChange:(e: any) => void,

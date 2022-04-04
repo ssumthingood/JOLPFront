@@ -1,6 +1,6 @@
 import CommunityPresenter from './CommunityPresenter';
 import axios from 'axios';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
 import { RootState } from '../../modules';
@@ -11,11 +11,13 @@ import { getCookie, removeCookie } from 'Cookie.ts';
 function CommunityConatiner () {
     const navigate = useNavigate();
     const [user,setUser] = useState<any>([]);
+    const [userDetail,setUserDetail] = useState<any>(null);
     const [show ,setShow] = useState<Number>(1);
     const [allPost, setAll] = useState<any[]>([]);//받아온 전체 글들
     const [showPosts, setPosts] = useState<any[]>([]);//그 페이지에 보여질 글들
     // const [users, setUsers] = useState(null);
     const [pageMax, setMax] = useState<number>(0);
+    const params = useParams();
 
     const listNum = useSelector((state: RootState) => state.listNumber.listNum);
     const dispatch = useDispatch(); // 디스패치 함수를 가져옵니다
@@ -25,13 +27,12 @@ function CommunityConatiner () {
           return true;
         }else{
           window.alert('로그인해주세요');
-          window.location.replace('/');
+          navigate('/');
           return false;
         };
-      }
+    }
 
-      useEffect(()=>{
-        console.log(getCookie('USER'));
+    useEffect(()=>{
         if(auth()){
             axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
             token:getCookie('USER')
@@ -39,8 +40,25 @@ function CommunityConatiner () {
             .then((response)=>{
             setUser(response.data);
             });
-        }
+        }  
     },[]); 
+
+    useEffect(()=>{
+        if(user){
+        axios.post('http://13.125.107.215:3003/apis/user/getUserDetail', {
+        userid:user.user_id
+        },{withCredentials:true})
+        .then((res)=>{
+            if(res.data[0].myteam.toString() === params.team){
+            console.log(res.data[0]);
+            setUserDetail(res.data[0]);
+            }else{
+                window.alert('자신의 팀만 확인할 수 있습니다.');
+                navigate('/main');
+            }
+        });
+    } 
+    },[user])
 
     useEffect(()=>{
         if(allPost.length>0){
@@ -48,13 +66,6 @@ function CommunityConatiner () {
             if(pageMax>0){
                 console.log("최대 페이지 넘버 : "+pageMax);  
                }
-            // if(pageMax === listNum){
-            //     setPosts(users.slice(listNum*30, users.length-1));
-            //     console.log(showPosts)
-            // }else{
-            //     setPosts(users.slice(listNum*30, (listNum+1)*30-1));
-            //     console.log(showPosts)
-            // }//showPost set
         }else{
         axios.get('https://jsonplaceholder.typicode.com/posts',{withCredentials:true})
         .then((response)=>{
@@ -64,15 +75,7 @@ function CommunityConatiner () {
                 if(pageMax>0){
                  console.log("최대 페이지 넘버 : "+pageMax);  
                 }
-            }
-            //     if(pageMax === listNum){
-            //         setPosts(users.slice(listNum*30, users.length-1));
-            //         console.log(showPosts)
-            //     }else{
-            //         setPosts(users.slice(listNum*30, (listNum+1)*30-1));
-            //         console.log(showPosts)
-            //     }//showPost set
-            // }
+                }
             })
         } 
     },[allPost, pageMax]);
@@ -129,7 +132,8 @@ function CommunityConatiner () {
 
     return (
         <CommunityPresenter
-        user = {user}
+        params={params}
+        userDetail = {userDetail}
         show={show}
         setShow={setShow}
         set1 = {set1}

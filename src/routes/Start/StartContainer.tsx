@@ -25,10 +25,6 @@ function StartConatiner () {
     if(getCookie('USER')){
       window.location.assign(`/main`);
     }//쿠키 내에 로그인정보 있을시 시작화면으로
-    // if(window.localStorage.ID){
-    //   window.location.assign(`/main/${window.localStorage.ID}`);
-    // }
-    // navigate(`/main/${window.localStorage.ID}`); 왜 시작부분만 이렇게 해야할까
   }
 
   function goSignup(){

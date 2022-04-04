@@ -23,13 +23,13 @@ const Router:React.FC = () => {
         <>
         <BrowserRouter>
             <Routes>
-            <Route path='/' element={<Start />}></Route>
-            <Route path='/signup' element={<Signup />}></Route>
-            <Route path='/signin' element={<Signin />}></Route>
+            <Route path={`/`} element={<Start />}></Route>
+            <Route path={`/signup`} element={<Signup />}></Route>
+            <Route path={`/signin`} element={<Signin />}></Route>
             <Route path={`/main`} element={<Main />}></Route>
             <Route path={`/myteam`} element={<Myteam />}></Route>
             <Route path={`/community/:team/:pagenum`} element={<Community />}></Route>
-            <Route path={`/communitydetail/:postid`} element={<CommunityDetail />}></Route>
+            <Route path={`/communitydetail/:team/:postid`} element={<CommunityDetail />}></Route>
             <Route path={`/mypage`} element={<Mypage />}></Route>
             <Route path={`/news/:team/:pagenum`} element={<News />}></Route>
             <Route path={`/newsdetail/:team/:articleid`} element={<NewsDetail />}></Route>

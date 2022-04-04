@@ -2,6 +2,8 @@ import SignupPresenter from './SignupPresenter';
 import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+// @ts-ignore
+import { getCookie } from 'Cookie.ts';
 
 function SignupConatiner () {
     const navigate = useNavigate();
@@ -10,6 +12,16 @@ function SignupConatiner () {
     let [pw, setPw] = useState<string>("");
     let [pw2, setPw2] = useState<string>("");
     let [myTeam, setMyTeam] = useState("0");
+
+    function auth(){
+        if(getCookie('USER')){
+        window.alert('로그인 중에는 이용하실 수 없습니다.');
+        window.location.replace('/');
+        return false;
+        }else{
+          return false;
+        };
+      }
 
     function goStart():void{
         const regx = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
@@ -73,6 +85,7 @@ function SignupConatiner () {
 
     return (
         <SignupPresenter
+        auth={auth}
         name={name}
         setName={setName}
         nameChange={nameChange}

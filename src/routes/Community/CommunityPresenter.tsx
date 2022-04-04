@@ -120,7 +120,8 @@ const PostingBtn = styled.button`
 `;
 
 function CommunityPresenter({
-    user,
+    params,
+    userDetail,
     show,
     setShow,
     set1,
@@ -136,7 +137,8 @@ function CommunityPresenter({
     goPrev,
     goNext,
 }:{
-    user:any,
+    params:any,
+    userDetail:any,
     show:Number,
     setShow:React.Dispatch<React.SetStateAction<Number>>,
     set1:() => void,
@@ -186,7 +188,7 @@ function CommunityPresenter({
                     <tbody>
                     {
                     showPosts.length>0 ?
-                     showPosts.map((
+                    showPosts.map((
                         data:
                         {
                         userId: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
@@ -196,7 +198,7 @@ function CommunityPresenter({
                         <BodyTr>
                         <Td1>{data.id}</Td1>
                         <Td2>{data.userId}</Td2>
-                        <Td3><GoDetail href={`/communitydetail/${data.id}`}>{data.title}</GoDetail></Td3>
+                        <Td3><GoDetail href={`/communitydetail/${params.team}/${data.id}`}>{data.title}</GoDetail></Td3>
                         </BodyTr>
                     ))
                     :

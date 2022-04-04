@@ -11,6 +11,16 @@ function SigninConatiner () {
     let [id, setId] = useState<string>("");
     let [pw, setPw] = useState<string>("");
 
+    function auth(){
+        if(getCookie('USER')){
+        window.alert('로그인 중에는 이용하실 수 없습니다.');
+        window.location.replace('/');
+        return false;
+        }else{
+          return true;
+        };
+      }
+
     function goStart():void{
         const regx = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
         const space = /\s/g; 
@@ -60,6 +70,7 @@ function SigninConatiner () {
 
     return (
         <SigninPresenter
+        auth={auth}
         id = {id}
         pw = {pw}
         setId={setId}

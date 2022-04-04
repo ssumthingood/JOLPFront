@@ -15,6 +15,7 @@ const Option = styled.option`
 `;
 
 function SignupPresenter({
+    auth,
     name,
     setName,
     nameChange,
@@ -32,6 +33,7 @@ function SignupPresenter({
     teamChange,
     goStart
 }:{
+    auth:()=>boolean,
     name:string,
     setName:React.Dispatch<React.SetStateAction<string>>,
     nameChange:(e: any) => void, id:string, pw:string,
@@ -48,6 +50,9 @@ function SignupPresenter({
     teamChange:(e: any) => void
 }) {
     return (
+        <>
+        {auth() ? 
+        <>
         <StartWrapper>
         <h2>Signup</h2>
         <div>
@@ -94,6 +99,10 @@ function SignupPresenter({
         </div>
         <button onClick={goStart}>signup</button>
         </StartWrapper>
+        </>:
+        <>
+        </>}
+        </>
     );
 }
 

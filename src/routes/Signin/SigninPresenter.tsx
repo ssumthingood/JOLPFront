@@ -1,6 +1,7 @@
 import StartWrapper from "components/StartWrapper";
 
 function SigninPresenter({
+    auth,
     id,
     pw,
     setId,
@@ -8,7 +9,9 @@ function SigninPresenter({
     idChange,
     pwChange,
     goStart
-}:{id:string,
+}:{
+    auth:()=>boolean,
+    id:string,
     pw:string, 
     setId:React.Dispatch<React.SetStateAction<string>>,
     setPw:React.Dispatch<React.SetStateAction<string>>,
@@ -17,6 +20,9 @@ function SigninPresenter({
     pwChange:any
 }) {
     return (
+        <>
+        {auth()?
+        <>
         <StartWrapper>
         Signin
         <div>
@@ -29,6 +35,8 @@ function SigninPresenter({
         </div>
         <button onClick={goStart}>signin</button>
         </StartWrapper>
+        </>:<></>}
+        </>
     );
 }
 

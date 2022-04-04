@@ -37,13 +37,17 @@ const Below = styled.div`
 `;
 
 function CommunityDetailPresenter({
+    auth,
     post,
     goCommunity,
 }:{
+    auth:()=>boolean,
     post:any,
     goCommunity:() => void,
 }){
     return (
+        <>
+        {auth() ?
         <>
         <Header />
         <NavBar/>
@@ -63,6 +67,8 @@ function CommunityDetailPresenter({
         </Below>
         </MainWrapper>
         <Footer />
+        </>:<></>}
+        
         </>
     );
 }
