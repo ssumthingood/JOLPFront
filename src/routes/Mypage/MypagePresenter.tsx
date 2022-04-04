@@ -31,6 +31,8 @@ const Option = styled.option`
 `;
 
 function MypagePresenter({
+    user,
+    userDetail,
     nick,
     setNick,
     nickChange,
@@ -40,6 +42,8 @@ function MypagePresenter({
     setMyTeam,
     teamChange,
 }:{
+    user:any,
+    userDetail:any,
     nick:string,
     setNick:React.Dispatch<React.SetStateAction<string>>,
     nickChange:(e: any) => void,
@@ -59,39 +63,38 @@ function MypagePresenter({
         <>
         <Section>
         <h4>유저 ID</h4>
-        {myState.name}
+        {userDetail.loginid}
         </Section>
         <Section>
         <h4>닉네임</h4>
-        {myState.username}<br />
+        {user.nickname}<br />
         <input type="text" onChange={nickChange}/>
-        
         </Section>
         <Section>
         <h4>내 팀</h4>
-        {myState.website}<br />
+        {userDetail.myteam}<br />
         <Select name="team" onChange={teamChange}>
-            <Option value="0">선택</Option>
-            <Option value="1">1</Option>
-            <Option value="2">2</Option>
-            <Option value="3">3</Option>
-            <Option value="4">4</Option>
-            <Option value="5">5</Option>
-            <Option value="6">6</Option>
-            <Option value="7">7</Option>
-            <Option value="8">8</Option>
-            <Option value="9">9</Option>
-            <Option value="10">10</Option>
-            <Option value="11">11</Option>
-            <Option value="12">12</Option>
-            <Option value="13">13</Option>
-            <Option value="14">14</Option>
-            <Option value="15">15</Option>
-            <Option value="16">16</Option>
-            <Option value="17">17</Option>
-            <Option value="18">18</Option>
-            <Option value="19">19</Option>
-            <Option value="20">20</Option>
+        <Option value="0">선택</Option>
+            <Option value="1">아스날</Option>
+            <Option value="2">아스톤 빌라</Option>
+            <Option value="3">번리</Option>
+            <Option value="4">브라이튼</Option>
+            <Option value="5">브렌트포드</Option>
+            <Option value="6">첼시</Option>
+            <Option value="7">크리스탈 팰리스</Option>
+            <Option value="8">에버튼</Option>
+            <Option value="9">리버풀</Option>
+            <Option value="10">레스터</Option>
+            <Option value="11">리즈</Option>
+            <Option value="12">맨유</Option>
+            <Option value="13">맨시티</Option>
+            <Option value="14">노리치</Option>
+            <Option value="15">뉴캐슬</Option>
+            <Option value="16">사우스햄튼</Option>
+            <Option value="17">토트넘 핫스퍼</Option>
+            <Option value="18">웨스트햄</Option>
+            <Option value="19">울버햄튼</Option>
+            <Option value="20">왓포드</Option>
         </Select>
         </Section>
         <Section>
@@ -102,7 +105,11 @@ function MypagePresenter({
         :
         <Loading/>
         }
-        <button onClick={submit}>change</button>
+        <Section>
+            정보 변경은 30일마다 가능합니다.<br />
+            닉네임은 공백 없이 설정합니다.
+        </Section>
+        <button onClick={submit}>정보 변경</button>
         </MainWrapper>
         <Footer />
         </>

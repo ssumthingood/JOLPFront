@@ -41,7 +41,7 @@ function CommunityConatiner () {
             setUser(response.data);
             });
         }  
-    },[]); 
+    },[user]); 
 
     useEffect(()=>{
         if(user){
