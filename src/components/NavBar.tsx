@@ -79,7 +79,6 @@ function NavBar () {
     }
 
     useEffect(()=>{
-        console.log(getCookie('USER'));
         if(auth()){
             axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
             token:getCookie('USER')
@@ -96,7 +95,6 @@ function NavBar () {
             userid:user.user_id
             },{withCredentials:true})
             .then((res)=>{
-            console.log("UserDetail searched");
             setUserDetail(res.data[0]);
             });
         } 

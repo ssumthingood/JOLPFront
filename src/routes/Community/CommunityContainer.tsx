@@ -50,7 +50,6 @@ function CommunityConatiner () {
         },{withCredentials:true})
         .then((res)=>{
             if(res.data[0].myteam.toString() === params.team){
-            console.log(res.data[0]);
             setUserDetail(res.data[0]);
             }else{
                 window.alert('자신의 팀만 확인할 수 있습니다.');
@@ -112,22 +111,36 @@ function CommunityConatiner () {
     }
 
     function goPrev(){
-        if(listNum>0){
-           dispatch(previous());
-           console.log("최대 페이지 넘버 : "+pageMax);
-           console.log("현재 페이지 : "+listNum);
+        if(listNum>0 && params.pagenum){
+        navigate(`/community/${params.team}/${parseInt(params.pagenum)-1}`);
+        dispatch(previous());
+        console.log("최대 페이지 넘버 : "+pageMax);
+        console.log("현재 페이지 : "+listNum);
         }  
     }
 
     function goNext(){
-        if(allPost && (listNum<pageMax))
+        if(allPost && (listNum<pageMax) && params.pagenum){
+        navigate(`/community/${params.team}/${parseInt(params.pagenum)+1}`);
         dispatch(next());
         console.log("최대 페이지 넘버 : "+pageMax);
-        console.log("현재 페이지 : "+listNum);
+        console.log("현재 페이지 : "+listNum); 
+        }
+    }
+
+    const ifFirst= ()=>{
+        if(params.pagenum && parseInt(params.pagenum) === 1){
+            return true;
+        }
+        return false;
+    }
+
+    const ifLast= ()=>{
+        
     }
 
     function goPosting() { 
-       navigate(`/posting/${window.localStorage.ID}`);
+       navigate(`/posting`);
     }
 
     return (
@@ -146,6 +159,8 @@ function CommunityConatiner () {
         setPosts = {setPosts}
         pageMax={pageMax}
         listNum={listNum}
+        ifFirst = {ifFirst}
+        ifLast = {ifLast}
         goPrev = {goPrev}
         goNext = {goNext}/>
     )

@@ -41,7 +41,6 @@ function MypageConatiner () {
             userid:user.user_id
             },{withCredentials:true})
             .then((res)=>{
-            console.log("UserDetail searched");
             setUserDetail(res.data[0]);
             });
         } 
@@ -50,7 +49,6 @@ function MypageConatiner () {
     const nickChange = useCallback(
         (e) => {
             setNick(e.target.value);
-            console.log(nick)
         },
         [nick]
     );
@@ -58,7 +56,6 @@ function MypageConatiner () {
     const teamChange = useCallback(
         (e) => {
             setMyTeam(e.target.value);
-            console.log(myTeam)
         },
         [myTeam]
     )
@@ -82,9 +79,6 @@ function MypageConatiner () {
           axios.get(`https://jsonplaceholder.typicode.com/users/${myRand}`,{withCredentials:true})
         .then((response)=>{
             setMy(response.data);
-            if(myState){
-                console.log(myState);
-            }
         });  
         }
     },[userDetail]);

@@ -134,6 +134,8 @@ function CommunityPresenter({
     setPosts,
     pageMax,
     listNum,
+    ifFirst,
+    ifLast,
     goPrev,
     goNext,
 }:{
@@ -153,6 +155,8 @@ function CommunityPresenter({
     setPosts: React.Dispatch<React.SetStateAction<any[]>>,
     pageMax:number,
     listNum:number,
+    ifFirst:()=>boolean,
+    ifLast:()=>void,
     goPrev:() => void,
     goNext:() => void,
 }){
@@ -207,7 +211,7 @@ function CommunityPresenter({
                     </tbody>
                 </Table>
                 <Paging>
-                {listNum===0 ? <></>:<PrevBtn onClick={goPrev}>previous</PrevBtn>}
+                {ifFirst() ? <></>:<PrevBtn onClick={goPrev}>previous</PrevBtn>}
                 <NowPage>{listNum+1}</NowPage>
                 {listNum===pageMax ? <></>: <NextBtn onClick={goNext}>next</NextBtn>}
                 <div>{listNum+1}페이지 / {pageMax+1}페이지</div>

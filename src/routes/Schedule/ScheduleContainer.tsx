@@ -29,22 +29,18 @@ function ScheduleConatiner () {
         prevNum++;
         if(prevNum>nextNum){
             setDate(moment().clone().subtract(prevNum-nextNum,'days').format('YYYY-MM-DD'));
-            console.log(date);
         }else{
             setDate(moment().clone().add(nextNum-prevNum,'days').format('YYYY-MM-DD'));
         }
-        console.log(prevNum);
     }
 
     function goNext():void{
         nextNum++;
         if(nextNum>prevNum){
             setDate(moment().clone().add(nextNum-prevNum,'days').format('YYYY-MM-DD'));
-            console.log(date);
         }else{
             setDate(moment().clone().subtract(prevNum-nextNum,'days').format('YYYY-MM-DD'));
         }
-        console.log(nextNum);
     }
 
     useEffect(()=>{
@@ -53,8 +49,8 @@ function ScheduleConatiner () {
                 withCredentials:true
             })
             .then((response)=>{
-                console.log(response.data.slice(0,15));
-                setMatch(response.data.slice(0,15));
+                setMatch(response.data.slice(0,14));
+                console.log(response.data.slice(0,14));
             })
         }
     },[]);

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import MainPresenter from './MainPresenter';
-import { useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 // @ts-ignore
 import { getCookie, removeCookie } from 'Cookie.ts';
 import axios from 'axios';
@@ -11,7 +11,9 @@ let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 let yyyy = today.getFullYear();
 let nowDay = yyyy + '-' + mm + '-' +dd ;
 
-console.log('__________████████_____██████\n\
+
+console.log('\n\
+__________████████_____██████\n\
 _________█░░░░░░░░██_██░░░░░░█\n\
 ________█░░░░░░░░░░░█░░░░░░░░░█\n\
 _______█░░░░░░░███░░░█░░░░░░░░░█\n\
@@ -53,8 +55,10 @@ function MainConatiner () {
   const navigate = useNavigate();
   let [date, setDate] = useState(nowDay);//달력에 표시되는 날짜
   const [comu, setComu] = useState<any[]>([]);//추천수 상위 5개 글
+  const [matches, setMatch] = useState<any>([]);
   const [user,setUser] = useState<any>([]);
   const [userDetail,setUserDetail] = useState<any>(null);
+  const params = useParams();
 
   function onDatechange(e:Date):void{
     dd = String(e.getDate()).padStart(2, '0');
@@ -62,7 +66,6 @@ function MainConatiner () {
     yyyy = e.getFullYear();
     nowDay = yyyy + '-' + mm + '-' +dd ;
     setDate(nowDay);
-    console.log(date);
   }
 
   function auth(){
@@ -76,14 +79,6 @@ function MainConatiner () {
   }
 
   useEffect(()=>{
-    axios.get('https://jsonplaceholder.typicode.com/posts',{withCredentials:true})
-        .then((response)=>{
-          setComu(response.data.reverse().slice(0,5));
-        });
-  },[]);
-
-  useEffect(()=>{
-    console.log(getCookie('USER'));
     if(auth()){
         axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
         token:getCookie('USER')
@@ -96,18 +91,39 @@ function MainConatiner () {
 
 useEffect(()=>{
         if(user){
-            axios.post('http://13.125.107.215:3003/apis/user/getUserDetail', {
+        axios.post('http://13.125.107.215:3003/apis/user/getUserDetail', {
         userid:user.user_id
         },{withCredentials:true})
         .then((res)=>{
-        console.log("UserDetail searched");
         setUserDetail(res.data[0]);
         });
     } 
-},[user])
+},[user]);
+
+  useEffect(()=>{
+    if(userDetail){
+      axios.get('https://jsonplaceholder.typicode.com/posts',{withCredentials:true})
+        .then((response)=>{
+          setComu(response.data.reverse().slice(0,5));
+      });
+    }
+  },[userDetail]);
+
+  useEffect(()=>{
+    if(auth()){
+        axios.post('http://13.125.107.215:3003/apis/football/getMatchList',{
+          withCredentials:true
+        })
+        .then((response)=>{
+          setMatch(response.data.slice(0,4));
+        })
+    }
+},[]);
 
   return (
-      <MainPresenter 
+      <MainPresenter
+      matches={matches}
+      params={params}
       onDatechange={onDatechange}
       comu = {comu}
       user = {user}

@@ -14,9 +14,12 @@ const MyCalendar  = styled(Calendar)`
     `;
 
 const Section = styled.div`
-    min-width:50%;
+    min-width:49%;
     min-height:300px;
     padding:2.5%;
+    background-color:whitesmoke;
+    border : 3px solid lightgray;
+    margin:0.5%;
 `;
 
 const MyLink = styled.a`
@@ -24,13 +27,17 @@ const MyLink = styled.a`
 `;
 
 function MainPresenter({
+    params,
     onDatechange,
     comu,
+    matches,
     user,
     userDetail,
 }:{
+    params:any
     onDatechange:(e:Date)=>void,
     comu:any,
+    matches:any,
     user:any,
     userDetail:any
 }){
@@ -71,7 +78,7 @@ function MainPresenter({
                     }
                 )=>(
                     <>
-                    <a href={`/communitydetail/${data.id}`}>{data.title}</a><br />
+                    <a href={`/communitydetail/${userDetail.myteam}/${data.id}`}>{data.title}</a><br />
                     </>
                 ))}
             </div>
