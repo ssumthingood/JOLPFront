@@ -52,7 +52,8 @@ function SignupPresenter({
     return (
         <>
         {auth() ? 
-        <>
+        <StartWrapper>
+        </StartWrapper>:
         <StartWrapper>
         <h2>Signup</h2>
         <div>
@@ -98,10 +99,7 @@ function SignupPresenter({
         </Select>
         </div>
         <button onClick={goStart}>signup</button>
-        </StartWrapper>
-        </>:
-        <>
-        </>}
+        </StartWrapper>}
         </>
     );
 }

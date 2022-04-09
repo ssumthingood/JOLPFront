@@ -17,7 +17,7 @@ function SignupConatiner () {
         if(getCookie('USER')){
         window.alert('로그인 중에는 이용하실 수 없습니다.');
         window.location.replace('/');
-        return false;
+        return true;
         }else{
           return false;
         };
