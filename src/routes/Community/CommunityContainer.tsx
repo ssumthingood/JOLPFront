@@ -12,15 +12,13 @@ function CommunityConatiner () {
     const navigate = useNavigate();
     const [user,setUser] = useState<any>([]);
     const [userDetail,setUserDetail] = useState<any>(null);
-    const [show ,setShow] = useState<Number>(1);
-    const [allPost, setAll] = useState<any[]>([]);//받아온 전체 글들
-    const [showPosts, setPosts] = useState<any[]>([]);//그 페이지에 보여질 글들
-    // const [users, setUsers] = useState(null);
-    const [pageMax, setMax] = useState<number>(0);
+    const [show ,setShow] = useState<number>(1);
+    const [maxPageNumber, setMaxNumber] = useState<number>(1);
+    const [nowShow, setNowshow] = useState<any[]>([]);//현재 페이지에 보여질 글(30개컷)
     const params = useParams();
 
-    const listNum = useSelector((state: RootState) => state.listNumber.listNum);
-    const dispatch = useDispatch(); // 디스패치 함수를 가져옵니다
+    // const listNum = useSelector((state: RootState) => state.listNumber.listNum);
+    // const dispatch = useDispatch(); // 디스패치 함수를 가져옵니다
 
     function auth(){
         if(getCookie('USER')){
@@ -41,7 +39,7 @@ function CommunityConatiner () {
             setUser(response.data);
             });
         }  
-    },[user]); 
+    },[auth()]); 
 
     useEffect(()=>{
         if(user){
@@ -60,40 +58,23 @@ function CommunityConatiner () {
     },[user])
 
     useEffect(()=>{
-        if(allPost.length>0){
-            setMax(Math.floor(allPost.length/30));
-            if(pageMax>0){
-                console.log("최대 페이지 넘버 : "+pageMax);  
-               }
-        }else{
+        if(userDetail){
         axios.get('https://jsonplaceholder.typicode.com/posts',{withCredentials:true})
         .then((response)=>{
-            setAll(response.data.reverse());
-            if(allPost.length>0){
-                setMax(Math.floor(allPost.length/30))
-                if(pageMax>0){
-                 console.log("최대 페이지 넘버 : "+pageMax);  
-                }
-                }
-            })
-        } 
-    },[allPost, pageMax]);
-
-    useEffect(()=>{
-        if(allPost.length>0){
-            if(pageMax ===0){
-                setPosts(allPost);
-            }else{
-                if(listNum===pageMax){
-                    setPosts(allPost.slice(listNum*30, allPost.length-1));
-                    console.log(listNum+"번 페이지 목록 : "+showPosts);
+            setMaxNumber(Math.floor(response.data.length/30)+1);
+            if(params.pagenum){
+                if(parseInt(params.pagenum) < maxPageNumber){
+                    setNowshow(response.data.reverse().slice((parseInt(params.pagenum)-1)*30, parseInt(params.pagenum)*30));
                 }else{
-                    setPosts(allPost.slice(listNum*30, (listNum+1)*30-1));
-                    console.log(listNum+"번 페이지 목록 : "+showPosts);
+                    setNowshow(response.data.reverse().slice((parseInt(params.pagenum)-1)*30, response.data.length));
                 }
+            }else{
+                window.alert('params.pagenum err');
+                navigate('/main');
             }
+        })
         }
-    },[listNum,pageMax]);
+    },[userDetail, params.pagenum, maxPageNumber]);
 
     function set1(){
         setShow(1);
@@ -111,20 +92,14 @@ function CommunityConatiner () {
     }
 
     function goPrev(){
-        if(listNum>0 && params.pagenum){
+        if(params.pagenum && parseInt(params.pagenum)>0){
         navigate(`/community/${params.team}/${parseInt(params.pagenum)-1}`);
-        dispatch(previous());
-        console.log("최대 페이지 넘버 : "+pageMax);
-        console.log("현재 페이지 : "+listNum);
         }  
     }
 
     function goNext(){
-        if(allPost && (listNum<pageMax) && params.pagenum){
+        if(params.pagenum && (parseInt(params.pagenum) < maxPageNumber)){
         navigate(`/community/${params.team}/${parseInt(params.pagenum)+1}`);
-        dispatch(next());
-        console.log("최대 페이지 넘버 : "+pageMax);
-        console.log("현재 페이지 : "+listNum); 
         }
     }
 
@@ -136,7 +111,10 @@ function CommunityConatiner () {
     }
 
     const ifLast= ()=>{
-        
+        if(params.pagenum && parseInt(params.pagenum) < maxPageNumber){
+            return true;
+        }
+        return false;
     }
 
     function goPosting() { 
@@ -153,12 +131,9 @@ function CommunityConatiner () {
         set2 = {set2}
         set3 = {set3}
         goPosting={goPosting}
-        allPost = {allPost}
-        setAll = {setAll}
-        showPosts = {showPosts}
-        setPosts = {setPosts}
-        pageMax={pageMax}
-        listNum={listNum}
+        //listNum={listNum}
+        maxPageNumber = {maxPageNumber}
+        nowShow = {nowShow}
         ifFirst = {ifFirst}
         ifLast = {ifLast}
         goPrev = {goPrev}

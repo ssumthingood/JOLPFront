@@ -26,7 +26,6 @@ function SignupConatiner () {
     function goStart():void{
         const regx = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
         const space = /\s/g; 
-        console.log("name : "+ name + " / id : "+ id+ " / pw : "+pw+ " / pw2 : "+pw2+ " / team : "+myTeam);
         if((pw === pw2) && (id.length>0) && (myTeam !=="0")&& !regx.test(id) && !regx.test(pw) && !id.match(space) && !pw.match(space) ) {
             axios.post('http://13.125.107.215:3003/apis/auth/signUp',{
             loginid:id,
@@ -46,7 +45,6 @@ function SignupConatiner () {
     const nameChange = useCallback(
         (e) => {
             setName(e.target.value);
-            console.log(name)
         },
         [name]
     )
@@ -54,7 +52,6 @@ function SignupConatiner () {
     const idChange = useCallback(
         (e) => {
             setId(e.target.value);
-            console.log(id)
         },
         [id]
     )
@@ -62,7 +59,6 @@ function SignupConatiner () {
     const pwChange = useCallback(
         (e) => {
             setPw(e.target.value);
-            console.log(pw)
         },
         [pw]
     )
@@ -70,7 +66,6 @@ function SignupConatiner () {
     const pw2Change = useCallback(
         (e) => {
             setPw2(e.target.value);
-            console.log(pw2)
         },
         [pw2]
     )
@@ -78,7 +73,6 @@ function SignupConatiner () {
     const teamChange = useCallback(
         (e) => {
             setMyTeam(e.target.value);
-            console.log(myTeam)
         },
         [myTeam]
     )

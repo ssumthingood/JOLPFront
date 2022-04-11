@@ -45,7 +45,7 @@ const Contents = styled.div`
 `;
 
 const Table = styled.table`
-    width:90%;
+    width:100%;
     text-align:left;
 `;
 
@@ -128,12 +128,9 @@ function CommunityPresenter({
     set2,
     set3,
     goPosting,
-    allPost,
-    setAll,
-    showPosts,
-    setPosts,
-    pageMax,
-    listNum,
+    //listNum,
+    maxPageNumber,
+    nowShow,
     ifFirst,
     ifLast,
     goPrev,
@@ -142,21 +139,16 @@ function CommunityPresenter({
     params:any,
     userDetail:any,
     show:Number,
-    setShow:React.Dispatch<React.SetStateAction<Number>>,
+    setShow:React.Dispatch<React.SetStateAction<number>>,
     set1:() => void,
     set2:() => void,
     set3:() => void,
     goPosting:() => void,
-    allPost: any,
-    //setUsers: React.Dispatch<React.SetStateAction<null>>,
-    setAll: React.Dispatch<React.SetStateAction<any[]>>,
-    showPosts: any,
-    //setUsers: React.Dispatch<React.SetStateAction<null>>,
-    setPosts: React.Dispatch<React.SetStateAction<any[]>>,
-    pageMax:number,
-    listNum:number,
+    //listNum:number,
+    maxPageNumber:number,
+    nowShow:any,
     ifFirst:()=>boolean,
-    ifLast:()=>void,
+    ifLast:()=>boolean,
     goPrev:() => void,
     goNext:() => void,
 }){
@@ -191,8 +183,8 @@ function CommunityPresenter({
                     </thead>
                     <tbody>
                     {
-                    showPosts.length>0 ?
-                    showPosts.map((
+                    nowShow.length>0 ?
+                    nowShow.map((
                         data:
                         {
                         userId: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
@@ -212,9 +204,9 @@ function CommunityPresenter({
                 </Table>
                 <Paging>
                 {ifFirst() ? <></>:<PrevBtn onClick={goPrev}>previous</PrevBtn>}
-                <NowPage>{listNum+1}</NowPage>
-                {listNum===pageMax ? <></>: <NextBtn onClick={goNext}>next</NextBtn>}
-                <div>{listNum+1}페이지 / {pageMax+1}페이지</div>
+                <NowPage>{params.pagenum}</NowPage>
+                {ifLast() ? <NextBtn onClick={goNext}>next</NextBtn>: <></>}
+                <div>{params.pagenum}페이지 /{maxPageNumber}페이지</div>
                 </Paging>
             <PostingBtn onClick={goPosting}>posting</PostingBtn>
         </Contents>

@@ -34,7 +34,6 @@ function SigninConatiner () {
         .then((response) => 
             {
             if (response.data.token) {
-                console.log(response);
                     setCookie('USER',response.data.token,{
                         path:"/",
                         secure:true,
