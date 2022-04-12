@@ -59,7 +59,7 @@ function CommunityConatiner () {
 
     useEffect(()=>{
         if(userDetail){
-        axios.get('https://jsonplaceholder.typicode.com/posts',{withCredentials:true})
+        axios.get('http://13.125.107.215:3003/apis/board/getBoardList',{withCredentials:true})
         .then((response)=>{
             setMaxNumber(Math.floor(response.data.length/30)+1);
             if(params.pagenum){

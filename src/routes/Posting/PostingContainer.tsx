@@ -1,14 +1,17 @@
 import PostingPresenter from './PostingPresenter';
-import { useCallback, useState } from 'react';
+import axios from 'axios';
+import { useCallback, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 // @ts-ignore
 import { getCookie } from 'Cookie.ts';
 
 function PostingConatiner () {
     const navigate = useNavigate();
-    function submit(){
-        navigate(`/community/${window.localStorage.ID}`);
-    }
+    const [user,setUser] = useState<any>([]);
+    const [userDetail,setUserDetail] = useState<any>(null);
+    let [title, setTitle] = useState("");
+    let [content, setContent] = useState("");
+    let [anony, setAnony] = useState(false);
 
     function auth(){
         if(getCookie('USER')){
@@ -19,14 +22,32 @@ function PostingConatiner () {
           return false;
         };
       }
-    let [title, setTitle] = useState("");
-    let [content, setContent] = useState("");
-    let [anony, setAnony] = useState(false);
+
+    useEffect(()=>{
+        if(auth()){
+            axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
+            token:getCookie('USER')
+            },{withCredentials:true})
+            .then((response)=>{
+            setUser(response.data);
+            });
+        }  
+    },[auth()]); 
+
+    useEffect(()=>{
+        if(user){
+        axios.post('http://13.125.107.215:3003/apis/user/getUserDetail', {
+        userid:user.user_id
+        },{withCredentials:true})
+        .then((res)=>{
+            setUserDetail(res.data[0]);
+        });
+    } 
+    },[user]);
 
     const titleChange = useCallback(
         (e) => {
             setTitle(e.target.value);
-            console.log(title)
         },
         [title]
     )
@@ -34,7 +55,6 @@ function PostingConatiner () {
     const contentChange = useCallback(
         (e) => {
             setContent(e.target.value);
-            console.log(content)
         },
         [content]
     )
@@ -42,14 +62,38 @@ function PostingConatiner () {
     const anonyChange = useCallback(
         (e) => {
             anony = !anony;
-            console.log(anony)
             setAnony(anony);
         },
         [anony]
     )
 
+    function submit(){
+        if(userDetail){
+            axios.post('http://13.125.107.215:3003/apis/board/createBoard',{
+                title:title,
+                categoryid:0,
+                content:content,
+                isanony:anony ? 0:userDetail.user_id,
+                club_id:userDetail.myteam
+            },{withCredentials:true})
+            .then((response)=>{
+            console.log(response);
+            if(response.status===200){
+                window.alert('posing completed!!');
+                navigate(`/community/${window.localStorage.ID}`);
+                }else{
+                    window.alert('status not 200');
+                }
+            })
+        }else{
+            window.alert('userdetail none');
+        }
+    }
+
     return (
         <PostingPresenter
+        user={user}
+        userDetail={userDetail}
         auth={auth}
         title={title}
         setTitle={setTitle}

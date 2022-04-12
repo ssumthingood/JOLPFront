@@ -52,12 +52,16 @@ function CommunityDetailPresenter({
         <Header />
         <NavBar/>
         <MainWrapper>
-        <h3>커뮤니티</h3>
+        <h3>FAN TALK</h3>
         {post ?
         <>
         <HeadLine1>{post.title}</HeadLine1>
-        <UserName>작성자 <Seperate>|</Seperate> {post.userId}</UserName>
-        <UserContent>{post.body}</UserContent>
+        <UserName>
+        작성자 <Seperate>|</Seperate> {post.anony===1 ? '익명':post.user_id}
+        조회수 <Seperate>|</Seperate> {post.readcount}
+        추천수 <Seperate>|</Seperate> {post.likes}
+        </UserName>
+        <UserContent>{post.content.data}</UserContent>
         </>
         :
         <Loading/>

@@ -54,15 +54,26 @@ const Th1 = styled.th`
     padding:10px;
 `;
 
-const Th2 = styled.th`
-    width:10%;
+// const Th2 = styled.th`
+//     width:10%;
+//     padding:10px;
+// `;
+
+const Th3 = styled.th`
+    width:63%;
     padding:10px;
 `;
 
-const Th3 = styled.th`
-    width:80%;
+const Th4 = styled.th`
+    width:13%;
     padding:10px;
 `;
+
+const Th5 = styled.th`
+    width:13%;
+    padding:10px;
+`;
+
 
 const BodyTr = styled.tr`
 `;
@@ -74,20 +85,33 @@ const Td1 = styled.td`
     border-right:2px solid whitesmoke;
 `;
 
-const Td2 = styled.td`
-    width:10%;
-    padding:3px 10px;
-    border-bottom: 2px solid whitesmoke;
-    border-right:2px solid whitesmoke;
-`;
+// const Td2 = styled.td`
+//     width:10%;
+//     padding:3px 10px;
+//     border-bottom: 2px solid whitesmoke;
+//     border-right:2px solid whitesmoke;
+// `;
 
 const Td3 = styled.td`
-    width:80%;
+    width:63%;
     padding:3px 10px;
     border-bottom: 2px solid whitesmoke;
     border-right:2px solid whitesmoke;
 `;
 
+const Td4 = styled.td`
+    width:13%;
+    padding:3px 10px;
+    border-bottom: 2px solid whitesmoke;
+    border-right:2px solid whitesmoke;
+`;
+
+const Td5 = styled.td`
+    width:13%;
+    padding:3px 10px;
+    border-bottom: 2px solid whitesmoke;
+    border-right:2px solid whitesmoke;
+`;
 const GoDetail = styled.a`
     &:hover{
         background-color:whitesmoke;
@@ -157,7 +181,7 @@ function CommunityPresenter({
         <Header />
         <NavBar/>
         <MainWrapper>
-        <HeadLine1>Community</HeadLine1>
+        <HeadLine1>FAN TALK</HeadLine1>
         <ButtonLi>
             <ButtonItem>
             <LiButton onClick={set1}>최신순</LiButton>
@@ -177,8 +201,10 @@ function CommunityPresenter({
                     <thead>
                         <tr>
                         <Th1>No.</Th1>
-                        <Th2>User</Th2>
+                        {/* <Th2>User</Th2> */}
                         <Th3>Title</Th3>
+                        <Th4>Read</Th4>
+                        <Th5>Likes</Th5>
                         </tr>
                     </thead>
                     <tbody>
@@ -187,14 +213,18 @@ function CommunityPresenter({
                     nowShow.map((
                         data:
                         {
-                        userId: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
+                        categoryid: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
                         title: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
-                        id: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
+                        board_id: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
+                        readcount: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
+                        likes: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
                         }) => (
                         <BodyTr>
-                        <Td1>{data.id}</Td1>
-                        <Td2>{data.userId}</Td2>
-                        <Td3><GoDetail href={`/communitydetail/${params.team}/${data.id}`}>{data.title}</GoDetail></Td3>
+                        <Td1>{data.board_id}</Td1>
+                        {/* <Td2>{data.categoryid}</Td2> */}
+                        <Td3><GoDetail href={`/communitydetail/${params.team}/${data.board_id}`}>{data.title}</GoDetail></Td3>
+                        <Td4>{data.readcount}</Td4>
+                        <Td5>{data.likes}</Td5>
                         </BodyTr>
                     ))
                     :

@@ -1,10 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
-import {useSelector, useDispatch} from 'react-redux';
 import CommunityDetailPresenter from './CommunityDetailPresenter';
-import { RootState } from '../../modules';
-import { previous, next, set } from '../../modules/listNumber';
 // @ts-ignore
 import { getCookie } from 'Cookie.ts';
 
@@ -28,12 +25,11 @@ function CommunityDetailConatiner () {
     };
 
     useEffect(()=>{
-            axios.get(`https://jsonplaceholder.typicode.com/posts/${params.postid}`,{withCredentials:true})
+            axios.post(`http://13.125.107.215:3003/apis/board/getBoardDetail`,{
+              board_id:params.postid
+            },{withCredentials:true})
             .then((response)=>{
-            setPost(response.data);
-            if(post){
-            console.log(post);
-            };
+            setPost(response.data[0]);
         })
     },[]);
     

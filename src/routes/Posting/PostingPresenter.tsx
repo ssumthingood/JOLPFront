@@ -50,6 +50,8 @@ const Anony = styled.input`
 
 function PostingPresenter({
     auth,
+    user,
+    userDetail,
     title,
     setTitle,
     titleChange,
@@ -62,6 +64,8 @@ function PostingPresenter({
     submit,
 }:{
     auth:()=>boolean,
+    user:any,
+    userDetail:any,
     title:string,
     setTitle:React.Dispatch<React.SetStateAction<string>>,
     titleChange:(e: any) => void,
@@ -98,13 +102,11 @@ function PostingPresenter({
                 data=""
                 onReady={ (editor: any) => {
                     // You can store the "editor" and use when it is needed.
-                    console.log( 'Editor is ready to use!', editor );
                 } }
                 onChange={ ( event: any, editor: { getData: () => any; } ) => {
                     const data = editor.getData();
                     // console.log( { event, editor, data } );
                     setContent(data);
-                    console.log(content);
                 } }
                  onBlur={ ( event: any, editor: any ) => {
                     // console.log( 'Blur.', editor );
