@@ -71,7 +71,6 @@ function MypageConatiner () {
         }else{
             window.alert("Check plz");
         }
-        
     }
 
     useEffect(()=>{

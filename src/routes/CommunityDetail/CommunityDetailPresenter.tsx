@@ -4,6 +4,8 @@ import NavBar from 'components/NavBar';
 import styled from 'styled-components';
 import MainWrapper from 'components/MainWrapper';
 import Loading from 'components/Loading';
+import Parser from 'html-react-parser'; //1. import 삽입
+
 
 const HeadLine1 = styled.h1`
     font-size:25px;
@@ -38,10 +40,14 @@ const Below = styled.div`
 
 function CommunityDetailPresenter({
     auth,
+    user,
+    userDetail,
     post,
     goCommunity,
 }:{
     auth:()=>boolean,
+    user:any,
+    userDetail:any,
     post:any,
     goCommunity:() => void,
 }){
@@ -61,7 +67,7 @@ function CommunityDetailPresenter({
         조회수 <Seperate>|</Seperate> {post.readcount}
         추천수 <Seperate>|</Seperate> {post.likes}
         </UserName>
-        <UserContent>{post.content.data}</UserContent>
+        <UserContent>{Parser(post.content)}</UserContent>
         </>
         :
         <Loading/>
@@ -72,7 +78,6 @@ function CommunityDetailPresenter({
         </MainWrapper>
         <Footer />
         </>:<></>}
-        
         </>
     );
 }

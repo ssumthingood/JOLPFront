@@ -103,7 +103,8 @@ function NavBar () {
     function logOut() {
         removeCookie('USER')
         if(auth()){
-            logOut();
+            removeCookie('USER')
+            window.location.replace('/');  
         }else{
           window.location.replace('/');  
         }  

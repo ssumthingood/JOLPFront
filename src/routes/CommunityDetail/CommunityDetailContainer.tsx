@@ -7,6 +7,8 @@ import { getCookie } from 'Cookie.ts';
 
 function CommunityDetailConatiner () {
     const navigate = useNavigate();
+    const [user,setUser] = useState<any>([]);
+    const [userDetail,setUserDetail] = useState<any>(null);
     const [post, setPost] = useState(null);
     const params = useParams();
 
@@ -20,8 +22,30 @@ function CommunityDetailConatiner () {
         };
       }
 
+    useEffect(()=>{
+      if(auth()){
+          axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
+          token:getCookie('USER')
+          },{withCredentials:true})
+          .then((response)=>{
+          setUser(response.data);
+          });
+        }  
+    },[auth()]);
+
+    useEffect(()=>{
+      if(user){
+      axios.post('http://13.125.107.215:3003/apis/user/getUserDetail', {
+      userid:user.user_id
+      },{withCredentials:true})
+      .then((res)=>{
+        setUserDetail(res.data[0]);
+      });
+    } 
+    },[user]);
+
     function goCommunity(){
-    navigate(`/community/${params.postid}/${params.postid}`);
+    navigate(`/community/${userDetail.myteam}/1`);
     };
 
     useEffect(()=>{
@@ -36,6 +60,8 @@ function CommunityDetailConatiner () {
     return (
         <CommunityDetailPresenter
         auth={auth}
+        user={user}
+        userDetail={userDetail}
         post={post}
         goCommunity = {goCommunity} />
     )

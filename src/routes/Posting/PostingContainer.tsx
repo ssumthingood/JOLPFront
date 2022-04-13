@@ -68,26 +68,35 @@ function PostingConatiner () {
     )
 
     function submit(){
+        content.replace('<oembed','<Oembed');
+        content.replace('</oembed>','</Oembed>');
+        content.replace('<figure','<Figure');
+        content.replace('</figure>','</Figure>');
+        console.log(content);
         if(userDetail){
             axios.post('http://13.125.107.215:3003/apis/board/createBoard',{
-                title:title,
-                categoryid:0,
-                content:content,
-                isanony:anony ? 0:userDetail.user_id,
-                club_id:userDetail.myteam
-            },{withCredentials:true})
-            .then((response)=>{
-            console.log(response);
-            if(response.status===200){
-                window.alert('posing completed!!');
-                navigate(`/community/${window.localStorage.ID}`);
-                }else{
-                    window.alert('status not 200');
+            title:title,
+            categoryid:0,
+            content:content,
+            isanony:anony ? 0:1,
+            team_id:userDetail.myteam,
+            },{
+                headers:{
+                    token:getCookie('USER')
                 }
             })
-        }else{
-            window.alert('userdetail none');
-        }
+            .then((response)=>{
+                console.log(response);
+                if(response.status===200){
+                    window.alert('posing completed!!');
+                    navigate(`/community/${userDetail.myteam}/1`);
+                }else{
+                    window.alert('status not 200');
+                    }
+                })
+            }else{
+                window.alert('userdetail none');
+            }
     }
 
     return (

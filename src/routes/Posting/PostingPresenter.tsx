@@ -105,7 +105,7 @@ function PostingPresenter({
                 } }
                 onChange={ ( event: any, editor: { getData: () => any; } ) => {
                     const data = editor.getData();
-                    // console.log( { event, editor, data } );
+                    console.log( { event, editor, data } );
                     setContent(data);
                 } }
                  onBlur={ ( event: any, editor: any ) => {

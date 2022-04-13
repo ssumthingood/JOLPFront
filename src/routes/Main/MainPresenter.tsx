@@ -57,11 +57,11 @@ function MainPresenter({
             <div></div>
             <MyLink href={`/schedule`} >more</MyLink>
         </Section>
-        <Section>
+        {/* <Section>
             영상
             <div></div>
             <MyLink href={`/video`}>more</MyLink>
-        </Section>
+        </Section> */}
         <Section>
             뉴스
             <div></div>

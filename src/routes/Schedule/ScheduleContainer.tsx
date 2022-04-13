@@ -46,14 +46,15 @@ function ScheduleConatiner () {
     useEffect(()=>{
         if(auth()){
             axios.post('http://13.125.107.215:3003/apis/football/getMatchList',{
+                date:date.toString()
+            },{
                 withCredentials:true
             })
             .then((response)=>{
-                setMatch(response.data.slice(0,14));
-                console.log(response.data.slice(0,14));
+                setMatch(response.data);
             })
         }
-    },[]);
+    },[date]);
  
     return (
         <SchedulePresenter
