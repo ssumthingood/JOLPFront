@@ -121,8 +121,8 @@ function MypagePresenter({
             <>
             <GoDetail href={`/communitydetail/${userDetail.myteam}/${data.board_id}`}>{data.title}</GoDetail>
             <button>수정</button>
-            <button>삭제</button>
-            {/* <button onClick={deletePost(data.board_id?.toString())}>삭제</button><br /> */}
+            <button onClick={(e)=>{deletePost(data.board_id?.toString(), e)}}>삭제</button>
+            <br />
             </>
         ))
         :

@@ -60,16 +60,31 @@ function MypageConatiner () {
         [myTeam]
     )
 
-    function deletePost(postid){
+    // function deletePost(postid){
+    //     axios.post('http://13.125.107.215:3003/apis/board/deleteBoard',{
+    //         board_id: postid
+    //     },{
+    //         headers:{
+    //             token:getCookie('USER')
+    //         }
+    //     });
+    //     //window.location.replace('/mypage');
+    // }
+
+    const deletePost=(postid, e) => {
+        e.preventDefault();
         axios.post('http://13.125.107.215:3003/apis/board/deleteBoard',{
             board_id: postid
         },{
             headers:{
                 token:getCookie('USER')
             }
-        });
-        //window.location.replace('/mypage');
+        }).then((response)=>{
+        window.alert('삭제되었습니다.');
+        window.location.replace('/mypage');
+        })
     }
+
 
     function submit(){
         const space = /\s/g; 
