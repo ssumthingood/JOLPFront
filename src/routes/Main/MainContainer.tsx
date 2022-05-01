@@ -102,9 +102,11 @@ useEffect(()=>{
 
   useEffect(()=>{
     if(userDetail){
-      axios.get('https://jsonplaceholder.typicode.com/posts',{withCredentials:true})
-        .then((response)=>{
-          setComu(response.data.reverse().slice(0,5));
+      axios.post('http://13.125.107.215:3003/apis/board/getBoardList',{
+        teamid:userDetail.myteam.toString()
+      },{withCredentials:true})
+      .then((response)=>{
+        setComu(response.data);
       });
     }
   },[userDetail]);

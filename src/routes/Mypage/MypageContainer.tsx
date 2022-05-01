@@ -9,7 +9,7 @@ function MypageConatiner () {
     const navigate = useNavigate();
     const [user,setUser] = useState<any>([]);
     const [userDetail,setUserDetail] = useState<any>(null);
-    const [myState, setMy] = useState<(any)[]>();
+    const [myPost, setMypost] = useState<(any)[]>([]);
     let [nick, setNick] = useState("");
     let [myTeam, setMyTeam] = useState("0");
     const myRand:number = Math.floor(Math.random()*10+1);
@@ -60,12 +60,22 @@ function MypageConatiner () {
         [myTeam]
     )
 
+    function deletePost(postid){
+        axios.post('http://13.125.107.215:3003/apis/board/deleteBoard',{
+            board_id: postid
+        },{
+            headers:{
+                token:getCookie('USER')
+            }
+        });
+        //window.location.replace('/mypage');
+    }
+
     function submit(){
         const space = /\s/g; 
         if((nick.length>0 && !nick.match(space)) || myTeam !== "0"){
             window.alert('Change applied!!');
             window.location.reload();
-            //navigate(`/mypage/${window.localStorage.ID}`);
             setNick("");
             setMyTeam("");
         }else{
@@ -75,10 +85,12 @@ function MypageConatiner () {
 
     useEffect(()=>{
         if(userDetail){
-          axios.get(`https://jsonplaceholder.typicode.com/users/${myRand}`,{withCredentials:true})
+        axios.post('http://13.125.107.215:3003/apis/board/getBoardList',{
+        userid:user.user_id.toString()
+        },{withCredentials:true})
         .then((response)=>{
-            setMy(response.data);
-        });  
+            setMypost(response.data);
+            })
         }
     },[userDetail]);
 
@@ -88,12 +100,13 @@ function MypageConatiner () {
         userDetail={userDetail}
         nick={nick}
         setNick={setNick}
-        myState = {myState}
+        myPost = {myPost}
         nickChange = {nickChange}
         submit = {submit}
         myTeam={myTeam}
         setMyTeam = {setMyTeam}
-        teamChange = {teamChange} />
+        teamChange = {teamChange}
+        deletePost={deletePost} />
     )
 }
 

@@ -24,7 +24,7 @@ function SigninPresenter({
         {auth()?
         <>
         <StartWrapper>
-        Signin
+        Sign In
         <div>
         <h2>id</h2>
         <input type="text" onChange={idChange}/>
@@ -33,7 +33,7 @@ function SigninPresenter({
         <h2>pw</h2>
         <input type="password" onChange={pwChange}/>
         </div>
-        <button onClick={goStart}>signin</button>
+        <button onClick={goStart}>sign in</button>
         </StartWrapper>
         </>:<></>}
         </>
