@@ -12,7 +12,6 @@ function MypageConatiner () {
     const [myPost, setMypost] = useState<(any)[]>([]);
     let [nick, setNick] = useState("");
     let [myTeam, setMyTeam] = useState("0");
-    const myRand:number = Math.floor(Math.random()*10+1);
 
     function auth(){
         if(getCookie('USER')){
@@ -59,17 +58,6 @@ function MypageConatiner () {
         },
         [myTeam]
     )
-
-    // function deletePost(postid){
-    //     axios.post('http://13.125.107.215:3003/apis/board/deleteBoard',{
-    //         board_id: postid
-    //     },{
-    //         headers:{
-    //             token:getCookie('USER')
-    //         }
-    //     });
-    //     //window.location.replace('/mypage');
-    // }
 
     const deletePost=(postid, e) => {
         e.preventDefault();

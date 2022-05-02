@@ -83,8 +83,8 @@ function SchedulePresenter({
                 hometeam: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
                 awayteam: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
                 datetime: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
-                fthg: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
-                ftag: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
+                fthg: boolean | ReactChild | ReactFragment | ReactPortal | null |undefined;
+                ftag: boolean | ReactChild | ReactFragment | ReactPortal | null |undefined;
             })=>(
                 <MatchContainer>
                     <h4>{matchdata.season}시즌</h4><br/>

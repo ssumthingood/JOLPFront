@@ -106,7 +106,8 @@ useEffect(()=>{
         teamid:userDetail.myteam.toString()
       },{withCredentials:true})
       .then((response)=>{
-        setComu(response.data);
+        setComu(response.data.slice(0,5));
+        console.log(response.data.slice(0,5));
       });
     }
   },[userDetail]);
@@ -114,13 +115,16 @@ useEffect(()=>{
   useEffect(()=>{
     if(auth()){
         axios.post('http://13.125.107.215:3003/apis/football/getMatchList',{
+          date:date.toString()
+        },{
           withCredentials:true
         })
         .then((response)=>{
-          setMatch(response.data.slice(0,4));
+          setMatch(response.data.slice(0,5));
+          console.log(response.data.slice(0,5));
         })
     }
-},[]);
+},[date]);
 
   return (
       <MainPresenter
