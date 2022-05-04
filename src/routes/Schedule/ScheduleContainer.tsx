@@ -5,6 +5,7 @@ import moment from 'moment';
 // @ts-ignore
 import { getCookie } from 'Cookie.ts';
 import axios from 'axios';
+import React from 'react';
 
 let prevNum = 0;
 let nextNum = 0;

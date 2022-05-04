@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import MainWrapper from 'components/MainWrapper';
 import Loading from 'components/Loading';
 import Parser from 'html-react-parser'; //1. import 삽입
-
+import React from 'react';
 
 const HeadLine1 = styled.h1`
     font-size:25px;

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import { ReactChild, ReactFragment, ReactPortal, useCallback, useEffect, useState } from 'react';
  // @ts-ignore
 import { getCookie, removeCookie } from 'Cookie.ts';
+import React from 'react';
  
 function MypageConatiner () {
     const navigate = useNavigate();

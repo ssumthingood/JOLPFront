@@ -6,6 +6,7 @@ import NavBar from "components/NavBar";
 import { ReactChild, ReactFragment, ReactPortal } from "react";
 import styled from "styled-components";
 import Teamcode from "components/Teamcode";
+import React from "react";
 
 const HeadLine1 = styled.h1`
     font-size:25px;

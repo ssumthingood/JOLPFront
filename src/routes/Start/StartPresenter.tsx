@@ -1,4 +1,5 @@
 import StartWrapper from 'components/StartWrapper';
+import React from 'react';
 import styled from 'styled-components';
 
 const Btn1 = styled.button`

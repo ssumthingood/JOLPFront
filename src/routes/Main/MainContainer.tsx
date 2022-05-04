@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router';
 // @ts-ignore
 import { getCookie, removeCookie } from 'Cookie.ts';
 import axios from 'axios';
+import React from 'react';
 
 const today = new Date();
 let dd = String(today.getDate()).padStart(2, '0');

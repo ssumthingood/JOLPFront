@@ -2,6 +2,7 @@ import VideoDetailPresenter from './VideoDetailPresenter';
 import { useNavigate } from 'react-router';
 // @ts-ignore
 import { getCookie } from 'Cookie.ts';
+import React from 'react';
 
 function VideoDetailConatiner () {
     const navigate = useNavigate();

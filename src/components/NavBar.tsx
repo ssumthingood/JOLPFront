@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { getCookie, removeCookie } from 'Cookie.ts';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import React from 'react';
 
 const MainBar = styled.div`
     min-width:1500px;;

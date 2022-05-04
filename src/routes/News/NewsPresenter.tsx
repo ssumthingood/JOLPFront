@@ -3,6 +3,7 @@ import Footer from "components/Footer";
 import Header from "components/Header";
 import NavBar from "components/NavBar";
 import MainWrapper from "components/MainWrapper";
+import React from "react";
 
 const HeadLine1 = styled.h1`
     font-size:25px;

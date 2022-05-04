@@ -9,6 +9,7 @@ import './PostingPresenter.css';
 import Uploader from "./PlugIn";
 //import './UploadAdapter';
 import SimpleUploadAdapter from "@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter";
+import React from "react";
 // import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 // import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 // import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';

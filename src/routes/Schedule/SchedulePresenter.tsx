@@ -3,6 +3,7 @@ import Header from "components/Header";
 import Loading from "components/Loading";
 import MainWrapper from "components/MainWrapper";
 import NavBar from "components/NavBar";
+import React from "react";
 import { Dispatch, ReactChild, ReactFragment, ReactPortal } from "react";
 import styled from "styled-components";
 

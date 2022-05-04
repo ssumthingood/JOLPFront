@@ -3,10 +3,9 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import { RootState } from '../../modules';
-import { previous, next, set } from '../../modules/listNumber';
 // @ts-ignore
 import { getCookie, removeCookie } from 'Cookie.ts';
+import React from 'react';
  
 function CommunityConatiner () {
     const navigate = useNavigate();

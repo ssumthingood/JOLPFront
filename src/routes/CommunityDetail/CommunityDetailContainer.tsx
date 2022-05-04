@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router';
 import CommunityDetailPresenter from './CommunityDetailPresenter';
 // @ts-ignore
 import { getCookie } from 'Cookie.ts';
+import React from 'react';
 
 function CommunityDetailConatiner () {
     const navigate = useNavigate();

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 // @ts-ignore
 import { getCookie, setCookie, removeCookie } from 'Cookie.ts';
 import axios from 'axios';
+import React from 'react';
 
 function StartConatiner () {
   const navigate = useNavigate();

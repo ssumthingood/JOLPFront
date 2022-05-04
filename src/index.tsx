@@ -1,21 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import rootReducer from './modules';
 
 // if(process.env.NODE_ENV === 'development') {
 //   const {worker} = require('./mocks/browser');
 //   worker.start();
 // }
 
-const store = createStore(rootReducer);
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+    <App />,
   document.getElementById('root')
 );
 

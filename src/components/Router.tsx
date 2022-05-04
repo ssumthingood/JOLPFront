@@ -17,6 +17,7 @@ import Posting from '../routes/Posting';
 import Schedule from '../routes/Schedule';
 import Video from '../routes/Video';
 import VideoDetail from '../routes/VideoDetail';
+import React from 'react';
 
 const Router:React.FC = () => {
     return (

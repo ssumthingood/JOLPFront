@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 // @ts-ignore
 import { getCookie } from 'Cookie.ts';
+import React from 'react';
 
 function SignupConatiner () {
     const navigate = useNavigate();
