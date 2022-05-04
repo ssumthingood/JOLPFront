@@ -2,9 +2,8 @@ import CommunityPresenter from './CommunityPresenter';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
-import {useSelector, useDispatch} from 'react-redux';
 // @ts-ignore
-import { getCookie, removeCookie } from 'Cookie.ts';
+import { getCookie } from 'Cookie.ts';
 import React from 'react';
  
 function CommunityConatiner () {

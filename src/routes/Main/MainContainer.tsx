@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import MainPresenter from './MainPresenter';
 import { useNavigate, useParams } from 'react-router';
 // @ts-ignore
-import { getCookie, removeCookie } from 'Cookie.ts';
+import { getCookie } from 'Cookie.ts';
 import axios from 'axios';
 import React from 'react';
 
@@ -53,7 +53,7 @@ _█░░░░░░░░░░█______█_███__█_____███_█_
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█');
 
 function MainConatiner () {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   let [date, setDate] = useState(nowDay);//달력에 표시되는 날짜
   const [comu, setComu] = useState<any[]>([]);//추천수 상위 5개 글
   const [matches, setMatch] = useState<any>([]);

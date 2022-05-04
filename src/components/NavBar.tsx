@@ -102,13 +102,9 @@ function NavBar () {
     },[user])
 
     function logOut() {
-        removeCookie('USER')
-        if(auth()){
-            removeCookie('USER')
-            window.location.replace('/');  
-        }else{
-          window.location.replace('/');  
-        }  
+        removeCookie('USER');
+        window.alert('로그아웃 되었습니다.');
+        window.location.replace('/');  
     }
 
     return (
