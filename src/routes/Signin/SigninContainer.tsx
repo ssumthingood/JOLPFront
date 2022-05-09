@@ -34,21 +34,22 @@ function SigninConatiner () {
         })
         .then((response) => 
             {
-            window.alert('setcookie start');
-            if (response.data.token) {   
+            // window.alert('setcookie start');
+            if (response.data.token) { 
                 setCookie('USER',response.data.token,{
                     path:"/",
                     secure:true,
                     sameSite:"none",
                 });
-            window.alert('setcookie completed');
-            window.alert('Login completed');
+            // window.alert('setcookie completed');
+            console.log('Login completed');
             navigate('/');
             } else {
             window.alert("다시해라");
             };
         })
         .catch((error) => {
+
         }); //로그인 요청 보내고 JWT키 받아서 쿠키에 저장까지
 
         }else{
