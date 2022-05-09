@@ -9,7 +9,7 @@ const LoadingSection = styled.div`
 
 function Loading() {
     return(
-        <LoadingSection>Loading...⏰</LoadingSection>
+        <LoadingSection>No Contents...</LoadingSection>
     )
 }
 
