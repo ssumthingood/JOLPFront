@@ -34,14 +34,14 @@ function SigninConatiner () {
         })
         .then((response) => 
             {
-            // window.alert('setcookie start');
+            window.alert('setcookie start');
             if (response.data.token) { 
                 setCookie('USER',response.data.token,{
                     path:"/",
                     secure:true,
                     sameSite:"none",
                 });
-            // window.alert('setcookie completed');
+            window.alert('setcookie completed');
             console.log('Login completed');
             navigate('/');
             } else {
