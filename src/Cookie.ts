@@ -4,6 +4,7 @@ const cookies = new Cookies()
 
 export const setCookie = (name:string, value:string, option?:any)=>{
     console.log("cookie setted");
+    console.log(option);
     return cookies.set(name, value, {...option})
 }
 

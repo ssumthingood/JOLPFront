@@ -36,6 +36,7 @@ function SigninConatiner () {
             {
             window.alert('setcookie start');
             if (response.data.token) {
+                console.log(response.data.token);
                 setCookie('USER',response.data.token,{
                     path:"/",
                     secure:true,
@@ -49,7 +50,7 @@ function SigninConatiner () {
             };
         })
         .catch((error) => {
-
+            console.log(error);
         }); //로그인 요청 보내고 JWT키 받아서 쿠키에 저장까지
 
         }else{
