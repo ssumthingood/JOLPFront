@@ -39,8 +39,8 @@ function SigninConatiner () {
                 console.log(response.data.token);
                 setCookie('USER',response.data.token,{
                     path:"/",
-                    secure:true,
-                    sameSite:"none",
+                    secure:false,
+                    sameSite:"lax",
                 });
             window.alert('setcookie completed');
             console.log('Login completed');
