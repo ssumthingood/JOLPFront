@@ -41,7 +41,7 @@ function CommunityConatiner () {
 
     useEffect(()=>{
         if(user){
-        axios.post('http://13.125.107.215:3003/apis/user/getUserDetail', {
+        axios.post('http://13.125.81.51:3003/apis/user/getUserDetail', {
         userid:user.user_id
         },{withCredentials:true})
         .then((res)=>{
@@ -57,7 +57,7 @@ function CommunityConatiner () {
 
     useEffect(()=>{
         if(userDetail){
-        axios.post('http://13.125.107.215:3003/apis/board/getBoardList',{
+        axios.post('http://13.125.81.51:3003/apis/board/getBoardList',{
             teamid:userDetail.myteam.toString()
         },{withCredentials:true})
         .then((response)=>{
