@@ -26,7 +26,7 @@ function MypageConatiner () {
 
     useEffect(()=>{
         if(auth()){
-            axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
+            axios.post('http://13.125.81.51:3003/apis/auth/authToken', {
             token:getCookie('USER')
             },{withCredentials:true})
             .then((response)=>{
@@ -37,7 +37,7 @@ function MypageConatiner () {
 
     useEffect(()=>{
         if(user){
-            axios.post('http://13.125.107.215:3003/apis/user/getUserDetail', {
+            axios.post('http://13.125.81.51:3003/apis/user/getUserDetail', {
             userid:user.user_id
             },{withCredentials:true})
             .then((res)=>{
@@ -62,7 +62,7 @@ function MypageConatiner () {
 
     const deletePost=(postid, e) => {
         e.preventDefault();
-        axios.post('http://13.125.107.215:3003/apis/board/deleteBoard',{
+        axios.post('http://13.125.81.51:3003/apis/board/deleteBoard',{
             board_id: postid
         },{
             headers:{
@@ -89,7 +89,7 @@ function MypageConatiner () {
 
     useEffect(()=>{
         if(userDetail){
-        axios.post('http://13.125.107.215:3003/apis/board/getBoardList',{
+        axios.post('http://13.125.81.51:3003/apis/board/getBoardList',{
         userid:user.user_id.toString()
         },{withCredentials:true})
         .then((response)=>{

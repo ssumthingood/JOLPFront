@@ -13,7 +13,7 @@ class UploadAdapter {
 
   _initRequest() {
       const xhr = this.xhr = new XMLHttpRequest();
-      xhr.open('POST', 'http://13.125.107.215:3003/apis/aws/imageUpload', true);
+      xhr.open('POST', 'http://13.125.81.51:3003/apis/aws/imageUpload', true);
       xhr.responseType = 'json';
   }
 

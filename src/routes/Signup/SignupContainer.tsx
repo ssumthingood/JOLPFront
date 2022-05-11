@@ -28,7 +28,7 @@ function SignupConatiner () {
         const regx = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
         const space = /\s/g; 
         if((pw === pw2) && (id.length>0) && (myTeam !=="0")&& !regx.test(id) && !regx.test(pw) && !id.match(space) && !pw.match(space) ) {
-            axios.post('http://13.125.107.215:3003/apis/auth/signUp',{
+            axios.post('http://13.125.81.51:3003/apis/auth/signUp',{
             loginid:id,
             password:pw,
             myteam:myTeam,

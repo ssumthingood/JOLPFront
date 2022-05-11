@@ -30,7 +30,7 @@ function CommunityConatiner () {
 
     useEffect(()=>{
         if(auth()){
-            axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
+            axios.post('http://13.125.81.51:3003/apis/auth/authToken', {
             token:getCookie('USER')
             },{withCredentials:true})
             .then((response)=>{

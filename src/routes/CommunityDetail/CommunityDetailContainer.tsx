@@ -25,7 +25,7 @@ function CommunityDetailConatiner () {
 
     useEffect(()=>{
       if(auth()){
-          axios.post('http://13.125.107.215:3003/apis/auth/authToken', {
+          axios.post('http://13.125.81.51:3003/apis/auth/authToken', {
           token:getCookie('USER')
           },{withCredentials:true})
           .then((response)=>{
@@ -36,7 +36,7 @@ function CommunityDetailConatiner () {
 
     useEffect(()=>{
       if(user){
-      axios.post('http://13.125.107.215:3003/apis/user/getUserDetail', {
+      axios.post('http://13.125.81.51:3003/apis/user/getUserDetail', {
       userid:user.user_id
       },{withCredentials:true})
       .then((res)=>{
@@ -50,7 +50,7 @@ function CommunityDetailConatiner () {
     };
 
     useEffect(()=>{
-            axios.post(`http://13.125.107.215:3003/apis/board/getBoardDetail`,{
+            axios.post(`http://13.125.81.51:3003/apis/board/getBoardDetail`,{
               board_id:params.postid
             },{withCredentials:true})
             .then((response)=>{

@@ -46,7 +46,7 @@ function ScheduleConatiner () {
 
     useEffect(()=>{
         if(auth()){
-            axios.post('http://13.125.107.215:3003/apis/football/getMatchList',{
+            axios.post('http://13.125.81.51:3003/apis/football/getMatchList',{
                 date:date.toString()
             },{
                 withCredentials:true
