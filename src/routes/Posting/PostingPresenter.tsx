@@ -73,8 +73,8 @@ function PostingPresenter({
     content:string,
     setContent:React.Dispatch<React.SetStateAction<string>>,
     contentChange:(e: any) => void,
-    anony:boolean,
-    setAnony:React.Dispatch<React.SetStateAction<boolean>>,
+    anony:string,
+    setAnony:React.Dispatch<React.SetStateAction<string>>,
     anonyChange:(e: any) => void,
     submit:() => void
 }){

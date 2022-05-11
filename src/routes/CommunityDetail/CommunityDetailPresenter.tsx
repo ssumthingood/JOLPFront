@@ -63,7 +63,7 @@ function CommunityDetailPresenter({
         <>
         <HeadLine1>{post.title}</HeadLine1>
         <UserName>
-        작성자 <Seperate>|</Seperate> {post.anony===1 ? '익명':post.user_id}
+        작성자 <Seperate>|</Seperate> {post.isanony===1 ? '익명':post.nickname}
         조회수 <Seperate>|</Seperate> {post.readcount}
         추천수 <Seperate>|</Seperate> {post.likes}
         </UserName>

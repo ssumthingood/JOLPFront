@@ -12,7 +12,7 @@ function PostingConatiner () {
     const [userDetail,setUserDetail] = useState<any>(null);
     let [title, setTitle] = useState("");
     let [content, setContent] = useState("");
-    let [anony, setAnony] = useState(false);
+    let [anony, setAnony] = useState('0');
 
     function auth(){
         if(getCookie('USER')){
@@ -62,7 +62,12 @@ function PostingConatiner () {
 
     const anonyChange = useCallback(
         (e) => {
-            anony = !anony;
+            if(anony === '0'){
+                anony = '1';
+            }else if(anony==='1'){
+                anony = '0';
+            };
+
             setAnony(anony);
         },
         [anony]
@@ -79,7 +84,7 @@ function PostingConatiner () {
             title:title,
             categoryid:0,
             content:content,
-            isanony:anony ? 0:1,
+            isanony:anony,
             team_id:userDetail.myteam,
             },{
                 headers:{

@@ -107,8 +107,8 @@ useEffect(()=>{
         teamid:userDetail.myteam.toString()
       },{withCredentials:true})
       .then((response)=>{
-        setComu(response.data.slice(0,5));
-        console.log(response.data.slice(0,5));
+        setComu(response.data.reverse().slice(0,10));
+        console.log(response.data.slice(0,10));
       });
     }
   },[userDetail]);
