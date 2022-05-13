@@ -74,6 +74,18 @@ function MypageConatiner () {
         })
     }
 
+    function signOut() {
+        if(userDetail){
+            axios.post('http://13.125.81.51:3003/apis/auth/signOut',{
+                loginid:userDetail.loginid
+            },{withCredentials:true})
+            .then((response)=>{
+                removeCookie('USER');
+                window.alert('회원탈퇴 처리되었습니다.');
+                window.location.replace('/');  
+            })
+        };
+    }
 
     function submit(){
         const space = /\s/g; 
@@ -93,7 +105,7 @@ function MypageConatiner () {
         userid:user.user_id.toString()
         },{withCredentials:true})
         .then((response)=>{
-            setMypost(response.data);
+            setMypost(response.data.reverse());
             })
         }
     },[userDetail]);
@@ -110,7 +122,8 @@ function MypageConatiner () {
         myTeam={myTeam}
         setMyTeam = {setMyTeam}
         teamChange = {teamChange}
-        deletePost={deletePost} />
+        deletePost={deletePost}
+        signOut={signOut}/>
     )
 }
 

@@ -51,6 +51,7 @@ function MypagePresenter({
     setMyTeam,
     teamChange,
     deletePost,
+    signOut,
 }:{
     user:any,
     userDetail:any,
@@ -63,6 +64,7 @@ function MypagePresenter({
     setMyTeam:React.Dispatch<React.SetStateAction<string>>,
     teamChange:(e: any) => void,
     deletePost:any;
+    signOut:any;
 }){
     return (
         <>
@@ -138,7 +140,7 @@ function MypagePresenter({
             닉네임은 공백 없이 설정합니다.
         </Section>
         <button onClick={submit}>정보 변경</button>
-        <button>회원 탈퇴</button>
+        <button onClick={signOut}>회원 탈퇴</button>
         </MainWrapper>
         <Footer />
         </>

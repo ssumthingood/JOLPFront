@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import GetLogo from 'components/GetLogo';
 import SchedulePresenter from './SchedulePresenter';
 import { useNavigate } from 'react-router';
 import moment from 'moment';
@@ -63,7 +64,8 @@ function ScheduleConatiner () {
         date={date}
         setDate={setDate}
         goPrevious = {goPrevious}
-        goNext = {goNext} />
+        goNext = {goNext}
+        getLogo = {GetLogo} />
     )
 }
 

@@ -121,8 +121,8 @@ useEffect(()=>{
           withCredentials:true
         })
         .then((response)=>{
-          setMatch(response.data.slice(0,5));
-          console.log(response.data.slice(0,5));
+          setMatch(response.data);
+          console.log(response.data);
         })
     }
 },[date]);

@@ -41,20 +41,7 @@ function Teamcode(code:number) {
         case 171:
             return '울버햄튼'; 
         default:
-            return 'NONE';   
-
-
-
-
-
-
-
-
-
-
-
-
-
+            return 'NONE';
     }
 }
 

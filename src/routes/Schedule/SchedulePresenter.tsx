@@ -4,7 +4,7 @@ import Loading from "components/Loading";
 import MainWrapper from "components/MainWrapper";
 import NavBar from "components/NavBar";
 import React from "react";
-import { Dispatch, ReactChild, ReactFragment, ReactPortal } from "react";
+import { ReactChild, ReactFragment, ReactPortal } from "react";
 import styled from "styled-components";
 
 const HeadLine1 = styled.h1`
@@ -57,12 +57,14 @@ function SchedulePresenter({
     setDate,
     goPrevious,
     goNext,
+    getLogo,
 }:{
     date:string,
     matches:any,
     setDate:React.Dispatch<React.SetStateAction<string>>,
     goPrevious:() => void,
     goNext:() => void,
+    getLogo:(code: string)=>string,
 }){
     return (
         <>
@@ -90,7 +92,7 @@ function SchedulePresenter({
                 <MatchContainer>
                     <h4>{matchdata.season}시즌</h4><br/>
                     {matchdata.datetime?.toString().substring(0,10)}<br/>
-                    {matchdata.hometeam} vs {matchdata.awayteam}<br />
+                    <></>{matchdata.hometeam} vs {matchdata.awayteam}<></><br />
                     {matchdata.fthg} : {matchdata.ftag}
                 </MatchContainer>
             )):
