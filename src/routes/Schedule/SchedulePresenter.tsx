@@ -1,4 +1,5 @@
 import Footer from "components/Footer";
+import GetLogo from "components/GetLogo";
 import Header from "components/Header";
 import Loading from "components/Loading";
 import MainWrapper from "components/MainWrapper";
@@ -92,7 +93,9 @@ function SchedulePresenter({
                 <MatchContainer>
                     <h4>{matchdata.season}시즌</h4><br/>
                     {matchdata.datetime?.toString().substring(0,10)}<br/>
-                    <></>{matchdata.hometeam} vs {matchdata.awayteam}<></><br />
+                    <img src = {GetLogo(matchdata.hometeam!.toString())} height='100px'/>
+                    {matchdata.hometeam} vs {matchdata.awayteam}
+                    <img src = {GetLogo(matchdata.awayteam!.toString())} height='100px'/><br />
                     {matchdata.fthg} : {matchdata.ftag}
                 </MatchContainer>
             )):

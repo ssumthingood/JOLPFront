@@ -1,47 +1,47 @@
 import React from 'react';
 
-function GetLogo(code:string) {
+function GetLogo(code:string):string {
     var teampng;
     switch(code){
-        case '120':
+        case ' Arsenal':
             teampng = '아스날.png'; break;
-        case '121':
+        case ' Aston Villa':
             teampng = '아스톤빌라.png'; break;
-        case '129':
+        case ' Brentford':
             teampng = '브렌트포드.png'; break;
-        case '130':
+        case ' Brighton':
             teampng = '브라이튼.png'; break;
-        case '131':
+        case ' Burnley':
             teampng = '번리.png'; break;
-        case '134':
+        case ' Chelsea':
             teampng = '첼시.png'; break;
-        case '136':
+        case ' Crystal Palace':
             teampng = '크팰.png'; break;
-        case '138':
+        case ' Everton':
             teampng = '에버튼.png'; break;
-        case '143':
+        case ' Leeds':
             teampng = '리즈.png'; break;
-        case '144':
+        case ' Leicester':
             teampng = '레스터시티.png'; break;
-        case '145':
+        case ' Liverpool':
             teampng = '리버풀.png'; break;
-        case '146':
+        case ' Man City':
             teampng = '맨시티.png'; break;
-        case '147':
+        case ' Man United':
             teampng = '맨유.png'; break;
-        case '149':
+        case ' Newcastle':
             teampng = '뉴캐슬.png'; break;
-        case '150':
+        case ' Norwich':
             teampng = '노리치.png'; break;
-        case '158':
+        case ' Southampton':
             teampng = '소튼.png'; break;
-        case '163':
+        case ' Tottenham':
             teampng = '토트넘.png'; break;
-        case '164':
+        case ' Watford':
             teampng = '왓포드.png'; break;
-        case '166':
+        case ' West Ham':
             teampng = '웨스트햄.png'; break;
-        case '171':
+        case ' Wolves':
             teampng = '울버햄튼.png'; break;
         default:
             teampng = 'NONE'; break;
