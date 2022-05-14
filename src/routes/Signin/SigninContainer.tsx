@@ -42,6 +42,7 @@ function SigninConatiner () {
                     secure:false,
                     sameSite:"lax",
                 });
+                localStorage.setItem('refreshToken',response.data.refreshToken);
             window.alert('setcookie completed');
             console.log('Login completed');
             navigate('/');
