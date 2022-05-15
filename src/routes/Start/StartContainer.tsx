@@ -17,7 +17,25 @@ function StartConatiner () {
     },{withCredentials:true
     })
     .then((response)=>{
-      setUser(response.data);
+      if(response.data !== -3){
+        console.log(response.data);
+        setUser(response.data);
+      }else if((response.data === -3) && (localStorage.refreshToken)){
+        window.alert('refreshing...');
+        axios.post('http://13.125.81.51:3003/apis/auth/refreshToken', {
+        refreshToken:localStorage.refreshToken
+        },{withCredentials:true
+        }).then((res)=>{
+          window.alert('refreshed');
+          setCookie('USER',res.data.token,{
+            path:"/",
+            secure:false,
+            sameSite:"lax",
+          });
+          localStorage.setItem('refreshToken',res.data.refreshToken);
+          window.location.reload();
+        });
+      }
       });
     }
   },[]);
