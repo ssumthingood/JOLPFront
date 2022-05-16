@@ -78,7 +78,6 @@ function PostingConatiner () {
         content.replace('</oembed>','</Oembed>');
         content.replace('<figure','<Figure');
         content.replace('</figure>','</Figure>');
-        console.log(content);
         if(userDetail){
             axios.post('http://13.125.81.51:3003/apis/board/createBoard',{
             title:title,
@@ -94,7 +93,7 @@ function PostingConatiner () {
             .then((response)=>{
                 console.log(response);
                 if(response.status===200){
-                    window.alert('posing completed!!');
+                    window.alert('posting completed!!');
                     navigate(`/community/${userDetail.myteam}/1`);
                 }else{
                     window.alert('status not 200');

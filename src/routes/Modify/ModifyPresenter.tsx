@@ -5,15 +5,8 @@ import NavBar from "components/NavBar";
 import {CKEditor} from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic'; 
 import styled from "styled-components";
-import './PostingPresenter.css';
-import Uploader from "./PlugIn";
-//import './UploadAdapter';
 import SimpleUploadAdapter from "@ckeditor/ckeditor5-upload/src/adapters/simpleuploadadapter";
 import React from "react";
-// import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
-// import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
-// import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
-// import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 
 const HeadLine1 = styled.h1`
     font-size:25px;
@@ -49,7 +42,7 @@ const Anony = styled.input`
     border: 3px solid lightgray;
 `;
 
-function PostingPresenter({
+function ModifyPresenter({
     auth,
     user,
     userDetail,
@@ -78,35 +71,25 @@ function PostingPresenter({
     anonyChange:(e: any) => void,
     submit:() => void
 }){
-
     return (
         <>
-        <Header />
+        <Header/>
         <NavBar/>
         <MainWrapper>
-        <HeadLine1>Posting</HeadLine1>
+        <HeadLine1>Modify</HeadLine1>
         <Postingdiv>
             <HeadLine3>제목</HeadLine3>
             <Textinput type="text" onChange={titleChange}/>
             <br />
             <HeadLine3>내용</HeadLine3>
-
             <CKEditor
-                // editor={ ClassicEditor.create((document.getElementsByClassName('ck ck-reset ck-editor ck-rounded-corners')), {
-                //         ckfinder: {
-                //             uploadUrl: '13.125.107.215:3003/apis/aws/imageUpload"'
-                //         }
-                //     } )}
-
                 editor={ ClassicEditor }
-
                 data=""
                 onReady={ (editor: any) => {
                     // You can store the "editor" and use when it is needed.
                 } }
                 onChange={ ( event: any, editor: { getData: () => any; } ) => {
                     const data = editor.getData();
-                    console.log( { event, editor, data } );
                     setContent(data);
                 } }
                  onBlur={ ( event: any, editor: any ) => {
@@ -115,48 +98,15 @@ function PostingPresenter({
                 onFocus={ ( event: any, editor: any ) => {
                     // console.log( 'Focus.', editor );
                 } }
-                // config={{
-                //     plugins:[
-                //         Uploader,
-                //         SimpleUploadAdapter,
-                //     ],
-
-
-                //     image: {
-                //         resizeUnit: "px",
-                //         toolbar: [
-                //           "imageStyle:alignLeft",
-                //           "imageStyle:full",
-                //           "imageStyle:alignRight",
-                //           "|",
-                //           "imageTextAlternative",
-                //         ],
-                //         styles: ["full", "alignLeft", "alignRight"],
-                //         type: ["JPEG", "JPG", "GIF", "PNG"],
-                //       },
-
-                //       simpleUpload: {
-                //         uploadUrl: "13.125.107.215:3003/apis/aws/imageUpload",
-                //         withCredentials: true,
-                //       },
-                // }}
             />
 
-            {/* {ClassicEditor.create(document.querySelector('#editor'),{
-                    plugins : [SimpleUploadAdapter],
-                        simpleUpload: {
-                        uploadUrl: "13.125.107.215:3003/apis/aws/imageUpload",
-                        withCredentials: true,
-                      },
-                })
-            } */}
             <HeadLine3>익명<Anony type="checkbox" onChange={anonyChange} /></HeadLine3>
             <button onClick={submit}>submit</button>
         </Postingdiv>
         </MainWrapper>
-        <Footer />
+        <Footer/>
         </>
     );
 }
 
-export default PostingPresenter;
+export default ModifyPresenter;

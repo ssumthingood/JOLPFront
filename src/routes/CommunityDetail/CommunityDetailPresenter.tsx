@@ -73,7 +73,9 @@ function CommunityDetailPresenter({
         <Loading/>
         }
         <Below>
-           <button onClick={goCommunity}>목록으로</button> 
+        <button onClick={goCommunity}>수정</button> 
+        <button onClick={goCommunity}>삭제</button> 
+        <button onClick={goCommunity}>목록으로</button> 
         </Below>
         </MainWrapper>
         <Footer />

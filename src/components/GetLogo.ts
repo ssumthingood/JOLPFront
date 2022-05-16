@@ -23,6 +23,8 @@ function GetLogo(code:string):string {
             teampng = '리즈.png'; break;
         case ' Leicester':
             teampng = '레스터시티.png'; break;
+        case ' Leicester City':
+            teampng = '레스터시티.png'; break;
         case ' Liverpool':
             teampng = '리버풀.png'; break;
         case ' Man City':
