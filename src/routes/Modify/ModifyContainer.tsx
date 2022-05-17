@@ -109,7 +109,7 @@ function ModifyConatiner () {
             console.log(response);
             if(response.status===200){
                 window.alert('modifying completed!!');
-                navigate(`/mypage`);
+                navigate(-1);
             }else{
                 window.alert('status not 200');
                 }

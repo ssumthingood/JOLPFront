@@ -96,7 +96,6 @@ function MypageConatiner () {
     function submit(){
         const space = /\s/g; 
         if((nick.length>0 && !nick.match(space)) || myTeam !== "0"){
-            
             setNick("");
             setMyTeam("");
             window.alert('Change applied!!');

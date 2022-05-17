@@ -49,6 +49,12 @@ function CommunityDetailConatiner () {
     navigate(`/community/${userDetail.myteam}/1`);
     };
 
+    const modifyPost=(postid, e) => {
+      e.preventDefault();
+      console.log(postid);
+      navigate('/modify', {state : postid.toString()});
+  }
+
     useEffect(()=>{
             axios.post(`http://13.125.81.51:3003/apis/board/getBoardDetail`,{
               board_id:params.postid
@@ -64,6 +70,7 @@ function CommunityDetailConatiner () {
         user={user}
         userDetail={userDetail}
         post={post}
+        modifyPost = {modifyPost}
         goCommunity = {goCommunity} />
     )
 }
