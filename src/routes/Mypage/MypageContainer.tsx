@@ -60,6 +60,12 @@ function MypageConatiner () {
         [myTeam]
     )
 
+    const modifyPost=(postid, e) => {
+        e.preventDefault();
+        console.log(postid);
+        navigate('/modify', {state : postid.toString()});
+    }
+
     const deletePost=(postid, e) => {
         e.preventDefault();
         axios.post('http://13.125.81.51:3003/apis/board/deleteBoard',{
@@ -123,6 +129,7 @@ function MypageConatiner () {
         myTeam={myTeam}
         setMyTeam = {setMyTeam}
         teamChange = {teamChange}
+        modifyPost={modifyPost}
         deletePost={deletePost}
         signOut={signOut}/>
     )

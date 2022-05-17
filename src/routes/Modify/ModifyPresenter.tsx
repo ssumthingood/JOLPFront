@@ -46,6 +46,7 @@ function ModifyPresenter({
     auth,
     user,
     userDetail,
+    post,
     title,
     setTitle,
     titleChange,
@@ -60,6 +61,7 @@ function ModifyPresenter({
     auth:()=>boolean,
     user:any,
     userDetail:any,
+    post:any;
     title:string,
     setTitle:React.Dispatch<React.SetStateAction<string>>,
     titleChange:(e: any) => void,
@@ -79,12 +81,12 @@ function ModifyPresenter({
         <HeadLine1>Modify</HeadLine1>
         <Postingdiv>
             <HeadLine3>제목</HeadLine3>
-            <Textinput type="text" onChange={titleChange}/>
+            <Textinput type="text" value={post!==null ? title:"loading"} onChange={titleChange}/>
             <br />
             <HeadLine3>내용</HeadLine3>
             <CKEditor
                 editor={ ClassicEditor }
-                data=""
+                data={post!==null ? post.content:"loading"}
                 onReady={ (editor: any) => {
                     // You can store the "editor" and use when it is needed.
                 } }
@@ -101,7 +103,7 @@ function ModifyPresenter({
             />
 
             <HeadLine3>익명<Anony type="checkbox" onChange={anonyChange} /></HeadLine3>
-            <button onClick={submit}>submit</button>
+            <button onClick={submit}>modify</button>
         </Postingdiv>
         </MainWrapper>
         <Footer/>

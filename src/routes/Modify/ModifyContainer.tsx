@@ -1,18 +1,20 @@
 import ModifyPresenter from './ModifyPresenter';
-import { useNavigate, useParams } from 'react-router';
+import { useNavigate, useParams, useLocation } from 'react-router';
 // @ts-ignore
 import { getCookie } from 'Cookie.ts';
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 function ModifyConatiner () {
+
   const navigate = useNavigate();
+  const location:any = useLocation();
   const [user,setUser] = useState<any>([]);
   const [userDetail,setUserDetail] = useState<any>(null);
   let [title, setTitle] = useState("");
   let [content, setContent] = useState("");
   let [anony, setAnony] = useState('0');
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState([]);
   const params = useParams();
 
   function auth(){
@@ -37,12 +39,26 @@ function ModifyConatiner () {
   },[auth()]); 
 
   useEffect(()=>{
+    if(location.state===null){
+      window.alert('no data');
+      navigate('/mypage');
+    }
     if(user){
     axios.post('http://13.125.81.51:3003/apis/user/getUserDetail', {
     userid:user.user_id
     },{withCredentials:true})
     .then((res)=>{
       setUserDetail(res.data[0]);
+      })
+      .then(()=>{
+        axios.post('http://13.125.81.51:3003/apis/board/getBoardDetail',{
+          board_id : parseInt(location.state.toString())
+        },{withCredentials:true})
+        .then((response)=>{
+          setPost(response.data[0]);
+          setTitle(response.data[0].title);
+          setContent(response.data[0].content);
+        })
       });
     } 
   },[user]);
@@ -78,13 +94,12 @@ function ModifyConatiner () {
     content.replace('</oembed>','</Oembed>');
     content.replace('<figure','<Figure');
     content.replace('</figure>','</Figure>');
-    if(userDetail){
-        axios.post('http://13.125.81.51:3003/apis/board/createBoard',{
+    if(post && location.state){
+        axios.post('http://13.125.81.51:3003/apis/board/updateBoard',{
+        board_id:parseInt(location.state),
         title:title,
-        categoryid:0,
         content:content,
-        isanony:anony,
-        team_id:userDetail.myteam,
+        isanony:anony
         },{
             headers:{
                 token:getCookie('USER')
@@ -93,14 +108,14 @@ function ModifyConatiner () {
         .then((response)=>{
             console.log(response);
             if(response.status===200){
-                window.alert('posting completed!!');
-                navigate(`/community/${userDetail.myteam}/1`);
+                window.alert('modifying completed!!');
+                navigate(`/mypage`);
             }else{
                 window.alert('status not 200');
                 }
             })
         }else{
-            window.alert('userdetail none');
+            window.alert('post data none');
         }
   }
 
@@ -110,6 +125,7 @@ function ModifyConatiner () {
         user={user}
         userDetail={userDetail}
         auth={auth}
+        post={post}
         title={title}
         setTitle={setTitle}
         titleChange={titleChange}

@@ -50,6 +50,7 @@ function MypagePresenter({
     myTeam,
     setMyTeam,
     teamChange,
+    modifyPost,
     deletePost,
     signOut,
 }:{
@@ -63,6 +64,7 @@ function MypagePresenter({
     myTeam:string,
     setMyTeam:React.Dispatch<React.SetStateAction<string>>,
     teamChange:(e: any) => void,
+    modifyPost:any,
     deletePost:any;
     signOut:any;
 }){
@@ -123,7 +125,7 @@ function MypagePresenter({
         )=>(
             <>
             <GoDetail href={`/communitydetail/${userDetail.myteam}/${data.board_id}`}>{data.title}</GoDetail>
-            <button>수정</button>
+            <button onClick={(e)=>{modifyPost(data.board_id?.toString(), e)}}>수정</button>
             <button onClick={(e)=>{deletePost(data.board_id?.toString(), e)}}>삭제</button>
             <br />
             </>

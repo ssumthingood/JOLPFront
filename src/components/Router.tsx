@@ -18,6 +18,7 @@ import Schedule from '../routes/Schedule';
 import Video from '../routes/Video';
 import VideoDetail from '../routes/VideoDetail';
 import React from 'react';
+import Modify from 'routes/Modify';
 
 const Router:React.FC = () => {
     return (
@@ -35,6 +36,7 @@ const Router:React.FC = () => {
             <Route path={`/news/:team/:pagenum`} element={<News />}></Route>
             <Route path={`/newsdetail/:team/:articleid`} element={<NewsDetail />}></Route>
             <Route path={`/posting`} element={<Posting />}></Route>
+            <Route path={`/modify`} element={<Modify />}></Route>
             <Route path={`/schedule`} element={<Schedule />}></Route>
             <Route path={`/video/:pagenum`} element={<Video />}></Route>
             <Route path={`/videodetail/:videoid`} element={<VideoDetail />}></Route>
