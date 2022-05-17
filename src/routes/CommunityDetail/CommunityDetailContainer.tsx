@@ -55,6 +55,20 @@ function CommunityDetailConatiner () {
       navigate('/modify', {state : postid.toString()});
   }
 
+  const deletePost=(postid, e) => {
+    e.preventDefault();
+    axios.post('http://13.125.81.51:3003/apis/board/deleteBoard',{
+        board_id: postid
+    },{
+        headers:{
+            token:getCookie('USER')
+        }
+    }).then((response)=>{
+    window.alert('삭제되었습니다.');
+    navigate(-1);
+    })
+  }
+
     useEffect(()=>{
             axios.post(`http://13.125.81.51:3003/apis/board/getBoardDetail`,{
               board_id:params.postid
@@ -71,6 +85,7 @@ function CommunityDetailConatiner () {
         userDetail={userDetail}
         post={post}
         modifyPost = {modifyPost}
+        deletePost = {deletePost}
         goCommunity = {goCommunity} />
     )
 }

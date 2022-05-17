@@ -44,6 +44,7 @@ function CommunityDetailPresenter({
     userDetail,
     post,
     modifyPost,
+    deletePost,
     goCommunity,
 }:{
     auth:()=>boolean,
@@ -51,6 +52,7 @@ function CommunityDetailPresenter({
     userDetail:any,
     post:any,
     modifyPost:any,
+    deletePost:any,
     goCommunity:() => void,
 }){
     return (
@@ -75,8 +77,8 @@ function CommunityDetailPresenter({
         <Loading/>
         }
         <Below>
-        <button onClick={(e)=>{modifyPost(post.board_id.toString(),e)}}>수정</button> 
-        <button onClick={goCommunity}>삭제</button> 
+        {userDetail?.user_id === post?.user_id ? <button onClick={(e)=>{modifyPost(post.board_id.toString(),e)}}>수정</button> : <></>}
+        {userDetail?.user_id === post?.user_id ?  <button onClick={(e)=>{deletePost(post.board_id.toString(),e)}}>삭제</button> : <></>}
         <button onClick={goCommunity}>목록으로</button> 
         </Below>
         </MainWrapper>
