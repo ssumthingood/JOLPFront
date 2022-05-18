@@ -22,7 +22,7 @@ const UserName = styled.div`
 `;
 
 const Seperate = styled.p`
-    margin: 2.5px;
+    margin: 5px;
     font-size: 15px;
     display:inline-block;
 `;
@@ -67,9 +67,9 @@ function CommunityDetailPresenter({
         <>
         <HeadLine1>{post.title}</HeadLine1>
         <UserName>
-        작성자 <Seperate>|</Seperate> {post.isanony===1 ? '익명':post.nickname}
-        조회수 <Seperate>|</Seperate> {post.readcount}
-        추천수 <Seperate>|</Seperate> {post.likes}
+        작성자 <Seperate>|</Seperate> {post.isanony===1 ? '익명':post.nickname}<Seperate>&nbsp;&nbsp;&nbsp;&nbsp;</Seperate>
+        조회수 <Seperate>|</Seperate> {post.readcount}<Seperate>&nbsp;&nbsp;&nbsp;&nbsp;</Seperate>
+        추천수 <Seperate>|</Seperate> {post.likes}<Seperate>&nbsp;&nbsp;&nbsp;&nbsp;</Seperate>
         </UserName>
         <UserContent>{Parser(post.content)}</UserContent>
         </>
