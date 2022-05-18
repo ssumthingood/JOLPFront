@@ -45,7 +45,7 @@ function MyteamPresenter({
             {teamInfo.homepage ? 
             <ReactTinyLink
             cardSize='large'
-            header={GetTeamname(userDetail?.myteam.toString())}
+            header={GetTeamname(userDetail?.myteam.toString()+' 공식 홈페이지')}
             showGraphic={false}
             maxLine={3}
             minLine={1}
@@ -58,7 +58,7 @@ function MyteamPresenter({
             {teamInfo.store ? 
             <ReactTinyLink
             cardSize='large'
-            header={GetTeamname(userDetail?.myteam.toString())}
+            header={GetTeamname(userDetail?.myteam.toString())+' 공식 스토어'}
             showGraphic={false}
             maxLine={3}
             minLine={1}
