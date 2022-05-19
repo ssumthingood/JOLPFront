@@ -33,7 +33,9 @@ const MyLink = styled.a`
 
 const MatchList = styled.div`
     width:30%;
+    height:300px;
     text-align:center;
+    overflow-y:scroll;
 `;
 
 const Match = styled.div`

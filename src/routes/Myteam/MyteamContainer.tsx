@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import { getCookie } from 'Cookie.ts';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import GetSquad from 'components/GetSquad';
 
 function MyteamConatiner () {
     const navigate = useNavigate();
@@ -11,6 +12,7 @@ function MyteamConatiner () {
     const [userDetail,setUserDetail] = useState<any>(null);
     let [teamInfo, setInfo] = useState([]);
     let [career, setCareer] = useState([]);
+    const [squad, setSquad] = useState<string[]>([]);
 
     function auth(){
         if(getCookie('USER')){
@@ -46,11 +48,12 @@ function MyteamConatiner () {
 
     useEffect(()=>{
       if(userDetail){
+        setSquad(GetSquad(userDetail.myteam.toString()));
+        console.log(squad);
         axios.post('http://13.125.81.51:3003/apis/football/getTeamInfo',{
           teamid:userDetail.myteam
         },{withCredentials:true})
         .then((res)=>{
-          console.log(res.data[0]);
           setInfo(res.data[0]);
         });
 
@@ -58,7 +61,6 @@ function MyteamConatiner () {
           teamid:userDetail.myteam
         },{withCredentials:true})
         .then((res)=>{
-          console.log(res.data[0]);
           setCareer(res.data[0]);
         });
       }
@@ -69,7 +71,8 @@ function MyteamConatiner () {
         user={user}
         userDetail={userDetail}
         teamInfo = {teamInfo}
-        career = {career} />
+        career = {career}
+        squad = {squad} />
     )
 }
 
