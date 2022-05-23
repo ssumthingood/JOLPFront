@@ -82,13 +82,13 @@ function MypagePresenter({
         </Section>
         <Section>
         <h4>닉네임</h4>
-        {user.nickname}<br />
-        <input type="text" onChange={nickChange}/>
+        {userDetail.nickname}<br />
+        <input type="text" value={nick} onChange={nickChange}/>
         </Section>
         <Section>  
         <h4>내 팀</h4>
         {Teamcode(userDetail.myteam)}<br />
-        <Select name="team" onChange={teamChange}>
+        <Select name="team" value={myTeam} onChange={teamChange}>
         <Option value="0">선택</Option>
             <Option value="120">아스날</Option>
             <Option value="121">아스톤 빌라</Option>

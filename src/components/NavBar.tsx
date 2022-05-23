@@ -117,7 +117,7 @@ function NavBar () {
                 <Menu><MyLink href={`/schedule`}>schedule</MyLink></Menu>
                 <Menu><MyLink href={userDetail ? `/community/${userDetail.myteam}/1`:`/main`}>community</MyLink></Menu>
                 <Menu><MyLink href={`/mypage`}>mypage</MyLink></Menu>
-                <Welcome>Welcome, {user.nickname}!</Welcome>
+                <Welcome>Welcome, {userDetail?.nickname}!</Welcome>
                 <LogoutBtn onClick={logOut}>logout</LogoutBtn>
             </Menus>
         </MainBar>

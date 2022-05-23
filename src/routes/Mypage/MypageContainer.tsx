@@ -42,6 +42,8 @@ function MypageConatiner () {
             },{withCredentials:true})
             .then((res)=>{
             setUserDetail(res.data[0]);
+            setNick(res.data[0].nickname);
+            setMyTeam(res.data[0].myteam);
             });
         } 
     },[user])
@@ -96,10 +98,24 @@ function MypageConatiner () {
     function submit(){
         const space = /\s/g; 
         if((nick.length>0 && !nick.match(space)) || myTeam !== "0"){
-            setNick("");
-            setMyTeam("");
-            window.alert('Change applied!!');
-            window.location.reload();
+            axios.post('http://13.125.81.51:3003/apis/user/updateUser',{
+                myteam:myTeam,
+                nickname:nick,
+            },{
+                headers:{
+                    token:getCookie('USER')
+                }
+            })
+            .then((res)=>{
+                if(res.data.updateUser){
+                    setNick("");
+                    setMyTeam("");
+                    window.alert('Change applied!!');
+                    window.location.reload();
+                }else{
+                    window.alert('unauthorized');
+                }
+            })
         }else{
             window.alert("Check plz");
         }
