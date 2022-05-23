@@ -2,7 +2,7 @@ import NewsPresenter from './NewsPresenter';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 // @ts-ignore
-import { getCookie } from 'Cookie.ts';
+import { getCookie, removeCookie, setCookie } from 'Cookie.ts';
 import React from 'react';
 
 

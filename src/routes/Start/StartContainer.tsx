@@ -8,7 +8,17 @@ import React from 'react';
 
 function StartConatiner () {
   const navigate = useNavigate();
-  const [user,setUser] = useState(null);
+  const [user,setUser] = useState<any>([]);
+  // const [user,setUser] = useState(null);
+  const [userDetail,setUserDetail] = useState<any>(null);
+
+  function auth(){
+    if(getCookie('USER')){
+      return true;
+    }else{
+      return false;
+    };
+  }
 
   useEffect(()=>{
     if(auth()){
@@ -44,7 +54,18 @@ function StartConatiner () {
       }
       });
     }
-  },[]);
+  },[auth()]);
+
+  useEffect(()=>{
+    if(user){
+    axios.post('http://13.125.81.51:3003/apis/user/getUserDetail', {
+    userid:user.user_id
+    },{withCredentials:true})
+    .then((res)=>{
+        setUserDetail(res.data[0]);
+    });
+} 
+},[user]);
 
   function goMain(){
     if(getCookie('USER')){
@@ -60,21 +81,14 @@ function StartConatiner () {
     navigate('/signin');
   }
 
-  function auth(){
-    if(getCookie('USER')){
-      return true;
-    }else{
-      return false;
-    };
-  }
-
     return (
         <StartPresenter
         goMain={goMain}
         goSignup={goSignup}
         goSignin={goSignin}
         auth = {auth}
-        user = {user}/>
+        user = {user}
+        userDetail= {userDetail}/>
     )
 }
 

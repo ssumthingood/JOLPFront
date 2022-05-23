@@ -2,9 +2,9 @@ import CommunityPresenter from './CommunityPresenter';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
-// @ts-ignore
-import { getCookie } from 'Cookie.ts';
 import React from 'react';
+// @ts-ignore
+import { getCookie, removeCookie, setCookie } from 'Cookie.ts';
  
 function CommunityConatiner () {
     const navigate = useNavigate();
@@ -30,14 +30,41 @@ function CommunityConatiner () {
 
     useEffect(()=>{
         if(auth()){
-            axios.post('http://13.125.81.51:3003/apis/auth/authToken', {
+          axios.post('http://13.125.81.51:3003/apis/auth/authToken', {
             token:getCookie('USER')
-            },{withCredentials:true})
-            .then((response)=>{
+        },{withCredentials:true
+        })
+        .then((response)=>{
+          if(response.data !== -3){
+            console.log(response.data);
             setUser(response.data);
+          }else if((response.data === -3) && (localStorage.refreshToken)){
+            window.alert('refreshing...');
+            axios.post('http://13.125.81.51:3003/apis/auth/refreshToken', {
+            refreshToken:localStorage.refreshToken
+            },{withCredentials:true
+            }).then((res)=>{
+              if(res.data !== -3){
+                window.alert('refreshed');
+                setCookie('USER',res.data.token,{
+                path:"/",
+                secure:false,
+                sameSite:"lax",
+              });
+              localStorage.setItem('refreshToken',res.data.refreshToken);
+              window.location.reload();
+              }else{
+                removeCookie('USER');
+                localStorage.removeItem('refreshToken');
+                alert('세션이 만료되었습니다. 다시 로그인해 주세요');
+                window.location.replace('/');
+              }
             });
-        }  
-    },[auth()]); 
+          }
+          });
+        }
+      },[auth()]);
+
 
     useEffect(()=>{
         if(user){

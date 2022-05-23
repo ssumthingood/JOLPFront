@@ -19,12 +19,14 @@ function StartPresenter({
     goSignup,
     goSignin,
     user,
+    userDetail,
 }:{
     auth:() => boolean,
     goMain:() => void,
     goSignup:() => void,
     goSignin:() => void,
-    user:any;
+    user:any,
+    userDetail:any,
 }) {
     return (
         <StartWrapper>
@@ -33,7 +35,7 @@ function StartPresenter({
         <>
         {user ? 
         <>
-        <h2>Welcome, {user.nickname}!</h2>
+        <h2>Welcome, {userDetail?.nickname}!</h2>
         <Btn1 type="button" onClick={goMain}>go Main</Btn1>
         </> :<></>}
         </>

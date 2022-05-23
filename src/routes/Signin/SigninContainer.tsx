@@ -5,8 +5,8 @@ import axios from 'axios';
 // @ts-ignore
 import { getCookie, setCookie, removeCookie } from 'Cookie.ts';
 import React from 'react';
-// @ts-ignore
-//import agent from 'components/Agent.js';
+
+
 function SigninConatiner () {
     const navigate = useNavigate();
     let [id, setId] = useState<string>("");
