@@ -4,45 +4,45 @@ function GetTeamnameEng(code:string):string {
     var teamName;
     switch(code){
         case '120':
-            teamName = ' Arsenal'; break;
+            teamName = 'Arsenal'; break;
         case '121':
             teamName = 'Aston Villa'; break;
         case '129':
-            teamName = ' Brentford'; break;
+            teamName = 'Brentford'; break;
         case '130':
-            teamName = ' Brighton'; break;
+            teamName = 'Brighton'; break;
         case '131':
-            teamName = ' Burnley'; break;
+            teamName = 'Burnley'; break;
         case '134':
-            teamName = ' Chelsea'; break;
+            teamName = 'Chelsea'; break;
         case '136':
-            teamName = ' Crystal Palace'; break;
+            teamName = 'CrystalPalace'; break;
         case '138':
-            teamName = ' Everton'; break;
+            teamName = 'Everton'; break;
         case '143':
-            teamName = ' Leeds'; break;
+            teamName = 'Leeds'; break;
         case '144':
-            teamName = ' Leicester'; break;
+            teamName = 'Leicester'; break;
         case '145':
-            teamName = ' Liverpool'; break;
+            teamName = 'Liverpool'; break;
         case '146':
-            teamName = ' Man City'; break;
+            teamName = 'ManCity'; break;
         case '147':
-            teamName = ' Man United'; break;
+            teamName = 'ManUnited'; break;
         case '149':
-            teamName = ' Newcastle'; break;
+            teamName = 'Newcastle'; break;
         case '150':
-            teamName = ' Norwich'; break;
+            teamName = 'Norwich'; break;
         case '158':
-            teamName = ' Southampton'; break;
+            teamName = 'Southampton'; break;
         case '163':
-            teamName = ' Tottenham'; break;
+            teamName = 'Tottenham'; break;
         case '164':
-            teamName = ' Watford'; break;
+            teamName = 'Watford'; break;
         case '166':
-            teamName = ' West Ham'; break;
+            teamName = 'WestHam'; break;
         case '171':
-            teamName = ' Wolves'; break;
+            teamName = 'Wolves'; break;
         default:
             teamName = 'NONE'; break;
     }

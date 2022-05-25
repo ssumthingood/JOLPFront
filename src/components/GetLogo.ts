@@ -3,47 +3,47 @@ import React from 'react';
 function GetLogo(code:string):string {
     var teampng;
     switch(code){
-        case ' Arsenal':
+        case 'Arsenal':
             teampng = '아스날.png'; break;
-        case ' Aston Villa':
+        case 'Aston Villa':
             teampng = '아스톤빌라.png'; break;
-        case ' Brentford':
+        case 'Brentford':
             teampng = '브렌트포드.png'; break;
-        case ' Brighton':
+        case 'Brighton':
             teampng = '브라이튼.png'; break;
-        case ' Burnley':
+        case 'Burnley':
             teampng = '번리.png'; break;
-        case ' Chelsea':
+        case 'Chelsea':
             teampng = '첼시.png'; break;
-        case ' Crystal Palace':
+        case 'CrystalPalace':
             teampng = '크팰.png'; break;
-        case ' Everton':
+        case 'Everton':
             teampng = '에버튼.png'; break;
-        case ' Leeds':
+        case 'Leeds':
             teampng = '리즈.png'; break;
-        case ' Leicester':
+        case 'Leicester':
             teampng = '레스터시티.png'; break;
-        case ' Leicester City':
+        case 'LeicesterCity':
             teampng = '레스터시티.png'; break;
-        case ' Liverpool':
+        case 'Liverpool':
             teampng = '리버풀.png'; break;
-        case ' Man City':
+        case 'ManCity':
             teampng = '맨시티.png'; break;
-        case ' Man United':
+        case 'ManUnited':
             teampng = '맨유.png'; break;
-        case ' Newcastle':
+        case 'Newcastle':
             teampng = '뉴캐슬.png'; break;
-        case ' Norwich':
+        case 'Norwich':
             teampng = '노리치.png'; break;
-        case ' Southampton':
+        case 'Southampton':
             teampng = '소튼.png'; break;
-        case ' Tottenham':
+        case 'Tottenham':
             teampng = '토트넘.png'; break;
-        case ' Watford':
+        case 'Watford':
             teampng = '왓포드.png'; break;
-        case ' West Ham':
+        case 'WestHam':
             teampng = '웨스트햄.png'; break;
-        case ' Wolves':
+        case 'Wolves':
             teampng = '울버햄튼.png'; break;
         default:
             teampng = 'NONE'; break;
