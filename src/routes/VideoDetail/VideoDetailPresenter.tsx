@@ -16,18 +16,6 @@ function VideoDetailPresenter({
         VideoDetail
         <div>
             영상 세부<br />
-            {/* <iframe
-            width="765"
-            height="480"
-            src="https://www.youtube.com/embed/RvVDINtIeNo"
-            title="YouTube video player"
-            allow="accelerometer;
-            autoplay;
-            clipboard-write;
-            encrypted-media;
-            gyroscope;
-            picture-in-picture">
-            </iframe> */}
             <iframe
             width="765"
             height="480"

@@ -138,7 +138,6 @@ function MypagePresenter({
         <Loading/>
         }
         <Section>
-            정보 변경은 30일마다 가능합니다.<br />
             닉네임은 공백 없이 설정합니다.
         </Section>
         <button onClick={submit}>정보 변경</button>
