@@ -59,6 +59,7 @@ function MainConatiner () {
   const [matches, setMatch] = useState<any>([]);
   const [user,setUser] = useState<any>([]);
   const [userDetail,setUserDetail] = useState<any>(null);
+  const [stad, setStad] = useState<any>(null);
   const params = useParams();
 
   function onDatechange(e:Date):void{
@@ -136,6 +137,14 @@ useEffect(()=>{
         setComu(response.data.reverse().slice(0,10));
         console.log(response.data.slice(0,10));
       });
+
+      axios.post('http://13.125.81.51:3003/apis/football/getStadiumInfo',{
+        teamid:userDetail.myteam.toString()
+      },{withCredentials:true})
+      .then((response)=>{
+        setStad(response.data[0]);
+        console.log(response.data[0]);
+      })
     }
   },[userDetail]);
 
@@ -160,7 +169,8 @@ useEffect(()=>{
       onDatechange={onDatechange}
       comu = {comu}
       user = {user}
-      userDetail = {userDetail} />
+      userDetail = {userDetail}
+      stad = {stad} />
   )
 }
 

@@ -40,8 +40,26 @@ const MyLink = styled.a`
 
 const MyTeamsec1 = styled.div`
     padding:15px;
+    padding-top:50px;
 `;
 
+const MyTeamsec2 = styled.div`
+    padding:15px;
+    width:50%;
+    padding-top:50px;
+`;
+
+const Myh3 = styled.h3`
+    text-align:center;
+    font-size:20px;
+    padding-top:15px;
+`;
+
+const Line = styled.p`
+    font-size:20px;
+    margin : 15px 0;
+    padding-top:25px;
+`;
 const MatchList = styled.div`
     width:30%;
     height:300px;
@@ -51,14 +69,16 @@ const MatchList = styled.div`
 `;
 
 const ComuList = styled.div`
-    width:40%;
+    width:80%;
     height:300px;
-    font-size:14px;
+    font-size:15px;
+    padding-top:50px;
 `;
 
 const ComuDetail = styled.a`
     color:black;
     line-height:20px;
+    padding-bottom:10px;
 `;
 
 
@@ -73,13 +93,15 @@ function MainPresenter({
     matches,
     user,
     userDetail,
+    stad,
 }:{
     params:any
     onDatechange:(e:Date)=>void,
     comu:any,
     matches:any,
     user:any,
-    userDetail:any
+    userDetail:any,
+    stad:any,
 }){
     return (
         <>
@@ -89,9 +111,14 @@ function MainPresenter({
         <Section>
             <SectionName>내 팀</SectionName>
             <MyTeamsec1>
-            <h3>{GetTeamname(userDetail?.myteam.toString())}</h3>
             <img src = {GetLogo(GetTeamnameEng(userDetail?.myteam.toString()))} height='200px'/>
+            <Myh3>{GetTeamname(userDetail?.myteam.toString())}</Myh3>
             </MyTeamsec1>
+            <MyTeamsec2>
+            <Line>연고지 : {stad?.region}</Line>
+            <Line>구장 : {stad?.stadium}</Line>
+            <Line>감독 : {stad?.manager}</Line>
+            </MyTeamsec2>
             <MyLink href={`/myteam`}>more</MyLink>
         </Section>
         <Section>
