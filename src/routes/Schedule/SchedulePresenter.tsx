@@ -49,6 +49,7 @@ const MatchContainer = styled.div`
     width:100%;
     text-align:center;
     padding:25px;
+    padding-bottom:0px;
     border-bottom: 3px solid whitesmoke;
 `;
 
