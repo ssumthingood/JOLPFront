@@ -113,7 +113,7 @@ function NavBar () {
         <MainBar>
             <Menus>
                 <Menu><MyLink href={`/myteam`}>my team</MyLink></Menu>
-                <Menu><MyLink href={userDetail ? `/news/${userDetail.myteam}/1`:`/main`}>news</MyLink></Menu>
+                <Menu><MyLink href={userDetail ? `/news/${userDetail.myteam}/1`:`/main`}>predict</MyLink></Menu>
                 <Menu><MyLink href={`/schedule`}>schedule</MyLink></Menu>
                 <Menu><MyLink href={userDetail ? `/community/${userDetail.myteam}/1`:`/main`}>community</MyLink></Menu>
                 <Menu><MyLink href={`/mypage`}>mypage</MyLink></Menu>

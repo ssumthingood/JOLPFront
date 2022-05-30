@@ -146,7 +146,7 @@ function MainPresenter({
             <MyLink href={`/schedule`} >more</MyLink>
         </Section>
         <Section>
-            <SectionName>뉴스</SectionName>
+            <SectionName>승부예측</SectionName>
             <div></div>
             <MyLink href={userDetail ? `/news/${userDetail.myteam}/1`:`/main`}>more</MyLink>
         </Section>
