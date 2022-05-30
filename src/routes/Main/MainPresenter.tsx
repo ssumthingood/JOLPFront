@@ -11,18 +11,19 @@ import GetLogo from 'components/GetLogo';
 import GetTeamnameEng from 'components/GetTeamnameEng';
 
 const MyCalendar  = styled(Calendar)`
-    width:300px;
-    max-height:300px;
+    width:330px;
+    max-height:330px;
     overflow-y:scroll;
     overflow-x:scroll;
     `;
 
 const Section = styled.div`
-    min-width:49%;
+    width:49%;
     min-height:400px;
     padding:2.5%;
     background-color:whitesmoke;
     border : 3px solid lightgray;
+    overflow: scroll;
     margin:0.5%;
     display:flex;
 `;
@@ -47,6 +48,7 @@ const MyTeamsec1 = styled.div`
 const MyTeamsec2 = styled.div`
     padding:15px;
     width:50%;
+    overflow-x:scroll;
     padding-top:50px;
 `;
 
