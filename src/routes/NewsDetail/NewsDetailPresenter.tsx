@@ -13,7 +13,7 @@ function NewsDetailPresenter({
         <Header />
         <NavBar/>
         <MainWrapper>
-        NewsDetail
+        Prediction
         <div>
             제목
             <div>title</div>

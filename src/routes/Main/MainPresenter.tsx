@@ -63,6 +63,7 @@ const Line = styled.p`
     margin : 15px 0;
     padding-top:25px;
 `;
+
 const MatchList = styled.div`
     width:30%;
     height:300px;

@@ -11,6 +11,7 @@ function MyteamConatiner () {
     const [user,setUser] = useState<any>([]);
     const [userDetail,setUserDetail] = useState<any>(null);
     let [teamInfo, setInfo] = useState([]);
+    const [stad, setStad] = useState<any>(null);
     let [career, setCareer] = useState([]);
     const [squad, setSquad] = useState<string[]>([]);
 
@@ -89,6 +90,13 @@ function MyteamConatiner () {
         .then((res)=>{
           setCareer(res.data[0]);
         });
+
+        axios.post('http://13.125.81.51:3003/apis/football/getStadiumInfo',{
+          teamid:userDetail.myteam.toString()
+        },{withCredentials:true})
+        .then((response)=>{
+          setStad(response.data[0]);
+        })
       }
     },[userDetail])
 
@@ -98,7 +106,8 @@ function MyteamConatiner () {
         userDetail={userDetail}
         teamInfo = {teamInfo}
         career = {career}
-        squad = {squad} />
+        squad = {squad}
+        stad = {stad} />
     )
 }
 

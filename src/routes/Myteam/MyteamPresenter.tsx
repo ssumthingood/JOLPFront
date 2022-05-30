@@ -22,29 +22,56 @@ const Section = styled.div`
     margin-bottom:25px;
 `;
 
+const SmallSection1 = styled.div`
+    display:inline-block;
+    padding:10px;
+    margin-bottom:25px;
+`;
+
+const SmallSection2 = styled.div`
+    position:absolute;
+    padding:75px;
+    display:inline-block;
+`;
+
+const Line = styled.p`
+    font-size:20px;
+    margin : 15px 0;
+    padding-top:25px;
+`;
+
 function MyteamPresenter({
     user,
     userDetail,
     teamInfo,
     career,
-    squad
+    squad,
+    stad,
 }:{
     user:any,
     userDetail:any,
     teamInfo:any,
     career:any,
     squad:string[],
+    stad:any,
 }){
     return (
         <>
         <Header />
         <NavBar/>
         <MainWrapper>
-
         <Section>
+        <SmallSection1>
         <HeadLine1>Myteam</HeadLine1>
         <HeadLine1>{GetTeamname(userDetail?.myteam.toString())}</HeadLine1>
         <img src = {GetLogo(GetTeamnameEng(userDetail?.myteam.toString()))} height='200px'/>
+        </SmallSection1>
+
+        <SmallSection2>
+        <Line>연고지 : {stad?.region}</Line>
+        <Line>구장 : {stad?.stadium}</Line>
+        <Line>감독 : {stad?.manager}</Line>
+        </SmallSection2>
         </Section>
 
         <Section>
