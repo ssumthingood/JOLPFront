@@ -90,7 +90,7 @@ function MainPresenter({
             <SectionName>내 팀</SectionName>
             <MyTeamsec1>
             <h3>{GetTeamname(userDetail?.myteam.toString())}</h3>
-            <img src = {GetLogo(GetTeamnameEng(userDetail?.myteam.toString()))} height='250px'/>
+            <img src = {GetLogo(GetTeamnameEng(userDetail?.myteam.toString()))} height='200px'/>
             </MyTeamsec1>
             <MyLink href={`/myteam`}>more</MyLink>
         </Section>

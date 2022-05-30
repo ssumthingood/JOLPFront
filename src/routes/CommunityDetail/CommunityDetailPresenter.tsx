@@ -38,6 +38,10 @@ const Below = styled.div`
     text-align:right;
 `;
 
+const MyButton = styled.button`
+    margin:5px;
+`;
+
 function CommunityDetailPresenter({
     auth,
     user,
@@ -77,9 +81,9 @@ function CommunityDetailPresenter({
         <Loading/>
         }
         <Below>
-        {userDetail?.user_id === post?.user_id ? <button onClick={(e)=>{modifyPost(post.board_id.toString(),e)}}>수정</button> : <></>}
-        {userDetail?.user_id === post?.user_id ?  <button onClick={(e)=>{deletePost(post.board_id.toString(),e)}}>삭제</button> : <></>}
-        <button onClick={goCommunity}>목록으로</button> 
+        {userDetail?.user_id === post?.user_id ? <MyButton onClick={(e)=>{modifyPost(post.board_id.toString(),e)}}>수정</MyButton> : <></>}
+        {userDetail?.user_id === post?.user_id ?  <MyButton onClick={(e)=>{deletePost(post.board_id.toString(),e)}}>삭제</MyButton> : <></>}
+        <MyButton onClick={goCommunity}>목록으로</MyButton> 
         </Below>
         </MainWrapper>
         <Footer />

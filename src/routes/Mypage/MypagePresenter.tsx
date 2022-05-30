@@ -39,6 +39,10 @@ const GoDetail = styled.a`
     width:100%;
 `;
 
+const MyButton = styled.button`
+    margin:3px;
+`;
+
 function MypagePresenter({
     user,
     userDetail,
@@ -125,8 +129,8 @@ function MypagePresenter({
         )=>(
             <>
             <GoDetail href={`/communitydetail/${userDetail.myteam}/${data.board_id}`}>{data.title}</GoDetail>
-            <button onClick={(e)=>{modifyPost(data.board_id?.toString(), e)}}>수정</button>
-            <button onClick={(e)=>{deletePost(data.board_id?.toString(), e)}}>삭제</button>
+            <MyButton onClick={(e)=>{modifyPost(data.board_id?.toString(), e)}}>수정</MyButton>
+            <MyButton onClick={(e)=>{deletePost(data.board_id?.toString(), e)}}>삭제</MyButton>
             <br />
             </>
         ))
@@ -140,8 +144,8 @@ function MypagePresenter({
         <Section>
             닉네임은 공백 없이 설정합니다.
         </Section>
-        <button onClick={submit}>정보 변경</button>
-        <button onClick={signOut}>회원 탈퇴</button>
+        <MyButton onClick={submit}>정보 변경</MyButton>
+        <MyButton onClick={signOut}>회원 탈퇴</MyButton>
         </MainWrapper>
         <Footer />
         </>

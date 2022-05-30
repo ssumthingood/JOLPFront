@@ -52,6 +52,20 @@ const MatchContainer = styled.div`
     border-bottom: 3px solid whitesmoke;
 `;
 
+const TeamLogo1 = styled.img`
+    margin : 0px 250px;
+`;
+
+const TeamLogo2 = styled.img`
+    margin : 0px 250px;
+`;
+
+const TeamName = styled.div`
+    position:relative;
+    top:-100px;
+    font-size:30px;
+`;
+
 function SchedulePresenter({
     date,
     matches,
@@ -93,10 +107,13 @@ function SchedulePresenter({
                 <MatchContainer>
                     <h4>{matchdata.season}시즌</h4><br/>
                     {matchdata.datetime?.toString().substring(0,10)}<br/>
-                    <img src = {GetLogo(matchdata.hometeam!.toString())} height='100px'/>
-                    {matchdata.hometeam} vs {matchdata.awayteam}
-                    <img src = {GetLogo(matchdata.awayteam!.toString())} height='100px'/><br />
+                    <TeamLogo1 src = {GetLogo(matchdata.hometeam!.toString())} height='125px'/>
+                    <TeamLogo2 src = {GetLogo(matchdata.awayteam!.toString())} height='125px'/><br />
+                    <TeamName>
+                    {matchdata.hometeam} vs {matchdata.awayteam}<br/>
                     {matchdata.fthg} : {matchdata.ftag}
+                    </TeamName>
+                    
                 </MatchContainer>
             )):
             <>
