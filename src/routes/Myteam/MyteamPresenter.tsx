@@ -95,7 +95,7 @@ function MyteamPresenter({
         PL 우승 : {career.PL} 회 <br/>{career.PL === 0 ? '':'('+career.PL_YEAR+')'}<br/>
         UCL 우승 : {career.UCL} 회 <br/>{career.UCL === 0 ? '':'('+career.UCL_YEAR+')'}<br/>
         UEL 우승 : {career.UEL} 회 <br/>{career.UEL === 0 ? '':'('+career.UEL_YEAR+')'}<br/>
-        FA컴 우승 : {career.FA} 회 <br/>{career.FA === 0 ? '':'('+career.FA_YEAR+')'}<br/>
+        FA컵 우승 : {career.FA} 회 <br/>{career.FA === 0 ? '':'('+career.FA_YEAR+')'}<br/>
         리그 컵 우승 : {career.EFL} 회 <br/>{career.EFL === 0 ? '':'('+career.EFL_YEAR+')'}<br/>
         </Section>
  
