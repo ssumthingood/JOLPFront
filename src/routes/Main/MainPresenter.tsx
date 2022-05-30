@@ -28,8 +28,9 @@ const Section = styled.div`
 `;
 
 const SectionName = styled.div`
-    font-size:20px;
-    width:75px;
+    font-size:18px;
+    font-weight:bold;
+    width:90px;
 `;
 
 const MyLink = styled.a`
