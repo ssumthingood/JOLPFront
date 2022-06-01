@@ -38,17 +38,19 @@ function StartConatiner () {
         }).then((res)=>{
           if(res.data !== -3){
             window.alert('refreshed');
+            console.log(res.data.token);
             setCookie('USER',res.data.token,{
             path:"/",
             secure:false,
             sameSite:"lax",
           });
           localStorage.setItem('refreshToken',res.data.refreshToken);
-          window.location.reload();
+          //window.location.reload();
           }else{
             removeCookie('USER');
             localStorage.removeItem('refreshToken');
             alert('세션이 만료되었습니다. 다시 로그인해 주세요');
+            window.location.reload();
           }
         });
       }

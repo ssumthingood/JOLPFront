@@ -56,8 +56,8 @@ function NewsPresenter({
         <Header />
         <NavBar/>
         <MainWrapper>
-        <HeadLine1>NEWS</HeadLine1>
-        <ButtonLi>
+        <HeadLine1>Predict</HeadLine1>
+        {/* <ButtonLi>
             <ButtonItem>
             <LiButton onClick={set1}>최신순</LiButton>
             </ButtonItem>
@@ -69,9 +69,9 @@ function NewsPresenter({
             <ButtonItem>
             <LiButton onClick={set3}>추천순</LiButton>
             </ButtonItem>
-        </ButtonLi>
+        </ButtonLi> */}
         <div>
-            <h3>글 리스트</h3>
+            <h3>다음 경기 결과 예측</h3>
         </div>
         </MainWrapper>
         <Footer />

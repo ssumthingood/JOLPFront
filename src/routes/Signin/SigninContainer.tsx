@@ -43,9 +43,8 @@ function SigninConatiner () {
                     sameSite:"lax",
                 });
                 localStorage.setItem('refreshToken',response.data.refreshToken);
-            window.alert('setcookie completed');
-            console.log('Login completed');
-            navigate('/');
+                console.log('Login completed');
+                navigate('/');
             } else {
             window.alert("다시해라");
             };

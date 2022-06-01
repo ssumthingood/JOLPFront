@@ -61,7 +61,7 @@ function MainConatiner () {
   const [userDetail,setUserDetail] = useState<any>(null);
   const [stad, setStad] = useState<any>(null);
   const params = useParams();
-
+  const [auth,setAuth] = useState<boolean>(false);
   function onDatechange(e:Date):void{
     dd = String(e.getDate()).padStart(2, '0');
     mm = String(e.getMonth() + 1).padStart(2, '0'); //January is 0!
@@ -70,23 +70,24 @@ function MainConatiner () {
     setDate(nowDay);
   }
 
-  function auth(){
+  useEffect(()=>{
     if(getCookie('USER')){
-      return true;
+      setAuth(true);
     }else{
       window.alert('로그인해주세요');
       window.location.replace('/');
-      return false;
+      setAuth(false);
     };
-  }
+  },[])
 
   useEffect(()=>{
-    if(auth()){
+    if(auth){
       axios.post('http://13.125.81.51:3003/apis/auth/authToken', {
         token:getCookie('USER')
     },{withCredentials:true
     })
     .then((response)=>{
+      console.log('auth completed');
       if(response.data !== -3){
         console.log(response.data);
         setUser(response.data);
@@ -98,24 +99,25 @@ function MainConatiner () {
         }).then((res)=>{
           if(res.data !== -3){
             window.alert('refreshed');
+            console.log(res.data.token);
             setCookie('USER',res.data.token,{
             path:"/",
             secure:false,
             sameSite:"lax",
           });
           localStorage.setItem('refreshToken',res.data.refreshToken);
-          window.location.reload();
+          // window.location.reload();
           }else{
             removeCookie('USER');
             localStorage.removeItem('refreshToken');
             alert('세션이 만료되었습니다. 다시 로그인해 주세요');
-            window.location.replace('/');
+            // window.location.reload();
           }
         });
       }
       });
     }
-  },[auth()]);
+  },[auth]);
 
 useEffect(()=>{
         if(user){
@@ -135,7 +137,6 @@ useEffect(()=>{
       },{withCredentials:true})
       .then((response)=>{
         setComu(response.data.reverse().slice(0,10));
-        console.log(response.data.slice(0,10));
       });
 
       axios.post('http://13.125.81.51:3003/apis/football/getStadiumInfo',{
@@ -143,13 +144,12 @@ useEffect(()=>{
       },{withCredentials:true})
       .then((response)=>{
         setStad(response.data[0]);
-        console.log(response.data[0]);
       })
     }
   },[userDetail]);
 
   useEffect(()=>{
-    if(auth()){
+    if(auth){
         axios.post('http://13.125.81.51:3003/apis/football/getMatchList',{
           date:date.toString()
         },{
@@ -157,7 +157,6 @@ useEffect(()=>{
         })
         .then((response)=>{
           setMatch(response.data);
-          console.log(response.data);
         })
     }
 },[date]);
