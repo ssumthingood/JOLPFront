@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import NavBar from 'components/NavBar';
+// import NavBar from 'components/NavBar';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import React, { ReactChild, ReactFragment, ReactPortal } from 'react';
@@ -90,6 +90,70 @@ const Match = styled.div`
     margin:10px 0;
 `;
 
+//여기부터 Navbar 그대로 가져옴
+const MainBar = styled.div`
+min-width:1500px;;
+background-color:black;
+color: whitesmoke;
+font-size:15px;
+height:25px;
+line-height:25px;
+`;
+
+const Menus = styled.ul`
+width:100%;
+list-style:none;
+display:flex;
+padding-left:70px;
+`;
+
+const Menu = styled.li`
+margin: 0 30px;
+min-width:10%;
+text-align:center;
+height:25px;
+`;
+
+const MyLinkNav = styled.a`
+display:block;
+height:25px;
+color:white;
+&:hover{
+    color:black;
+    background-color:white;
+    transition:0.5s ease;
+    cursor:pointer;
+}
+`;
+
+const Welcome = styled.span`
+display:block;
+color:white;
+margin: 0 20px;
+min-width:100px;
+//min-width:10%
+text-align:center;
+height:25px;
+overflow:hidden;
+`;
+
+const LogoutBtn = styled.button`
+// width:180px;
+min-width:10%;
+height:25px;
+margin: 0 30px;
+background-color:black;
+color:white;
+border:none;
+&:hover{
+    color:black;
+    background-color:white;
+    transition:0.5s ease;
+    cursor:pointer;
+}
+`;
+//navbar
+
 function MainPresenter({
     params,
     onDatechange,
@@ -98,6 +162,9 @@ function MainPresenter({
     user,
     userDetail,
     stad,
+    //navbar
+    logOut,
+    //navbar
 }:{
     params:any
     onDatechange:(e:Date)=>void,
@@ -106,11 +173,27 @@ function MainPresenter({
     user:any,
     userDetail:any,
     stad:any,
+    //navbar
+    logOut:any,
+    //navbar
 }){
     return (
         <>
         <Header />
-        <NavBar/>
+        {/* <NavBar/> */}
+        {/* navbar */}
+        <MainBar>
+        <Menus>
+        <Menu><MyLinkNav href={`/myteam`}>my team</MyLinkNav></Menu>
+        <Menu><MyLinkNav href={userDetail ? `/news/${userDetail.myteam}/1`:`/main`}>predict</MyLinkNav></Menu>
+        <Menu><MyLinkNav href={`/schedule`}>schedule</MyLinkNav></Menu>
+        <Menu><MyLinkNav href={userDetail ? `/community/${userDetail.myteam}/1`:`/main`}>community</MyLinkNav></Menu>
+        <Menu><MyLinkNav href={`/mypage`}>mypage</MyLinkNav></Menu>
+        <Welcome>Welcome, {userDetail?.nickname}!</Welcome>
+        <LogoutBtn onClick={logOut}>logout</LogoutBtn>
+        </Menus>
+        </MainBar>
+    {/* navbar */}
         <MainWrapper>
         <Section>
             <SectionName>내 팀</SectionName>

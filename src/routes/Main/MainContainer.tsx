@@ -160,6 +160,14 @@ useEffect(()=>{
         })
     }
 },[date]);
+//NavBar
+function logOut() {
+  removeCookie('USER');
+  localStorage.removeItem('refreshToken');
+  window.alert('로그아웃 되었습니다.');
+  window.location.replace('/');  
+}
+//NavBar
 
   return (
       <MainPresenter
@@ -169,7 +177,11 @@ useEffect(()=>{
       comu = {comu}
       user = {user}
       userDetail = {userDetail}
-      stad = {stad} />
+      stad = {stad}
+      //navBar
+      logOut={logOut}
+      //navBar 
+      />
   )
 }
 
