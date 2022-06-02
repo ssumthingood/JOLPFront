@@ -129,27 +129,38 @@ function NavBar () {
     }
   },[auth]);
 
-    function logOut() {
-        removeCookie('USER');
-        localStorage.removeItem('refreshToken');
-        window.alert('로그아웃 되었습니다.');
-        window.location.replace('/');  
-    }
+  useEffect(()=>{
+    if(user){
+    axios.post('http://13.125.81.51:3003/apis/user/getUserDetail', {
+    userid:user.user_id
+    },{withCredentials:true})
+    .then((res)=>{
+        setUserDetail(res.data[0]);
+    });
+  } 
+  },[user]);
 
-    return (
-        <>
-        <MainBar>
-            <Menus>
-                <Menu><MyLink href={`/myteam`}>my team</MyLink></Menu>
-                <Menu><MyLink href={userDetail ? `/news/${userDetail.myteam}/1`:`/main`}>predict</MyLink></Menu>
-                <Menu><MyLink href={`/schedule`}>schedule</MyLink></Menu>
-                <Menu><MyLink href={userDetail ? `/community/${userDetail.myteam}/1`:`/main`}>community</MyLink></Menu>
-                <Menu><MyLink href={`/mypage`}>mypage</MyLink></Menu>
-                <Welcome>Welcome, {userDetail?.nickname}!</Welcome>
-                <LogoutBtn onClick={logOut}>logout</LogoutBtn>
-            </Menus>
-        </MainBar>
-        </>
+  function logOut() {
+    removeCookie('USER');
+    localStorage.removeItem('refreshToken');
+    window.alert('로그아웃 되었습니다.');
+    window.location.replace('/');  
+  }
+
+  return (
+    <>
+    <MainBar>
+      <Menus>
+        <Menu><MyLink href={`/myteam`}>my team</MyLink></Menu>
+        <Menu><MyLink href={userDetail ? `/news/${userDetail.myteam}/1`:`/main`}>predict</MyLink></Menu>
+        <Menu><MyLink href={`/schedule`}>schedule</MyLink></Menu>
+        <Menu><MyLink href={userDetail ? `/community/${userDetail.myteam}/1`:`/main`}>community</MyLink></Menu>
+        <Menu><MyLink href={`/mypage`}>mypage</MyLink></Menu>
+        <Welcome>Welcome, {userDetail?.nickname}!</Welcome>
+        <LogoutBtn onClick={logOut}>logout</LogoutBtn>
+      </Menus>
+    </MainBar>
+    </>
     )
 }
 
