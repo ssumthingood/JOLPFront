@@ -106,7 +106,7 @@ function MainConatiner () {
             sameSite:"lax",
           });
           localStorage.setItem('refreshToken',res.data.refreshToken);
-          // window.location.reload();
+          window.location.reload();
           }else{
             removeCookie('USER');
             localStorage.removeItem('refreshToken');

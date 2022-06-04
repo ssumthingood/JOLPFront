@@ -4,6 +4,8 @@ import Header from "components/Header";
 import NavBar from "components/NavBar";
 import MainWrapper from "components/MainWrapper";
 import React from "react";
+import GetLogo from "components/GetLogo";
+import GetTeamnameEng from "components/GetTeamnameEng";
 
 const HeadLine1 = styled.h1`
     font-size:25px;
@@ -39,24 +41,28 @@ const LiButton = styled.button`
 `;
 
 function NewsPresenter({
-    show,
-    setShow,
-    set1,
-    set2,
-    set3,
+    prediction,
+    past
+    // show,
+    // setShow,
+    // set1,
+    // set2,
+    // set3,
 }:{
-    show:Number,
-    setShow:React.Dispatch<React.SetStateAction<Number>>,
-    set1:() => void,
-    set2:() => void,
-    set3:() => void
+    // show:Number,
+    // setShow:React.Dispatch<React.SetStateAction<Number>>,
+    // set1:() => void,
+    // set2:() => void,
+    // set3:() => void
+    prediction:any,
+    past:any[],
 }){
     return (
         <>
         <Header />
         <NavBar/>
         <MainWrapper>
-        <HeadLine1>Predict</HeadLine1>
+        <HeadLine1>Prediction</HeadLine1>
         {/* <ButtonLi>
             <ButtonItem>
             <LiButton onClick={set1}>최신순</LiButton>
@@ -71,7 +77,11 @@ function NewsPresenter({
             </ButtonItem>
         </ButtonLi> */}
         <div>
-            <h3>다음 경기 결과 예측</h3>
+            <h3>{GetTeamnameEng(prediction?.team_id.toString())}의 다음 경기 결과 예측</h3>
+            {/* <img src = {GetLogo(GetTeamnameEng(prediction?.team_id.toString()))} height='200px'/> */}
+            <img src = {GetLogo(prediction?.hometeam.toString())} height='200px'/>
+            vs
+            <img src = {GetLogo(prediction?.awayteam.toString())} height='200px'/>
         </div>
         </MainWrapper>
         <Footer />

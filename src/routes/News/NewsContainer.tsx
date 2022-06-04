@@ -11,8 +11,8 @@ function NewsConatiner () {
     const navigate = useNavigate();
     const [user,setUser] = useState<any>([]);
     const [userDetail,setUserDetail] = useState<any>(null);
-    const [show ,setShow] = useState<Number>(1);
     const [prediction, setPrediction] = useState<any>(null);
+    const [past, setPast] = useState<any>(null);
 
     function auth(){
       if(getCookie('USER')){
@@ -72,40 +72,36 @@ function NewsConatiner () {
     } 
     },[user]);
 
-    function set1(){
-        setShow(1);
-        console.log(show);
-    }
-
-    function set2(){
-        setShow(2);
-        console.log(show);
-    }
-
-    function set3(){
-        setShow(3);
-        console.log(show);
-    }
-
     useEffect(()=>{
       if(userDetail){
       axios.post('http://13.125.81.51:3003/apis/football/getPredictInfo',{
           teamid:userDetail.myteam.toString()
       },{withCredentials:true})
       .then((response)=>{
-        setPrediction(response.data);
+        setPrediction(response.data[0]);
         console.log(response.data);
-      })
+      });
       }
     },[userDetail]);
 
+    useEffect(()=>{
+      if(prediction){
+      axios.post('http://13.125.81.51:3003/apis/football/getRelativeRecord',{
+          teamid:120,
+          teamid2:138,
+      },{withCredentials:true})
+      .then((response)=>{
+        setPast(response.data.slice(0,-1));
+        console.log(response.data.slice(0,-1));
+      });
+      }
+    },[prediction]);
+
     return (
-        <NewsPresenter 
-        show={show}
-        setShow={setShow}
-        set1 = {set1}
-        set2 = {set2}
-        set3 = {set3} />
+        <NewsPresenter
+        prediction={prediction}
+        past = {past}
+        />
     )
 }
 

@@ -1,6 +1,6 @@
 import { Cookies } from "react-cookie";
 
-const cookies = new Cookies()
+const cookies = new Cookies();
 
 export const setCookie = (name:string, value:string, option?:any)=>{
     console.log("cookie setted");
