@@ -176,14 +176,14 @@ function MainConatiner() {
     useEffect(() => {
         if (auth) {
             axios
-                .post(
-                    "http://13.125.81.51:3003/apis/football/getMatchList",
+                .get(
+                    `http://13.125.81.51:3003/apis/football/getMatch?date=${date.toString()}`,
                     {
-                        date: date.toString(),
+                        // date: date.toString(),
                     },
-                    {
-                        withCredentials: true,
-                    },
+                    // {
+                    //     withCredentials: true,
+                    // },
                 )
                 .then((response) => {
                     setMatch(response.data);
