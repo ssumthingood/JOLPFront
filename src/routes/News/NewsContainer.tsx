@@ -73,12 +73,12 @@ function NewsConatiner() {
     useEffect(() => {
         if (user) {
             axios
-                .post(
-                    "http://13.125.81.51:3003/apis/user/getUserDetail",
+                .get(
+                    `http://13.125.81.51:3003/apis/user/getUser/${user.user_id}`,
                     {
-                        userid: user.user_id,
+                        // userid: user.user_id,
                     },
-                    { withCredentials: true },
+                    // { withCredentials: true },
                 )
                 .then((res) => {
                     setUserDetail(res.data[0]);
@@ -89,12 +89,12 @@ function NewsConatiner() {
     useEffect(() => {
         if (userDetail) {
             axios
-                .post(
-                    "http://13.125.81.51:3003/apis/football/getPredictInfo",
+                .get(
+                    `http://13.125.81.51:3003/apis/football/getPredictInfo?teamid=${userDetail.myteam}`,
                     {
-                        teamid: userDetail.myteam.toString(),
+                        // teamid: userDetail.myteam.toString(),
                     },
-                    { withCredentials: true },
+                    // { withCredentials: true },
                 )
                 .then((response) => {
                     setPrediction(response.data[0]);
@@ -106,13 +106,13 @@ function NewsConatiner() {
     useEffect(() => {
         if (prediction) {
             axios
-                .post(
-                    "http://13.125.81.51:3003/apis/football/getRelativeRecord",
+                .get(
+                    `http://13.125.81.51:3003/apis/football/getRelativeRecord?teamid=${GetTeamcode(prediction.hometeam)}&teamid2=${GetTeamcode(prediction.awayteam)}`,
                     {
-                        teamid: GetTeamcode(prediction.hometeam),
-                        teamid2: GetTeamcode(prediction.awayteam),
+                        // teamid: GetTeamcode(prediction.hometeam),
+                        // teamid2: GetTeamcode(prediction.awayteam),
                     },
-                    { withCredentials: true },
+                    // { withCredentials: true },
                 )
                 .then((response) => {
                     setPast(response.data.slice(0, -1));

@@ -72,21 +72,27 @@ function NewsPresenter({ prediction, past }: { prediction: any; past: any[] }) {
                 <HeadLine1>Prediction</HeadLine1>
                 <h1>{GetTeamnameEng(prediction?.team_id.toString())}의 다음 경기 결과 예측(기대 득점)</h1>
                 <Prediction>
-                    <div>
-                        <img src={GetLogo(prediction?.hometeam.toString())} height="150px" />
-                        <br />
-                        {prediction?.hometeam}
-                        <br />
-                        {prediction?.fthg}
-                    </div>
-                    <VS>vs</VS>
-                    <div>
-                        <img src={GetLogo(prediction?.awayteam.toString())} height="150px" />
-                        <br />
-                        {prediction?.awayteam}
-                        <br />
-                        {prediction?.ftag}
-                    </div>
+                    {prediction ? (
+                        <>
+                            <div>
+                                <img src={GetLogo(prediction?.hometeam.toString())} height="150px" />
+                                <br />
+                                {prediction?.hometeam}
+                                <br />
+                                {prediction?.fthg}
+                            </div>
+                            <VS>vs</VS>
+                            <div>
+                                <img src={GetLogo(prediction?.awayteam.toString())} height="150px" />
+                                <br />
+                                {prediction?.awayteam}
+                                <br />
+                                {prediction?.ftag}
+                            </div>
+                        </>
+                    ) : (
+                        <>다음 경기가 없습니다.</>
+                    )}
                 </Prediction>
                 <h1>상대 전적(최근 3시즌)</h1>
                 {past ? (
