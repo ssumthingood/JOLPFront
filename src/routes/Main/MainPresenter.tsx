@@ -80,9 +80,17 @@ const ComuList = styled.div`
 `;
 
 const ComuDetail = styled.a`
+    display: block;
+    height: 10px;
     color: black;
-    line-height: 20px;
-    padding-bottom: 10px;
+    line-height: 12px;
+    padding-left: 15px;
+    border-bottom: 1px dashed black;
+    &:hover {
+        color: white;
+        background-color: black;
+        transition: 0.5s ease;
+    }
 `;
 
 const Match = styled.div`
