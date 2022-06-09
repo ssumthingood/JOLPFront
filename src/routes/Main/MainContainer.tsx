@@ -61,6 +61,7 @@ function MainConatiner() {
     const [user, setUser] = useState<any>([]);
     const [userDetail, setUserDetail] = useState<any>(null);
     const [stad, setStad] = useState<any>(null);
+    const [prediction, setPrediction] = useState<any>(null);
     const params = useParams();
     const [auth, setAuth] = useState<boolean>(false);
     function onDatechange(e: Date): void {
@@ -170,6 +171,18 @@ function MainConatiner() {
                 .then((response) => {
                     setStad(response.data[0]);
                 });
+
+            axios
+                .get(
+                    `http://13.125.81.51:3003/apis/football/getPredictInfo?teamid=${userDetail.myteam}`,
+                    {
+                        // teamid: userDetail.myteam.toString(),
+                    },
+                    // { withCredentials: true },
+                )
+                .then((response) => {
+                    setPrediction(response.data[0]);
+                });
         }
     }, [userDetail]);
 
@@ -207,6 +220,7 @@ function MainConatiner() {
             comu={comu}
             user={user}
             userDetail={userDetail}
+            prediction={prediction}
             stad={stad}
             //navBar
             logOut={logOut}
