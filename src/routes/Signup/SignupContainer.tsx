@@ -1,12 +1,12 @@
-import SignupPresenter from './SignupPresenter';
-import { useCallback, useState } from 'react';
-import { useNavigate } from 'react-router';
-import axios from 'axios';
+import SignupPresenter from "./SignupPresenter";
+import { useCallback, useState } from "react";
+import { useNavigate } from "react-router";
+import axios from "axios";
 // @ts-ignore
-import { getCookie } from 'Cookie.ts';
-import React from 'react';
+import { getCookie } from "Cookie.ts";
+import React from "react";
 
-function SignupConatiner () {
+function SignupConatiner() {
     const navigate = useNavigate();
     let [name, setName] = useState<string>("");
     let [id, setId] = useState<string>("");
@@ -14,32 +14,37 @@ function SignupConatiner () {
     let [pw2, setPw2] = useState<string>("");
     let [myTeam, setMyTeam] = useState("0");
 
-    function auth(){
-        if(getCookie('USER')){
-        window.alert('로그인 중에는 이용하실 수 없습니다.');
-        window.location.replace('/');
-        return true;
-        }else{
-          return false;
-        };
-      }
+    function auth() {
+        if (getCookie("USER")) {
+            window.alert("로그인 중에는 이용하실 수 없습니다.");
+            window.location.replace("/");
+            return true;
+        } else {
+            return false;
+        }
+    }
 
-    function goStart():void{
+    function goStart(): void {
         const regx = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-        const space = /\s/g; 
-        if((pw === pw2) && (id.length>0) && (myTeam !=="0")&& !regx.test(id) && !regx.test(pw) && !id.match(space) && !pw.match(space) ) {
-            axios.post('http://13.125.81.51:3003/apis/auth/signUp',{
-            loginid:id,
-            password:pw,
-            myteam:myTeam,
-            nickname:name,
-            },{withCredentials:true})
-            .then((response)=>{
-                window.alert(`회원 id : ${response.data}`);
-            });
-            navigate('/');
-        }else{
-            window.alert("check plz");
+        const space = /\s/g;
+        if (pw === pw2 && id.length > 0 && myTeam !== "0" && !regx.test(id) && !regx.test(pw) && !id.match(space) && !pw.match(space)) {
+            axios
+                .post(
+                    "http://13.125.81.51:3003/apis/auth/signUp",
+                    {
+                        loginid: id,
+                        password: pw,
+                        myteam: myTeam,
+                        nickname: name,
+                    },
+                    { withCredentials: true },
+                )
+                .then((response) => {
+                    window.alert(`회원 id : ${response.data}`);
+                });
+            navigate("/");
+        } else {
+            window.alert("다시 확인해 주세요.");
         }
     }
 
@@ -47,57 +52,58 @@ function SignupConatiner () {
         (e) => {
             setName(e.target.value);
         },
-        [name]
-    )
+        [name],
+    );
 
     const idChange = useCallback(
         (e) => {
             setId(e.target.value);
         },
-        [id]
-    )
-    
+        [id],
+    );
+
     const pwChange = useCallback(
         (e) => {
             setPw(e.target.value);
         },
-        [pw]
-    )
+        [pw],
+    );
 
     const pw2Change = useCallback(
         (e) => {
             setPw2(e.target.value);
         },
-        [pw2]
-    )
+        [pw2],
+    );
 
     const teamChange = useCallback(
         (e) => {
             setMyTeam(e.target.value);
         },
-        [myTeam]
-    )
+        [myTeam],
+    );
 
     return (
         <SignupPresenter
-        auth={auth}
-        name={name}
-        setName={setName}
-        nameChange={nameChange}
-        id = {id}
-        pw = {pw}
-        pw2 = {pw2}
-        setId={setId}
-        setPw = {setPw}
-        setPw2 = {setPw2}
-        idChange = {idChange}
-        pwChange = {pwChange}
-        pw2Change = {pw2Change}
-        myTeam={myTeam}
-        setMyTeam = {setMyTeam}
-        teamChange = {teamChange}
-        goStart = {goStart} />
-    )
+            auth={auth}
+            name={name}
+            setName={setName}
+            nameChange={nameChange}
+            id={id}
+            pw={pw}
+            pw2={pw2}
+            setId={setId}
+            setPw={setPw}
+            setPw2={setPw2}
+            idChange={idChange}
+            pwChange={pwChange}
+            pw2Change={pw2Change}
+            myTeam={myTeam}
+            setMyTeam={setMyTeam}
+            teamChange={teamChange}
+            goStart={goStart}
+        />
+    );
 }
 
 export default SignupConatiner;
