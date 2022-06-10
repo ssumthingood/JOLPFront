@@ -9,15 +9,15 @@ import Teamcode from "components/Teamcode";
 import React from "react";
 
 const HeadLine1 = styled.h1`
-    font-size:25px;
-    margin:0;
-    padding:15px;
-    width:100%;
+    font-size: 25px;
+    margin: 0;
+    padding: 15px;
+    width: 100%;
 `;
 
 const Section = styled.div`
-    width:100%;
-    padding:10px;
+    width: 100%;
+    padding: 10px;
 `;
 
 const Select = styled.select`
@@ -33,14 +33,14 @@ const Option = styled.option`
 `;
 
 const GoDetail = styled.a`
-    &:hover{
-        background-color:whitesmoke;
+    &:hover {
+        background-color: whitesmoke;
     }
-    width:100%;
+    width: 100%;
 `;
 
 const MyButton = styled.button`
-    margin:3px;
+    margin: 3px;
 `;
 
 function MypagePresenter({
@@ -57,97 +57,118 @@ function MypagePresenter({
     modifyPost,
     deletePost,
     signOut,
-}:{
-    user:any,
-    userDetail:any,
-    nick:string,
-    setNick:React.Dispatch<React.SetStateAction<string>>,
-    nickChange:(e: any) => void,
-    myPost:any,
-    submit:() => void,
-    myTeam:string,
-    setMyTeam:React.Dispatch<React.SetStateAction<string>>,
-    teamChange:(e: any) => void,
-    modifyPost:any,
-    deletePost:any;
-    signOut:any;
-}){
+    wrappin,
+    changeWrap,
+}: {
+    user: any;
+    userDetail: any;
+    nick: string;
+    setNick: React.Dispatch<React.SetStateAction<string>>;
+    nickChange: (e: any) => void;
+    myPost: any;
+    submit: () => void;
+    myTeam: string;
+    setMyTeam: React.Dispatch<React.SetStateAction<string>>;
+    teamChange: (e: any) => void;
+    modifyPost: any;
+    deletePost: any;
+    signOut: any;
+    wrappin: Boolean;
+    changeWrap: any;
+}) {
+    const Wrap = styled.div`
+        display: ${wrappin ? "none" : "block"};
+    `;
     return (
         <>
-        <Header />
-        <NavBar/>
-        <MainWrapper>
-        <HeadLine1>MyPage</HeadLine1>
-        {userDetail ?
-        <>
-        <Section>
-        <h4>유저 ID</h4>
-        {userDetail.loginid}
-        </Section>
-        <Section>
-        <h4>닉네임</h4>
-        {userDetail.nickname}<br />
-        <input type="text" value={nick} onChange={nickChange}/>
-        </Section>
-        <Section>  
-        <h4>내 팀</h4>
-        {Teamcode(userDetail.myteam)}<br />
-        <Select name="team" value={myTeam} onChange={teamChange}>
-        <Option value="0">선택</Option>
-            <Option value="120">아스날</Option>
-            <Option value="121">아스톤 빌라</Option>
-            <Option value="131">번리</Option>
-            <Option value="130">브라이튼</Option>
-            <Option value="129">브렌트포드</Option>
-            <Option value="134">첼시</Option>
-            <Option value="136">크리스탈 팰리스</Option>
-            <Option value="138">에버튼</Option>
-            <Option value="145">리버풀</Option>
-            <Option value="144">레스터</Option>
-            <Option value="143">리즈</Option>
-            <Option value="147">맨유</Option>
-            <Option value="146">맨시티</Option>
-            <Option value="150">노리치</Option>
-            <Option value="149">뉴캐슬</Option>
-            <Option value="158">사우스햄튼</Option>
-            <Option value="163">토트넘 핫스퍼</Option>
-            <Option value="166">웨스트햄</Option>
-            <Option value="171">울버햄튼</Option>
-            <Option value="164">왓포드</Option>
-        </Select>
-        </Section>
-        <Section>
-        <h4>작성한 글</h4>
-        {
-        myPost.length>0 ?
-        myPost.map((
-            data:
-            {
-                title: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
-                board_id: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
-            }
-        )=>(
-            <>
-            <GoDetail href={`/communitydetail/${userDetail.myteam}/${data.board_id}`}>{data.title}</GoDetail>
-            <MyButton onClick={(e)=>{modifyPost(data.board_id?.toString(), e)}}>수정</MyButton>
-            <MyButton onClick={(e)=>{deletePost(data.board_id?.toString(), e)}}>삭제</MyButton>
-            <br />
-            </>
-        ))
-        :
-        <Loading/>}
-        </Section>
-        </>
-        :
-        <Loading/>
-        }
-        <Section>
-            닉네임은 공백 없이 설정합니다.
-        </Section>
-        <MyButton onClick={submit}>정보 변경</MyButton>
-        <MyButton onClick={signOut}>회원 탈퇴</MyButton>
-        </MainWrapper>
-        <Footer />
+            <Header />
+            <NavBar />
+            <MainWrapper>
+                <HeadLine1>MyPage</HeadLine1>
+                {userDetail ? (
+                    <>
+                        <Section>
+                            <h4>유저 ID</h4>
+                            {userDetail.loginid}
+                        </Section>
+                        <Section>
+                            <h4>닉네임</h4>
+                            {userDetail.nickname}
+                            <br />
+                            <input type="text" value={nick} onChange={nickChange} />
+                        </Section>
+                        <Section>
+                            <h4>내 팀</h4>
+                            {Teamcode(userDetail.myteam)}
+                            <br />
+                            <Select name="team" value={myTeam} onChange={teamChange}>
+                                <Option value="0">선택</Option>
+                                <Option value="120">아스날</Option>
+                                <Option value="121">아스톤 빌라</Option>
+                                <Option value="131">번리</Option>
+                                <Option value="130">브라이튼</Option>
+                                <Option value="129">브렌트포드</Option>
+                                <Option value="134">첼시</Option>
+                                <Option value="136">크리스탈 팰리스</Option>
+                                <Option value="138">에버튼</Option>
+                                <Option value="145">리버풀</Option>
+                                <Option value="144">레스터</Option>
+                                <Option value="143">리즈</Option>
+                                <Option value="147">맨유</Option>
+                                <Option value="146">맨시티</Option>
+                                <Option value="150">노리치</Option>
+                                <Option value="149">뉴캐슬</Option>
+                                <Option value="158">사우스햄튼</Option>
+                                <Option value="163">토트넘 핫스퍼</Option>
+                                <Option value="166">웨스트햄</Option>
+                                <Option value="171">울버햄튼</Option>
+                                <Option value="164">왓포드</Option>
+                            </Select>
+                        </Section>
+                        <Section>
+                            <h4>작성한 글</h4>
+                            <button onClick={changeWrap}>펼치기/접기</button>
+                            {myPost.length > 0 ? (
+                                <Wrap>
+                                    {myPost.map(
+                                        (data: {
+                                            title: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
+                                            board_id: boolean | ReactChild | ReactFragment | ReactPortal | null | undefined;
+                                        }) => (
+                                            <>
+                                                <GoDetail href={`/communitydetail/${userDetail.myteam}/${data.board_id}`}>{data.title}</GoDetail>
+                                                <MyButton
+                                                    onClick={(e) => {
+                                                        modifyPost(data.board_id?.toString(), e);
+                                                    }}
+                                                >
+                                                    수정
+                                                </MyButton>
+                                                <MyButton
+                                                    onClick={(e) => {
+                                                        deletePost(data.board_id?.toString(), e);
+                                                    }}
+                                                >
+                                                    삭제
+                                                </MyButton>
+                                                <br />
+                                            </>
+                                        ),
+                                    )}
+                                </Wrap>
+                            ) : (
+                                <Loading />
+                            )}
+                        </Section>
+                    </>
+                ) : (
+                    <Loading />
+                )}
+                <Section>닉네임은 공백 없이 설정합니다.</Section>
+                <MyButton onClick={submit}>정보 변경</MyButton>
+                <MyButton onClick={signOut}>회원 탈퇴</MyButton>
+            </MainWrapper>
+            <Footer />
         </>
     );
 }

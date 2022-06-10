@@ -21,7 +21,7 @@ function GetTeamcode(code: string): string {
         case "Chelsea":
             teamName = "134";
             break;
-        case "CrystalPalace":
+        case "Crystal Palace":
             teamName = "136";
             break;
         case "Everton":
@@ -36,11 +36,11 @@ function GetTeamcode(code: string): string {
         case "Liverpool":
             teamName = "145";
             break;
-        case "ManCity":
+        case "Man City":
             teamName = "146";
             break;
-        case "147":
-            teamName = "ManUnited";
+        case "Man United":
+            teamName = "147";
             break;
         case "Newcastle":
             teamName = "149";
@@ -57,7 +57,7 @@ function GetTeamcode(code: string): string {
         case "Watford":
             teamName = "164";
             break;
-        case "WestHam":
+        case "West Ham":
             teamName = "166";
             break;
         case "Wolves":

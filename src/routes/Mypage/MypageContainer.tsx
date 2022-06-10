@@ -13,6 +13,7 @@ function MypageConatiner() {
     const [myPost, setMypost] = useState<any[]>([]);
     let [nick, setNick] = useState("");
     let [myTeam, setMyTeam] = useState("0");
+    const [wrap, setWrap] = useState<Boolean>(true);
 
     function auth() {
         if (getCookie("USER")) {
@@ -177,6 +178,10 @@ function MypageConatiner() {
         }
     }
 
+    const changeWrap = () => {
+        setWrap(!wrap);
+    };
+
     useEffect(() => {
         if (userDetail) {
             axios
@@ -208,6 +213,8 @@ function MypageConatiner() {
             modifyPost={modifyPost}
             deletePost={deletePost}
             signOut={signOut}
+            wrappin={wrap}
+            changeWrap={changeWrap}
         />
     );
 }
