@@ -25,7 +25,7 @@ const Footer: React.FC = () => {
         <FooterMain>
             <FooterWrapper>
                 <HeadLine1>TETA</HeadLine1>
-                <div>2022 HoomBa. all right reserved</div>
+                <div>2022 TETA. all right reserved</div>
                 <div>Konkuk Univ. Computer Science Engineering</div>
                 <div>Jang TaeJun, Lee KyungHo, Park JunHong</div>
             </FooterWrapper>
