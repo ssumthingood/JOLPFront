@@ -115,7 +115,7 @@ function NewsConatiner() {
                     // { withCredentials: true },
                 )
                 .then((response) => {
-                    setPast(response.data.slice(0, -1));
+                    setPast(response.data.slice(0, -1).reverse());
                     console.log(response.data.slice(0, -1));
                 });
         }
