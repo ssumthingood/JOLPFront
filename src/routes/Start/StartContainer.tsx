@@ -35,7 +35,7 @@ function StartConatiner() {
                         console.log(response.data);
                         setUser(response.data);
                     } else if (response.data === -3 && localStorage.refreshToken) {
-                        window.alert("refreshing...");
+                        // window.alert("refreshing...");
                         axios
                             .post(
                                 "http://13.125.81.51:3003/apis/auth/refreshToken",
@@ -46,8 +46,8 @@ function StartConatiner() {
                             )
                             .then((res) => {
                                 if (res.data !== -3) {
-                                    window.alert("refreshed");
-                                    console.log(res.data.token);
+                                    // window.alert("refreshed");
+                                    // console.log(res.data.token);
                                     setCookie("USER", res.data.token, {
                                         path: "/",
                                         secure: false,
