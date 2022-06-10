@@ -76,7 +76,7 @@ const ComuList = styled.div`
     width: 80%;
     height: 300px;
     font-size: 15px;
-    padding-top: 40px;
+    padding-top: 30px;
 `;
 
 const ComuDetail = styled.a`
@@ -86,7 +86,7 @@ const ComuDetail = styled.a`
     line-height: 12px;
     padding-left: 15px;
     border-bottom: 0.5px dashed black;
-    // padding-bottom: 3px;
+    padding-bottom: 2px;
     &:hover {
         color: white;
         background-color: black;
