@@ -18,7 +18,7 @@ function ScheduleConatiner() {
     const [userDetail, setUserDetail] = useState<any>(null);
     const [matches, setMatch] = useState<any>([]);
 
-    let [date, setDate] = useState(moment().format("YYYY-MM-DD"));
+    let [date, setDate] = useState(moment("2022-05-22").format("YYYY-MM-DD"));
 
     function auth() {
         if (getCookie("USER")) {
@@ -80,14 +80,14 @@ function ScheduleConatiner() {
         prevNum++;
         if (prevNum > nextNum) {
             setDate(
-                moment()
+                moment("2022-05-22")
                     .clone()
                     .subtract(prevNum - nextNum, "days")
                     .format("YYYY-MM-DD"),
             );
         } else {
             setDate(
-                moment()
+                moment("2022-05-22")
                     .clone()
                     .add(nextNum - prevNum, "days")
                     .format("YYYY-MM-DD"),
@@ -99,14 +99,14 @@ function ScheduleConatiner() {
         nextNum++;
         if (nextNum > prevNum) {
             setDate(
-                moment()
+                moment("2022-05-22")
                     .clone()
                     .add(nextNum - prevNum, "days")
                     .format("YYYY-MM-DD"),
             );
         } else {
             setDate(
-                moment()
+                moment("2022-05-22")
                     .clone()
                     .subtract(prevNum - nextNum, "days")
                     .format("YYYY-MM-DD"),
