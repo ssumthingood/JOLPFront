@@ -53,7 +53,6 @@ _█░░░░░░░░░░█______█_███__█_____███_█_
 );
 
 function MainConatiner() {
-    // const navigate = useNavigate();
     let [date, setDate] = useState(nowDay); //달력에 표시되는 날짜
     const [comu, setComu] = useState<any[]>([]); //추천수 상위 5개 글
     const [matches, setMatch] = useState<any>([]);
@@ -121,7 +120,6 @@ function MainConatiner() {
                                     removeCookie("USER");
                                     localStorage.removeItem("refreshToken");
                                     alert("세션이 만료되었습니다. 다시 로그인해 주세요");
-                                    // window.location.reload();
                                 }
                             });
                     }
@@ -131,75 +129,33 @@ function MainConatiner() {
 
     useEffect(() => {
         if (user) {
-            axios
-                .get(
-                    `http://13.125.81.51:3003/apis/user/getUser/${user.user_id}`,
-                    {
-                        // userid: user.user_id,
-                    },
-                    // { withCredentials: true },
-                )
-                .then((res) => {
-                    setUserDetail(res.data[0]);
-                });
+            axios.get(`http://13.125.81.51:3003/apis/user/getUser/${user.user_id}`, {}).then((res) => {
+                setUserDetail(res.data[0]);
+            });
         }
     }, [user]);
 
     useEffect(() => {
         if (userDetail) {
-            axios
-                .get(
-                    `http://13.125.81.51:3003/apis/board/getBoard?teamid=${userDetail.myteam}`,
-                    {
-                        // teamid: userDetail.myteam.toString(),
-                    },
-                    // { withCredentials: true },
-                )
-                .then((response) => {
-                    setComu(response.data.reverse().slice(0, 10));
-                });
+            axios.get(`http://13.125.81.51:3003/apis/board/getBoard?teamid=${userDetail.myteam}`, {}).then((response) => {
+                setComu(response.data.reverse().slice(0, 10));
+            });
 
-            axios
-                .get(
-                    `http://13.125.81.51:3003/apis/football/getStadiumInfo?teamid=${userDetail.myteam}`,
-                    {
-                        // teamid: userDetail.myteam.toString(),
-                    },
-                    // { withCredentials: true },
-                )
-                .then((response) => {
-                    setStad(response.data[0]);
-                });
+            axios.get(`http://13.125.81.51:3003/apis/football/getStadiumInfo?teamid=${userDetail.myteam}`, {}).then((response) => {
+                setStad(response.data[0]);
+            });
 
-            axios
-                .get(
-                    `http://13.125.81.51:3003/apis/football/getPredictInfo?teamid=${userDetail.myteam}`,
-                    {
-                        // teamid: userDetail.myteam.toString(),
-                    },
-                    // { withCredentials: true },
-                )
-                .then((response) => {
-                    setPrediction(response.data[0]);
-                });
+            axios.get(`http://13.125.81.51:3003/apis/football/getPredictInfo?teamid=${userDetail.myteam}`, {}).then((response) => {
+                setPrediction(response.data[0]);
+            });
         }
     }, [userDetail]);
 
     useEffect(() => {
         if (auth) {
-            axios
-                .get(
-                    `http://13.125.81.51:3003/apis/football/getMatch?date=${date.toString()}`,
-                    {
-                        // date: date.toString(),
-                    },
-                    // {
-                    //     withCredentials: true,
-                    // },
-                )
-                .then((response) => {
-                    setMatch(response.data);
-                });
+            axios.get(`http://13.125.81.51:3003/apis/football/getMatch?date=${date.toString()}`, {}).then((response) => {
+                setMatch(response.data);
+            });
         }
     }, [date]);
     //NavBar
@@ -211,21 +167,7 @@ function MainConatiner() {
     }
     //NavBar
 
-    return (
-        <MainPresenter
-            matches={matches}
-            params={params}
-            onDatechange={onDatechange}
-            comu={comu}
-            user={user}
-            userDetail={userDetail}
-            prediction={prediction}
-            stad={stad}
-            //navBar
-            logOut={logOut}
-            //navBar
-        />
-    );
+    return <MainPresenter matches={matches} params={params} onDatechange={onDatechange} comu={comu} user={user} userDetail={userDetail} prediction={prediction} stad={stad} logOut={logOut} />;
 }
 
 export default MainConatiner;

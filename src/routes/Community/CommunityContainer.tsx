@@ -97,27 +97,19 @@ function CommunityConatiner() {
 
     useEffect(() => {
         if (userDetail) {
-            axios
-                .get(
-                    `http://13.125.81.51:3003/apis/board/getBoard?teamid=${userDetail.myteam}`,
-                    {
-                        // teamid: userDetail.myteam.toString(),
-                    },
-                    // { withCredentials: true },
-                )
-                .then((response) => {
-                    setMaxNumber(Math.floor(response.data.length / 30) + 1);
-                    if (params.pagenum) {
-                        if (parseInt(params.pagenum) < maxPageNumber) {
-                            setNowshow(response.data.reverse().slice((parseInt(params.pagenum) - 1) * 30, parseInt(params.pagenum) * 30));
-                        } else {
-                            setNowshow(response.data.reverse().slice((parseInt(params.pagenum) - 1) * 30, response.data.length));
-                        }
+            axios.get(`http://13.125.81.51:3003/apis/board/getBoard?teamid=${userDetail.myteam}`, {}).then((response) => {
+                setMaxNumber(Math.floor(response.data.length / 30) + 1);
+                if (params.pagenum) {
+                    if (parseInt(params.pagenum) < maxPageNumber) {
+                        setNowshow(response.data.reverse().slice((parseInt(params.pagenum) - 1) * 30, parseInt(params.pagenum) * 30));
                     } else {
-                        window.alert("params.pagenum err");
-                        navigate("/main");
+                        setNowshow(response.data.reverse().slice((parseInt(params.pagenum) - 1) * 30, response.data.length));
                     }
-                });
+                } else {
+                    window.alert("params.pagenum err");
+                    navigate("/main");
+                }
+            });
         }
     }, [userDetail, params.pagenum, maxPageNumber]);
 
@@ -176,7 +168,6 @@ function CommunityConatiner() {
             set2={set2}
             set3={set3}
             goPosting={goPosting}
-            //listNum={listNum}
             maxPageNumber={maxPageNumber}
             nowShow={nowShow}
             ifFirst={ifFirst}

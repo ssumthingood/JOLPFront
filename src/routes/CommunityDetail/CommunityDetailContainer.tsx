@@ -71,17 +71,9 @@ function CommunityDetailConatiner() {
 
     useEffect(() => {
         if (user) {
-            axios
-                .get(
-                    `http://13.125.81.51:3003/apis/user/getUser/${user.user_id}`,
-                    {
-                        // userid: user.user_id,
-                    },
-                    // { withCredentials: true },
-                )
-                .then((res) => {
-                    setUserDetail(res.data[0]);
-                });
+            axios.get(`http://13.125.81.51:3003/apis/user/getUser/${user.user_id}`, {}).then((res) => {
+                setUserDetail(res.data[0]);
+            });
         }
     }, [user]);
 
@@ -97,17 +89,11 @@ function CommunityDetailConatiner() {
     const deletePost = (postid, e) => {
         e.preventDefault();
         axios
-            .delete(
-                `http://13.125.81.51:3003/apis/board/deleteBoard/${postid}`,
-                // {
-                //     board_id: postid,
-                // },
-                {
-                    headers: {
-                        token: getCookie("USER"),
-                    },
+            .delete(`http://13.125.81.51:3003/apis/board/deleteBoard/${postid}`, {
+                headers: {
+                    token: getCookie("USER"),
                 },
-            )
+            })
             .then((response) => {
                 window.alert("삭제되었습니다.");
                 navigate(-1);
@@ -115,17 +101,9 @@ function CommunityDetailConatiner() {
     };
 
     useEffect(() => {
-        axios
-            .get(
-                `http://13.125.81.51:3003/apis/board/getBoard/${params.postid}`,
-                {
-                    // board_id: params.postid,
-                },
-                // { withCredentials: true },
-            )
-            .then((response) => {
-                setPost(response.data[0]);
-            });
+        axios.get(`http://13.125.81.51:3003/apis/board/getBoard/${params.postid}`, {}).then((response) => {
+            setPost(response.data[0]);
+        });
     }, []);
 
     return <CommunityDetailPresenter auth={auth} user={user} userDetail={userDetail} post={post} modifyPost={modifyPost} deletePost={deletePost} goCommunity={goCommunity} />;

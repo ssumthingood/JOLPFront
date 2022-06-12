@@ -71,7 +71,7 @@ function StartConatiner() {
         if (user) {
             axios
                 .get(
-                    `http://13.125.81.51:3003/apis/user/getUser/${user.user_id}`,
+                    `http://13.125.81.51:3003/apis/user/getUser/${user.user_id.toString()}`,
                     {
                         // userid: user.user_id,
                     },
