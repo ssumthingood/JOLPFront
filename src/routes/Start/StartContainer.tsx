@@ -81,7 +81,7 @@ function StartConatiner() {
                     setUserDetail(res.data[0]);
                 });
         }
-    }, [user]);
+    }, [user.user_id]);
 
     function goMain() {
         if (getCookie("USER")) {

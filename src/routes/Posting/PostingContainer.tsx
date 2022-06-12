@@ -83,7 +83,7 @@ function PostingConatiner() {
                     setUserDetail(res.data[0]);
                 });
         }
-    }, [user]);
+    }, [user.user_id]);
 
     const titleChange = useCallback(
         (e) => {

@@ -75,7 +75,7 @@ function CommunityDetailConatiner() {
                 setUserDetail(res.data[0]);
             });
         }
-    }, [user]);
+    }, [user.user_id]);
 
     function goCommunity() {
         navigate(`/community/${userDetail.myteam}/1`);

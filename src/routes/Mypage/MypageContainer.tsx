@@ -87,7 +87,7 @@ function MypageConatiner() {
                     setMyTeam(res.data[0].myteam);
                 });
         }
-    }, [user]);
+    }, [user.user_id]);
 
     const nickChange = useCallback(
         (e) => {

@@ -85,7 +85,7 @@ function MyteamConatiner() {
                     setUserDetail(res.data[0]);
                 });
         }
-    }, [user]);
+    }, [user.user_id]);
 
     useEffect(() => {
         if (userDetail) {

@@ -152,7 +152,7 @@ function NavBar() {
                     setUserDetail(res.data[0]);
                 });
         }
-    }, [user]);
+    }, [user.user_id]);
 
     function logOut() {
         removeCookie("USER");

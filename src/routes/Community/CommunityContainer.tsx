@@ -93,7 +93,7 @@ function CommunityConatiner() {
                     }
                 });
         }
-    }, [user]);
+    }, [user.user_id]);
 
     useEffect(() => {
         if (userDetail) {

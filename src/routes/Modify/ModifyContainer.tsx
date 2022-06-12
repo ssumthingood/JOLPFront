@@ -105,7 +105,7 @@ function ModifyConatiner() {
                         });
                 });
         }
-    }, [user]);
+    }, [user.user_id]);
 
     const titleChange = useCallback(
         (e) => {
