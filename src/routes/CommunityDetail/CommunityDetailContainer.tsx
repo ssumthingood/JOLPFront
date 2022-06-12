@@ -70,8 +70,8 @@ function CommunityDetailConatiner() {
     }, [auth()]);
 
     useEffect(() => {
-        if (user) {
-            axios.get(`http://13.125.81.51:3003/apis/user/getUser/${user.user_id}`, {}).then((res) => {
+        if (user.user_id) {
+            axios.get(`http://13.125.81.51:3003/apis/user/getUser/${user.user_id.toString()}`, {}).then((res) => {
                 setUserDetail(res.data[0]);
             });
         }

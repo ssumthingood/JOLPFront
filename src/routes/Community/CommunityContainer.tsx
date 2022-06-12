@@ -75,10 +75,10 @@ function CommunityConatiner() {
     }, [auth()]);
 
     useEffect(() => {
-        if (user) {
+        if (user.user_id) {
             axios
                 .get(
-                    `http://13.125.81.51:3003/apis/user/getUser/${user.user_id}`,
+                    `http://13.125.81.51:3003/apis/user/getUser/${user.user_id.toString()}`,
                     {
                         // userid: user.user_id,
                     },
